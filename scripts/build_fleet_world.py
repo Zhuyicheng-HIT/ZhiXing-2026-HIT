@@ -35,7 +35,13 @@ def edge(name,start,end,color,width=1):
 
 def main():
     plan = build_plan()
-    models = [model('ground','200 70 -.1 0 0 0',[visual('ground','0 0 0 0 0 0',box_geometry(1400,1400,.2),'0.23 0.31 0.22 1')])]
+    satellite = (ROOT/'web'/'assets'/'satellite.jpg').resolve()
+    ground_material = (
+        '<ambient>0.23 0.31 0.22 1</ambient><diffuse>0.75 0.75 0.75 1</diffuse>'
+        f'<pbr><metal><albedo_map>file://{satellite}</albedo_map></metal></pbr>'
+    )
+    ground_visual = f'<visual name="ground"><pose>0 0 0 0 0 0</pose><geometry>{box_geometry(1400,1400,.2)}</geometry><material>{ground_material}</material></visual>'
+    models = [model('ground','200 70 -.1 0 0 0',[ground_visual])]
     for label,geometry,color in [('perimeter',plan['perimeter'],'1 .85 .1 1'),('forest',plan['forest'],'.5 .1 .1 1'),('launch',plan['launch'],'.8 .8 1 1')]:
         for polygon_index,polygon in enumerate(polygons(shape(geometry))):
             coords = list(polygon.exterior.coords)

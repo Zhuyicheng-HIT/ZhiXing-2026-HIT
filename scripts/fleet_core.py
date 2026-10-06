@@ -92,7 +92,12 @@ def add_segment(vehicle, destination, state, duration=None, **metadata):
 
 
 def navigate(vehicle, destination, region, state):
-    for point in route_inside(vehicle['position'][:2], destination[:2], region):
+    start = vehicle['position'][:2]
+    end = destination[:2]
+    if region.buffer(0.001).covers(LineString([start,end])):
+        add_segment(vehicle, destination, state)
+        return
+    for point in route_inside(start, end, region):
         add_segment(vehicle, [*point, destination[2]], state)
 
 

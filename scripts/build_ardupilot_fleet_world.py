@@ -27,6 +27,28 @@ def build_model(source, destination, vehicle_id, fdm_port, pose):
         pose_element = ET.Element('pose')
         model.insert(0, pose_element)
     pose_element.text = f'{pose[0]} {pose[1]} {pose[2]} 0 0 0'
+    camera_link = ET.Element('link', {'name': 'sim_camera'})
+    camera_pose = ET.SubElement(camera_link, 'pose')
+    camera_pose.text = '0 0 -0.16 0 1.5707963 0'
+    sensor = ET.SubElement(camera_link, 'sensor', {'name': f'{vehicle_id}_rgb', 'type': 'camera'})
+    ET.SubElement(sensor, 'always_on').text = 'true'
+    ET.SubElement(sensor, 'visualize').text = 'true'
+    ET.SubElement(sensor, 'update_rate').text = '10'
+    ET.SubElement(sensor, 'topic').text = f'/uav/{vehicle_id}/gimbal/image_raw'
+    camera = ET.SubElement(sensor, 'camera')
+    ET.SubElement(camera, 'horizontal_fov').text = '1.073377'
+    image = ET.SubElement(camera, 'image')
+    ET.SubElement(image, 'width').text = '1280'
+    ET.SubElement(image, 'height').text = '720'
+    ET.SubElement(image, 'format').text = 'R8G8B8'
+    clip = ET.SubElement(camera, 'clip')
+    ET.SubElement(clip, 'near').text = '0.1'
+    ET.SubElement(clip, 'far').text = '500'
+    model.append(camera_link)
+    joint = ET.Element('joint', {'name': 'sim_camera_fixed', 'type': 'fixed'})
+    ET.SubElement(joint, 'parent').text = 'iris_with_standoffs::base_link'
+    ET.SubElement(joint, 'child').text = 'sim_camera'
+    model.append(joint)
     tree.write(destination, encoding='utf-8', xml_declaration=True)
     (destination.parent / 'model.config').write_text(
         f'''<?xml version="1.0"?>\n<model><name>{vehicle_id} iris with gimbal</name><version>2.0</version><sdf version="1.9">model.sdf</sdf></model>\n''',
@@ -41,6 +63,11 @@ def world_xml(vehicle_data):
             f'<include><uri>model://{vehicle["id"]}_iris_with_gimbal</uri>'
             f'<name>{vehicle["id"]}</name></include>'
         )
+    satellite = (ROOT / 'web' / 'assets' / 'satellite.jpg').resolve()
+    ground_material = (
+        f'<ambient>0.23 0.31 0.22 1</ambient><diffuse>0.75 0.75 0.75 1</diffuse>'
+        f'<pbr><metal><albedo_map>file://{satellite}</albedo_map></metal></pbr>'
+    )
     return f'''<?xml version="1.0"?>
 <sdf version="1.9">
   <world name="zhixin_subject1_ardupilot_fleet">
@@ -53,7 +80,7 @@ def world_xml(vehicle_data):
     <plugin filename="gz-sim-navsat-system" name="gz::sim::systems::NavSat"/>
     <scene><ambient>0.8 0.8 0.8 1</ambient><background>0.55 0.68 0.82 1</background></scene>
     <light name="sun" type="directional"><pose>0 0 500 0 0 0</pose><diffuse>0.9 0.9 0.9 1</diffuse><direction>-0.3 0.2 -1</direction></light>
-    <model name="ground"><static>true</static><link name="link"><collision name="collision"><geometry><box><size>1600 1600 0.2</size></box></geometry></collision><visual name="visual"><geometry><box><size>1600 1600 0.2</size></box></geometry><material><ambient>0.24 0.31 0.22 1</ambient><diffuse>0.24 0.31 0.22 1</diffuse></material></visual></link><pose>200 70 -0.1 0 0 0</pose></model>
+    <model name="ground"><static>true</static><link name="link"><collision name="collision"><geometry><box><size>1600 1600 0.2</size></box></geometry></collision><visual name="visual"><geometry><box><size>1600 1600 0.2</size></box></geometry><material>{ground_material}</material></visual></link><pose>200 70 -0.1 0 0 0</pose></model>
     {''.join(includes)}
   </world>
 </sdf>'''

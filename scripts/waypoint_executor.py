@@ -622,7 +622,7 @@ class WaypointExecutor:
             isolation_transit_simulation=getattr(fleet,'isolation_transit_simulation',False),
             competition_airspace_compliant=fleet.plan['isolation_airspace']['authorized_policy_respected'] and not fleet.plan['requires_forest_transit_permission'],target_updates=fleet.target_updates,
             vehicles=vehicles,log=fleet.log[-25:],progress=self.progress() if self.begun else 0,
-            mode='ardupilot_internal_physics_sitl',execution='actual_waypoint_state_machine',preparing=fleet.preparing,
+            mode=fleet.plan['mode'],execution='actual_waypoint_state_machine',preparing=fleet.preparing,
             map_frame=fleet.plan.get('map_frame'),homes_captured_from_feedback=getattr(fleet,'homes_captured',False),
             actual_min_separation_m=separation,observed_min_separation_m=self.minimum_separation if self.samples else separation,
             remaining_waypoint_distance_m=max(math.dist(vehicle['position'],vehicle['planned_position']) for vehicle in vehicles),

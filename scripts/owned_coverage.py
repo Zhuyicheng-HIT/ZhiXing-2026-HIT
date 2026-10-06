@@ -66,7 +66,7 @@ def route_order(cells, home):
     ordered = []
     current = home
     while remaining:
-        next_cell = min(remaining,key=lambda item:math.dist(current,item['center']))
+        next_cell = min(remaining,key=lambda item:(math.dist(current,item['center']), item['center'][1], item['center'][0]))
         remaining.remove(next_cell)
         ordered.append(next_cell)
         current = next_cell['center']
@@ -186,7 +186,7 @@ def balanced_partition(region, configuration, homes, margin, clearance):
             if len(pair)==2:
                 predicted_times = [item['predicted_s'] for item in pair]
                 balance_penalty = abs(predicted_times[0]-predicted_times[1])
-                score = (max(predicted_times)+8.0*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair)
+                score = (max(predicted_times)+14.0*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair)
                     +1.0*max(item['maximum_jump'] for item in pair)+.1*sum(item['long_jump_excess'] for item in pair),
                     sum(len(item['cells']) for item in pair))
                 candidates.append((score,horizontal,split,band,pair))

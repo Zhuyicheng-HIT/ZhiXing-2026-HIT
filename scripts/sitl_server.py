@@ -20,7 +20,8 @@ from isolation_airspace import require_isolation_permission
 
 
 class SitlFleet(FleetSimulation):
-    def __init__(self, binary, defaults, speedup=5, mission_config=None):
+    def __init__(self, binary=None, defaults=None, speedup=5, mission_config=None, external=False):
+        self.external = external
         self.links = []
         self.children = []
         self.telemetry = []
@@ -36,7 +37,8 @@ class SitlFleet(FleetSimulation):
             self.plan = build_plan(homes=options.get('homes'),subject=options.get('subject',1),footprint=options.get('footprint_m',80))
             self.reset()
         self.speed = speedup
-        self.plan['mode'] = 'ardupilot_internal_physics_sitl'
+        self.plan['mode'] = 'gazebo_ardupilot_external' if self.external else 'ardupilot_internal_physics_sitl'
+        self.synthetic = not self.external
         self.concurrent_observations = True
         self.plan['limitations'] = [text for text in self.plan['limitations'] if '不控制飞控' not in text]
         self.plan['limitations'].append('原生ArduPilot内部物理模型；不是Gazebo动力学或真实云台/YOLO')
@@ -52,13 +54,16 @@ class SitlFleet(FleetSimulation):
             datum = self.plan['datum']
             latitude,longitude,ellipsoid_height = self.mission_frame.reverse([east,north,0])
             spawn_msl = ellipsoid_height-datum['sitl_geoid_undulation_m']
-            logfile = (directory/'flight.log').open('w')
-            process = subprocess.Popen([str(binary),'-M','quad','--defaults',str(defaults),
-                '-I',str(index),'--sysid',str(index+1),'--speedup',str(speedup),
-                '-O',f'{latitude},{longitude},{spawn_msl},0','--wipe'],
-                cwd=directory,stdout=logfile,stderr=subprocess.STDOUT)
-            logfile.close()
-            self.children.append(process)
+            if self.external:
+                self.children.append(None)
+            else:
+                logfile = (directory/'flight.log').open('w')
+                process = subprocess.Popen([str(binary),'-M','quad','--defaults',str(defaults),
+                    '-I',str(index),'--sysid',str(index+1),'--speedup',str(speedup),
+                    '-O',f'{latitude},{longitude},{spawn_msl},0','--wipe'],
+                    cwd=directory,stdout=logfile,stderr=subprocess.STDOUT)
+                logfile.close()
+                self.children.append(process)
             self.links.append(None)
             self.telemetry.append(dict(position=[east,north,0.0],last_seen=0,heartbeat=0,armed=False,
                 received=False,acks=[],texts=[],version=None,mode='UNKNOWN',streams_requested=False,
@@ -71,9 +76,11 @@ class SitlFleet(FleetSimulation):
 
     def close(self):
         for process in self.children:
-            if process.poll() is None:
+            if process is not None and process.poll() is None:
                 process.terminate()
         for process in self.children:
+            if process is None:
+                continue
             try:
                 process.wait(timeout=5)
             except subprocess.TimeoutExpired:
@@ -85,12 +92,12 @@ class SitlFleet(FleetSimulation):
     def receive(self):
         now = time.monotonic()
         for index, link in enumerate(self.links):
-            if self.children[index].poll() is not None:
+            if not self.external and self.children[index].poll() is not None:
                 self.faults[self.plan['vehicles'][index]['id']] = 'SITL进程退出；见runtime/sitl日志'
                 continue
             if link is None:
                 try:
-                    link = mavutil.mavlink_connection(f'tcp:127.0.0.1:{5760+index*10}',
+                    link = mavutil.mavlink_connection(f'udpin:127.0.0.1:{14550+index*10}',
                         source_system=250,autoreconnect=True,retries=0)
                     self.links[index] = link
                 except OSError:
@@ -110,7 +117,10 @@ class SitlFleet(FleetSimulation):
                     telemetry.update(raw_local_ned=[message.x,message.y,message.z],
                         last_seen=now,boot_ms=message.time_boot_ms,
                         speed_m_s=math.sqrt(message.vx**2+message.vy**2+message.vz**2))
-                    if self.coordinates[index].ekf_frame is not None:
+                    if self.external:
+                        north,east,down = telemetry['raw_local_ned']
+                        telemetry.update(position=[east,north,-down],received=True)
+                    elif self.coordinates[index].ekf_frame is not None:
                         telemetry.update(position=self.coordinates[index].ned_to_mission(telemetry['raw_local_ned']),received=True)
                 elif kind == 'GPS_GLOBAL_ORIGIN':
                     origin = dict(latitude_deg=message.latitude/1e7,longitude_deg=message.longitude/1e7,altitude_msl_m=message.altitude/1000)
@@ -119,7 +129,11 @@ class SitlFleet(FleetSimulation):
                     self.coordinates[index].set_ekf_origin(**origin)
                     telemetry['ekf_origin'] = origin
                     if telemetry['raw_local_ned'] is not None:
-                        telemetry.update(position=self.coordinates[index].ned_to_mission(telemetry['raw_local_ned']),received=True)
+                        if self.external:
+                            north,east,down = telemetry['raw_local_ned']
+                            telemetry.update(position=[east,north,-down],received=True)
+                        else:
+                            telemetry.update(position=self.coordinates[index].ned_to_mission(telemetry['raw_local_ned']),received=True)
                 elif kind == 'GLOBAL_POSITION_INT':
                     telemetry['global_position'] = dict(latitude_deg=message.lat/1e7,longitude_deg=message.lon/1e7,
                         altitude_msl_m=message.alt/1000,relative_altitude_m=message.relative_alt/1000)
@@ -159,9 +173,13 @@ class SitlFleet(FleetSimulation):
 
     def setpoint(self, index, position, yaw_mission_rad=None):
         link = self.links[index]
-        north,east,down = self.coordinates[index].mission_to_ned(position)
+        if self.external:
+            east_mission,north_mission,up_mission = position
+            north,east,down = north_mission,east_mission,-up_mission
+        else:
+            north,east,down = self.coordinates[index].mission_to_ned(position)
         mask = 3576 if yaw_mission_rad is None else 2552
-        yaw_ned = 0 if yaw_mission_rad is None else self.coordinates[index].mission_heading_to_ned(yaw_mission_rad)
+        yaw_ned = 0 if yaw_mission_rad is None else (math.pi/2-yaw_mission_rad if self.external else self.coordinates[index].mission_heading_to_ned(yaw_mission_rad))
         link.mav.set_position_target_local_ned_send(0,index+1,1,mavutil.mavlink.MAV_FRAME_LOCAL_NED,
             mask,north,east,down,0,0,0,0,0,0,yaw_ned,0)
 
@@ -237,7 +255,7 @@ class SitlFleet(FleetSimulation):
                     raise ValueError('严格禁穿树林时区域不连通；需要明确授权条件仿真过境')
                 if self.stamp >= self.plan['duration_s']:
                     raise ValueError('本次SITL任务已完成；停止服务后重新启动，不能复用已降落状态')
-                if not all(item['received'] and time.monotonic()-item['last_seen']<2 for item in self.telemetry):
+                if not all(item['received'] and time.monotonic()-item['last_seen']<5 for item in self.telemetry):
                     raise ValueError('等待六机定位反馈；检查runtime/sitl/*/flight.log')
                 if not self.homes_captured:
                     if any(item['armed'] for item in self.telemetry):
@@ -265,15 +283,19 @@ if __name__ == '__main__':
     parser.add_argument('--speedup',type=float,default=5)
     parser.add_argument('--port',type=int,default=8766)
     parser.add_argument('--mission-config',type=Path)
+    parser.add_argument('--external-gazebo',action='store_true',
+        help='connect to the six externally launched Gazebo-ArduPilot instances')
     arguments = parser.parse_args()
     if not 1 <= arguments.speedup <= 20:
         parser.error('--speedup允许1到20；不能用网页倍率改动物理时间')
-    if not arguments.binary.is_file() or not arguments.defaults.is_file():
+    if not arguments.external_gazebo and (not arguments.binary.is_file() or not arguments.defaults.is_file()):
         parser.error('未找到目标固件/默认参数，请先运行scripts/setup_sitl.sh或显式指定--binary和--defaults')
     def terminate(signum, frame):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM,terminate)
-    fleet = SitlFleet(arguments.binary.resolve(),arguments.defaults.resolve(),arguments.speedup,arguments.mission_config)
+    fleet = SitlFleet(None if arguments.external_gazebo else arguments.binary.resolve(),
+        None if arguments.external_gazebo else arguments.defaults.resolve(),arguments.speedup,
+        arguments.mission_config,arguments.external_gazebo)
     try:
         serve(port=arguments.port,simulation=fleet)
     finally:

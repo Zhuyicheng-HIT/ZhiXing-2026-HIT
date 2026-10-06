@@ -47,7 +47,8 @@ for ((instance=0; instance<INSTANCE_COUNT; instance++)); do
   TELEMETRY_PORT=$((14550 + instance * 10))
   nohup "${AP_ROOT}/build/sitl/bin/arducopter" \
     --model JSON --speedup "${SITL_SPEEDUP:-1}" --slave 0 \
-    --sim-address=127.0.0.1 -I "${instance}" \
+    --sim-address=127.0.0.1 -I "${instance}" --sysid "$((instance + 1))" \
+    --defaults "${AP_ROOT}/Tools/autotest/default_params/gazebo-iris.parm" \
     >"${LOG_DIR}/sitl-${instance}.log" 2>&1 < /dev/null &
   PIDS+=("$!")
   sleep 0.5
