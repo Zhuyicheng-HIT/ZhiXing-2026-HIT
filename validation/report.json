@@ -3,11 +3,11 @@
   "six_simultaneous_takeoffs": true,
   "continuous_separation": {
     "passed": true,
-    "min_3d_distance_m": 12.517274254245224,
+    "min_3d_distance_m": 9.897383120335393,
     "closest": {
-      "first": "uav_3",
-      "second": "uav_5",
-      "time_s": 49.86703932508338
+      "first": "uav_1",
+      "second": "uav_2",
+      "time_s": 44.58162308181877
     },
     "horizontal_limit_m": 8,
     "vertical_limit_m": 8,
@@ -17,8 +17,8 @@
   "work_region_containment": true,
   "altitude_containment": true,
   "geometric_rectangle_coverage": 1.0,
-  "station_count": 90,
-  "default_duration_s": 1356.0313968838636,
+  "station_count": 72,
+  "default_duration_s": 1073.2820295956133,
   "within_competition_time_budget": true,
   "forest_permission_required": false,
   "work_only_isolation_policy": true,
@@ -28,6 +28,6 @@
   "result_idempotent": true,
   "checkpoint_restore": true,
   "all_returned_home": true,
-  "total_completed_observations": 415,
+  "total_completed_observations": 293,
   "hardware_or_sitl_verified": false
 }

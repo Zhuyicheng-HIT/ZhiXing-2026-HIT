@@ -31,7 +31,7 @@
     "violations": []
   },
   "station_count": 72,
-  "nominal_duration_s": 965.5171428087857,
+  "nominal_duration_s": 1073.2820295956133,
   "deadline_met": true,
   "regions": [
     {
@@ -52,7 +52,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 77.9361845526065,
       "scan_s": 461.179167634748,
-      "search_complete_s": 875.4112086529121
+      "search_complete_s": 875.4112086529121,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_2",
@@ -72,7 +74,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 36.442853690329954,
       "scan_s": 487.35326208171443,
-      "search_complete_s": 876.6481617662071
+      "search_complete_s": 876.6481617662071,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_3",
@@ -92,7 +96,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 111.85255419519152,
       "scan_s": 303.89157764304593,
-      "search_complete_s": 663.0400120669796
+      "search_complete_s": 663.0400120669796,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_4",
@@ -112,7 +118,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 113.24410123775556,
       "scan_s": 274.1656691062639,
-      "search_complete_s": 644.0804251511236
+      "search_complete_s": 644.0804251511236,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_5",
@@ -132,7 +140,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 139.28015639777698,
       "scan_s": 359.28654200453036,
-      "search_complete_s": 749.9242731042691
+      "search_complete_s": 749.9242731042691,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_6",
@@ -152,7 +162,9 @@
       "nominal_entry_path_wait_s": 0,
       "entry_complete_s": 151.29034116724114,
       "scan_s": 368.7010461469432,
-      "search_complete_s": 768.8832749793796
+      "search_complete_s": 768.8832749793796,
+      "synchronized_search_complete_s": 876.6481617662071,
+      "return_ready_s": 876.6481617662071
     }
   ],
   "hardware_verified": false
