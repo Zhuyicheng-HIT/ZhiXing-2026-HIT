@@ -1,4 +1,5 @@
 import argparse
+import json
 import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -63,6 +64,8 @@ def main():
     parser.add_argument('--source', default='/home/zyc/ardupilot_gazebo/models/iris_with_gimbal/model.sdf')
     parser.add_argument('--output', default=str(ROOT / 'runtime' / 'ardupilot_fleet'))
     parser.add_argument('--base-port', type=int, default=9002)
+    parser.add_argument('--port-step', type=int, default=10)
+    parser.add_argument('--plan', default=str(ROOT / 'missions' / 'fleet_plan.json'))
     args = parser.parse_args()
 
     output = Path(args.output)
@@ -71,15 +74,17 @@ def main():
         shutil.rmtree(output)
     models.mkdir(parents=True)
     source = Path(args.source)
-    plan = build_plan()
+    plan_path = Path(args.plan)
+    plan = json.loads(plan_path.read_text(encoding='utf-8')) if plan_path.exists() else build_plan()
     vehicle_data = []
     for index, vehicle in enumerate(plan['vehicles']):
         vehicle_id = vehicle['id']
         model_directory = models / f'{vehicle_id}_iris_with_gimbal'
         model_directory.mkdir()
         pose = (*vehicle['home'], 0.25)
-        build_model(source, model_directory / 'model.sdf', vehicle_id, args.base_port + index, pose)
-        vehicle_data.append(dict(id=vehicle_id, pose=pose, fdm_port=args.base_port + index))
+        fdm_port = args.base_port + index * args.port_step
+        build_model(source, model_directory / 'model.sdf', vehicle_id, fdm_port, pose)
+        vehicle_data.append(dict(id=vehicle_id, pose=pose, fdm_port=fdm_port))
     world = output / 'zhixin_subject1_ardupilot_fleet.sdf'
     world.write_text(world_xml(vehicle_data), encoding='utf-8')
     print(world)

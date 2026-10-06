@@ -173,14 +173,21 @@ def balanced_partition(region, configuration, homes, margin, clearance):
                 if not cells:
                     break
                 scan_s = sum(math.dist(leg['origin'],leg['target'])/configuration['ground_scan_speed_m_s'] for cell in cells for leg in cell['legs'])
-                route_s = sum(math.dist(first,second)/6 for first,second in zip([homes[index]]+[cell['center'] for cell in cells[:-1]],[cell['center'] for cell in cells]))
+                route_distances = [math.dist(first,second) for first,second in zip(
+                    [homes[index]]+[cell['center'] for cell in cells[:-1]],
+                    [cell['center'] for cell in cells])]
+                route_s = sum(route_distances)/6
+                maximum_jump = max(route_distances or [0])
+                long_jump_excess = sum(max(0,distance-120) for distance in route_distances)
                 edge = sum(max(0,clearance-safe.boundary.distance(Point(cell['center']))) for cell in cells)
                 pair.append(dict(part=part,flight=flight,safe=safe,cells=cells,missing=missing,
-                    predicted_s=scan_s+route_s+len(cells)*2,edge_penalty=edge))
+                    predicted_s=scan_s+route_s+len(cells)*2,edge_penalty=edge,
+                    maximum_jump=maximum_jump,long_jump_excess=long_jump_excess))
             if len(pair)==2:
                 predicted_times = [item['predicted_s'] for item in pair]
                 balance_penalty = abs(predicted_times[0]-predicted_times[1])
-                score = (max(predicted_times)+8.0*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair),
+                score = (max(predicted_times)+8.0*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair)
+                    +1.0*max(item['maximum_jump'] for item in pair)+.1*sum(item['long_jump_excess'] for item in pair),
                     sum(len(item['cells']) for item in pair))
                 candidates.append((score,horizontal,split,band,pair))
     if not candidates:

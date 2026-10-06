@@ -5,7 +5,7 @@
 `scripts/build_ardupilot_fleet_world.py` 从当前任务规划读取六架无人机起飞位置，复制 `iris_with_gimbal` 模型，并为每架机生成独立模型名与 FDM 端口：
 
 - `uav_1` 至 `uav_6`
-- `9002` 至 `9007`
+- `9002`、`9012`、`9022`、`9032`、`9042`、`9052`（对应 ArduPilot `-I 0` 至 `-I 5`）
 - 每架机包含 ArduPilot 插件、IMU、NavSat 和 ZR-10 外形云台相机
 - 相机话题为 `/uav/uav_N/gimbal/image_raw`
 
