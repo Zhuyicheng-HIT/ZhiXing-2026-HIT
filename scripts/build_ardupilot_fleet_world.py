@@ -22,6 +22,9 @@ def build_model(source, destination, vehicle_id, fdm_port, pose):
         raise ValueError(f'missing model in {source}')
     model.set('name', vehicle_id)
     text(model, 'plugin/fdm_port_in', fdm_port)
+    for element in model.iter():
+        if element.tag in {'cmd_topic', 'topic'} and element.text:
+            element.text = element.text.replace('/gimbal/cmd_', f'/uav/{vehicle_id}/gimbal/cmd_')
     pose_element = model.find('pose')
     if pose_element is None:
         pose_element = ET.Element('pose')
@@ -46,7 +49,7 @@ def build_model(source, destination, vehicle_id, fdm_port, pose):
     ET.SubElement(clip, 'far').text = '500'
     model.append(camera_link)
     joint = ET.Element('joint', {'name': 'sim_camera_fixed', 'type': 'fixed'})
-    ET.SubElement(joint, 'parent').text = 'iris_with_standoffs::base_link'
+    ET.SubElement(joint, 'parent').text = 'gimbal::pitch_link'
     ET.SubElement(joint, 'child').text = 'sim_camera'
     model.append(joint)
     tree.write(destination, encoding='utf-8', xml_declaration=True)

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import math
 import time
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -10,6 +11,7 @@ from urllib.request import Request, urlopen
 from PIL import Image
 
 from zr10_bridge import ZR10Bridge, backproject_ground_pixel
+from gimbal_geometry import body_heading
 
 
 def get_json(url: str) -> dict:
@@ -55,12 +57,18 @@ async def run(args: argparse.Namespace) -> None:
                     vehicle = by_id[vehicle_id]
                     position = tuple(float(value) for value in vehicle['position'])
                     gimbal = vehicle.get('gimbal', {})
+                    attitude = vehicle.get('attitude') or {}
+                    quaternion = attitude.get('quaternion_mission_from_body_flu_xyzw')
+                    try:
+                        vehicle_yaw_deg = math.degrees(body_heading(quaternion)) if quaternion else 0.0
+                    except (TypeError, ValueError):
+                        vehicle_yaw_deg = 0.0
                     for detection in detections:
                         observation = backproject_ground_pixel(
                             pixel=detection.center,
                             image_size=(width, height),
                             vehicle_enu_m=position,
-                            vehicle_yaw_deg=0.0,
+                            vehicle_yaw_deg=vehicle_yaw_deg,
                             gimbal_yaw_deg=float(gimbal.get('azimuth_enu_deg', 0.0)),
                             gimbal_pitch_deg=float(gimbal.get('elevation_deg', -90.0)),
                         )

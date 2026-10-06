@@ -26,6 +26,24 @@ export AP_GZ_ROOT=$HOME/ardupilot_gazebo
 ALLOW_AP_VERSION_MISMATCH=1 ./scripts/run_subject1_ardupilot_fleet.sh
 ```
 
+另开两个 WSL 终端启动网页状态服务和 Gazebo 云台桥接。桥接器会把每架飞机的当前扫描指令分别发布到 `/uav/uav_N/gimbal/cmd_yaw` 与 `/uav/uav_N/gimbal/cmd_pitch`，不会共用全局云台通道：
+
+```bash
+cd /home/zyc/zhixin_2026_ws
+python3 scripts/sitl_server.py --external-gazebo --speedup 1 --port 8770
+```
+
+```bash
+cd /home/zyc/zhixin_2026_ws
+python3 scripts/gazebo_gimbal_bridge.py --state-url http://127.0.0.1:8770/api/state
+```
+
+相机帧由 `scripts/gazebo_image_bridge.py` 采集到 `runtime/camera/uav_N.jpg`。接入 YOLO 时再启动：
+
+```bash
+python3 scripts/gazebo_perception_loop.py --camera-dir runtime/camera --output-dir runtime/perception --weights /path/to/best.pt
+```
+
 ## 当前验收边界
 
 已验证六机 Gazebo 世界可加载，并产生六个独立的云台相机话题。规划器、状态机、入口释放、返场预约和断点恢复使用当前确定性运动学仿真验证通过。
