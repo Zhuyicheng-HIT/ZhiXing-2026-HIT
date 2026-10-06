@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "old_path_endpoint_retained_during_braking": true,
+  "high_speed_prevents_resume": true,
+  "off_target_prevents_resume": true,
+  "cursors_preserved": true,
+  "resume_only_after_actual_arrival_and_low_speed": true,
+  "original_path_needs_new_authorization": true,
+  "land_mode_not_forced_to_guided": true,
+  "hold_drift_recorded": true,
+  "scope": "synthetic telemetry accounting; not a physical stopping envelope",
+  "hardware_verified": false
+}

@@ -1,0 +1,77 @@
+{
+  "vehicles": [
+    {
+      "id": "uav_1",
+      "zone": "takeoff",
+      "baseline_stations": 21,
+      "candidate_stations": 15,
+      "uncovered_m2": 1.2875519875822742e-12,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    },
+    {
+      "id": "uav_2",
+      "zone": "takeoff",
+      "baseline_stations": 18,
+      "candidate_stations": 15,
+      "uncovered_m2": 0.0,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    },
+    {
+      "id": "uav_3",
+      "zone": "house",
+      "baseline_stations": 23,
+      "candidate_stations": 23,
+      "uncovered_m2": 307.8278557235823,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    },
+    {
+      "id": "uav_4",
+      "zone": "house",
+      "baseline_stations": 17,
+      "candidate_stations": 12,
+      "uncovered_m2": 0.0,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    },
+    {
+      "id": "uav_5",
+      "zone": "grass",
+      "baseline_stations": 30,
+      "candidate_stations": 24,
+      "uncovered_m2": 0.0,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    },
+    {
+      "id": "uav_6",
+      "zone": "grass",
+      "baseline_stations": 33,
+      "candidate_stations": 23,
+      "uncovered_m2": 2.270126337953243e-11,
+      "maximum_navigation_roundoff_distance_m": 0.0
+    }
+  ],
+  "baseline_duration_s": 1759.7389347644983,
+  "candidate_duration_s": 1632.0594155900824,
+  "coverage_ratio": 1.0,
+  "unchanged_footprint_m": 80,
+  "unchanged_observation_conditions": true,
+  "unchanged_work_regions_and_isolation": true,
+  "nine_point_row_major_order_preserved": true,
+  "changed_plan_revision": true,
+  "old_checkpoint_rejected": true,
+  "baseline_global_uncovered_m2": 0.0,
+  "candidate_global_uncovered_m2": 2.2510886533577115e-11,
+  "ideal_trajectory_validation": {
+    "passed": true,
+    "min_3d_distance_m": 17.0,
+    "closest": {
+      "first": "uav_1",
+      "second": "uav_2",
+      "time_s": 0
+    },
+    "horizontal_limit_m": 8,
+    "vertical_limit_m": 8,
+    "violations": []
+  },
+  "scope": "nominal planar rectangle coverage; not actual optics or physical timing",
+  "hardware_verified": false
+}

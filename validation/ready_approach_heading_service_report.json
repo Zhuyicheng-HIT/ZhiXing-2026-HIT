@@ -1,0 +1,57 @@
+{
+  "speedup": 5.0,
+  "running": false,
+  "faults": {},
+  "states": [
+    {
+      "id": "uav_1",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_2",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_3",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_4",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_5",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_6",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.02
+    }
+  ],
+  "work_altitude_m": 40.5,
+  "scan_alignment_audit": {
+    "heading_targets_planned": 0,
+    "station_heading_plans": 0,
+    "station_heading_reuses": 0,
+    "alignment_wait_fcu_s": 0.0,
+    "approach_heading_plans": 0,
+    "approach_heading_uses": 0,
+    "observations_after_heading_alignment": 0,
+    "actual_pointing_outside_nominal_limits": 0,
+    "outside_nominal_examples": [],
+    "observations_with_feasible_pointing": 0,
+    "max_executable_pointing_error_deg": 0.0
+  }
+}

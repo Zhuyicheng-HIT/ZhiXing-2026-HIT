@@ -1,0 +1,40 @@
+{
+  "six_actual_fcu_observation_waits": true,
+  "five_parallel_evidence_results": true,
+  "held_aircraft_cursor_unchanged": true,
+  "held_aircraft_command_preserved": true,
+  "other_five_completed_one_observation": true,
+  "coordination_fault_holds_all": true,
+  "failed_observation_does_not_block_other_aircraft": true,
+  "failed_point_retried_with_new_attempt": true,
+  "stale_failed_attempt_rejected": true,
+  "no_independent_rtl_observed": true,
+  "conditional_forest_transit": true,
+  "synthetic_evidence": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "wall_duration_s": 42.709953500001575,
+  "waiting_vehicle_id": "uav_2",
+  "speedup": 20.0,
+  "observed_min_separation_m": 16.9729628708968,
+  "flight_audit": {
+    "position_samples": 11568,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 40.46281595373977,
+    "max_height_m": 110.00539952325519,
+    "min_perimeter_clearance_m": 1.9472261950680845,
+    "min_work_region_clearance_m": 3.9426484078342128
+  },
+  "flight_safety_audit": {
+    "checks": 11286,
+    "rejections": 0,
+    "last_violation": null,
+    "exact_work_boundaries": true,
+    "expanded_audit_boundary_m": 0.0,
+    "estimated_horizontal_body_radius_m": 0.6,
+    "scope": "sampled feedback and requested straight setpoint path; not swept physical braking proof",
+    "hardware_authorized": false
+  }
+}

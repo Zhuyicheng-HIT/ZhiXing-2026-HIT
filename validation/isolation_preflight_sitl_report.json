@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "mode": "ardupilot_internal_physics_sitl",
+  "native_strict_start_rejected_before_arming": true,
+  "six_unarmed_after_rejection": true,
+  "task_epoch_and_cursors_unchanged": true,
+  "forest_permission_not_isolation_permission": true,
+  "string_override_rejected": true,
+  "plan_crossing_count": 5,
+  "hardware_verified": false,
+  "scope": "live native preflight rejection; not in-flight isolation or browser interaction acceptance"
+}

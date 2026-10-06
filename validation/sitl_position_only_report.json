@@ -1,0 +1,89 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "complete": true,
+  "samples": 517,
+  "min_actual_separation_m": 16.875771758190805,
+  "max_tracking_error_m": 3.5621980617853075,
+  "states_seen": [
+    "CLIMB",
+    "COMPLETE",
+    "CONFIRM_STATIC",
+    "DESCEND_TO_WORK",
+    "EGRESS",
+    "GUIDED_ARM_TAKEOFF",
+    "INGRESS",
+    "LAND",
+    "NAVIGATE",
+    "REPOSITION",
+    "REPOSITION_CLIMB",
+    "RETURN_CLIMB",
+    "RETURN_DESCEND",
+    "SCAN",
+    "STABILIZE",
+    "TRACK_MOVING",
+    "WAIT_LANDED_DISARMED",
+    "WAIT_RELEASE",
+    "WAIT_RETURN_SLOT"
+  ],
+  "six_armed_observed": true,
+  "recovery_verified": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "synthetic_gimbal": true,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "start_stamp_s": 0.0,
+  "full_run_observed": true,
+  "stamp_s": 2225.8333409837414,
+  "fcu_mission_elapsed_s": 5961.3,
+  "completed_scans": 1377,
+  "faults": {},
+  "final_actual_positions": [
+    [
+      -38.00985413137823,
+      12.016741679981351,
+      -0.019847260788083076
+    ],
+    [
+      -21.0064514586702,
+      12.027235440909863,
+      -0.017143838107585907
+    ],
+    [
+      -37.93452437967062,
+      29.000898920174222,
+      -0.019458210095763206
+    ],
+    [
+      -21.027705365791917,
+      28.995515999849886,
+      -0.019503649324178696
+    ],
+    [
+      -37.93487675487995,
+      45.99637786182575,
+      -0.020007260143756866
+    ],
+    [
+      -20.94575409963727,
+      45.96973736397922,
+      -0.0194923784583807
+    ]
+  ],
+  "flight_version_labels": [
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255"
+  ],
+  "within_competition_time_budget_actual": false,
+  "elapsed_wall_s": 299.78
+}

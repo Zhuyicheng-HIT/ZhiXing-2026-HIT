@@ -1,0 +1,28 @@
+{
+  "six_actual_fcu_observation_waits": true,
+  "five_parallel_evidence_results": true,
+  "held_aircraft_cursor_unchanged": true,
+  "held_aircraft_command_preserved": true,
+  "other_five_completed_one_observation": true,
+  "coordination_fault_holds_all": true,
+  "failed_observation_does_not_block_other_aircraft": true,
+  "failed_point_retried_with_new_attempt": true,
+  "stale_failed_attempt_rejected": true,
+  "no_independent_rtl_observed": true,
+  "conditional_forest_transit": true,
+  "synthetic_evidence": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "wall_duration_s": 45.08557120000478,
+  "waiting_vehicle_id": "uav_2",
+  "speedup": 20.0,
+  "observed_min_separation_m": 16.975556462294342,
+  "flight_audit": {
+    "position_samples": 13182,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 39.9617394121008,
+    "max_height_m": 110.00175839420746
+  }
+}

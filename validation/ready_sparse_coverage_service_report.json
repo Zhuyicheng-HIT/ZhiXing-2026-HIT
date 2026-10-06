@@ -1,0 +1,37 @@
+{
+  "checked_at_unix_s": 1791244088.067949,
+  "url": "http://127.0.0.1:8766",
+  "passed": true,
+  "mode": "ardupilot_internal_physics_sitl",
+  "speedup": 5.0,
+  "six_ready_unarmed": true,
+  "fresh_position_feedback": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "station_counts": {
+    "uav_1": 15,
+    "uav_2": 15,
+    "uav_3": 23,
+    "uav_4": 12,
+    "uav_5": 24,
+    "uav_6": 23
+  },
+  "planned_observations": 1008,
+  "coverage_planning": {
+    "schema": "zhixin/coverage-planning/v1",
+    "strategy": "sparse_grid_candidates",
+    "hardware_authorized": false,
+    "notes": "Same uncalibrated footprint; compare four full-width grids with greedy coverage, never select a candidate with worse coverage."
+  },
+  "web_html_script_satellite_http": true,
+  "browser_visual_verified": false,
+  "browser_click_verified": false,
+  "hardware_verified": false,
+  "scope": "HTTP delivery and fresh native FCU ready state; not browser rendering or flight acceptance"
+}

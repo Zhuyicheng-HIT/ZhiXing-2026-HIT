@@ -1,0 +1,13 @@
+{
+  "scan_count": 338,
+  "default_observation_s": 0.0,
+  "alternative_observation_s": 3.0,
+  "plan_and_protocol_aligned": true,
+  "regional_scan_order_and_geometry_unchanged": true,
+  "stale_checkpoint_rejected": true,
+  "invalid_profiles_rejected": true,
+  "configuration_file_unchanged": true,
+  "baseline_nominal_duration_s": 1003.9058670329925,
+  "alternative_nominal_duration_s": 1267.9058670329919,
+  "scope": "Configuration and protocol logic; not hardware or physical mission validation"
+}

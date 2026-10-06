@@ -1,0 +1,213 @@
+{
+  "exact_pointing_preserved": true,
+  "near_nadir_feasible_without_relaxing_error": true,
+  "genuinely_unreachable_rejected": true,
+  "random_grid_comparison_cases": 100,
+  "invalid_vectors_rejected": true,
+  "replayed_samples": 40,
+  "replay": [
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_1:1:4",
+      "pointing_error_deg": 0.07248751309739782
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_2:3:4",
+      "pointing_error_deg": 0.06489641111474466
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_2:4:4",
+      "pointing_error_deg": 0.04713145426776263
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_4:0:4",
+      "pointing_error_deg": 0.03898076523015935
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_3:2:4",
+      "pointing_error_deg": 0.04597043750792571
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_2:5:4",
+      "pointing_error_deg": 0.05902370640324691
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_3:3:4",
+      "pointing_error_deg": 0.053064057400744956
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_4:1:4",
+      "pointing_error_deg": 0.021616870303529573
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_2:6:4",
+      "pointing_error_deg": 0.049860494624104024
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_1:2:4",
+      "pointing_error_deg": 0.0718904310399375
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_3:4:4",
+      "pointing_error_deg": 0.06343071526705193
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_2:7:4",
+      "pointing_error_deg": 0.028955586969003196
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_6:0:4",
+      "pointing_error_deg": 0.0023229304985339407
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_3:5:4",
+      "pointing_error_deg": 0.09778512323549558
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_1:4:4",
+      "pointing_error_deg": 0.05539786927523735
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_6:1:4",
+      "pointing_error_deg": 0.03258907468065811
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_6:5:4",
+      "pointing_error_deg": 0.012650012757348792
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_5:3:4",
+      "pointing_error_deg": 0.0003511487639781277
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_1:11:4",
+      "pointing_error_deg": 0.038888359788261204
+    },
+    {
+      "source": "sitl_heading_aligned_report.json",
+      "command_id": "uav_6:6:4",
+      "pointing_error_deg": 0.021351277359156113
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:0:4",
+      "pointing_error_deg": 0.030384631610052625
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_1:0:4",
+      "pointing_error_deg": 0.039639035281723835
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:9:4",
+      "pointing_error_deg": 0.02388649351296381
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_1:5:4",
+      "pointing_error_deg": 0.07996886124281176
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_3:7:4",
+      "pointing_error_deg": 0.07979204816359285
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_1:6:4",
+      "pointing_error_deg": 0.07726047734623663
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_5:1:4",
+      "pointing_error_deg": 0.02740164247995802
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_3:8:4",
+      "pointing_error_deg": 0.10646922187581496
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_4:3:4",
+      "pointing_error_deg": 0.010014189673856422
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:11:4",
+      "pointing_error_deg": 0.046294715746514316
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_4:4:4",
+      "pointing_error_deg": 0.02840168156396518
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_6:2:4",
+      "pointing_error_deg": 0.029056934646731578
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:12:4",
+      "pointing_error_deg": 0.008053364184922876
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_1:8:4",
+      "pointing_error_deg": 0.0657275588342062
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_4:5:4",
+      "pointing_error_deg": 0.013257379242867446
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:13:4",
+      "pointing_error_deg": 0.03201667083312019
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_1:9:4",
+      "pointing_error_deg": 0.06065582323398634
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_4:6:4",
+      "pointing_error_deg": 0.01469087763317384
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_5:2:4",
+      "pointing_error_deg": 0.02911173661366782
+    },
+    {
+      "source": "sitl_subject2_heading_aligned_report.json",
+      "command_id": "uav_2:14:4",
+      "pointing_error_deg": 0.014918438536386004
+    }
+  ],
+  "maximum_replay_error_deg": 0.10646922187581496,
+  "hardware_verified": false,
+  "full_mission_run": false
+}

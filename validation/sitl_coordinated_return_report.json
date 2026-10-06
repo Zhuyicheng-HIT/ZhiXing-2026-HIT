@@ -1,0 +1,279 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "complete": true,
+  "samples": 207,
+  "min_actual_separation_m": 16.91173737933479,
+  "states_seen": [
+    "CLIMB",
+    "COMPLETE",
+    "CONFIRM_STATIC",
+    "DESCEND_TO_WORK",
+    "EGRESS",
+    "GUIDED_ARM_TAKEOFF",
+    "INGRESS",
+    "LAND",
+    "NAVIGATE",
+    "REPOSITION",
+    "REPOSITION_CLIMB",
+    "RETURN_CLIMB",
+    "RETURN_DESCEND",
+    "SCAN",
+    "STABILIZE",
+    "TRACK_MOVING",
+    "WAIT_RELEASE",
+    "WAIT_RETURN_SLOT",
+    "WAIT_TRANSIT_SLOT"
+  ],
+  "six_armed_observed": true,
+  "recovery_verified": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "synthetic_gimbal": true,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "start_stamp_s": 0.0,
+  "full_run_observed": true,
+  "map_frame": {
+    "frame_id": "mission_map",
+    "map_origin_id": "22f3ef41d955f9f5",
+    "axes": "ENU",
+    "units": "m",
+    "latitude_deg": 33.864219444444444,
+    "longitude_deg": 113.70589722222222,
+    "height_ellipsoid_m": 71.0,
+    "ellipsoid": "WGS84"
+  },
+  "subject": 1,
+  "deadline_s": 1500,
+  "planned_observations": 1278,
+  "planned_homes_enu_m": [
+    [
+      -38.01564760251771,
+      11.996620181264976
+    ],
+    [
+      -21.01994172940252,
+      11.998392873107814
+    ],
+    [
+      -38.01797395470939,
+      28.99150768558135
+    ],
+    [
+      -21.019976986661906,
+      28.991649814287864
+    ],
+    [
+      -38.01797258653004,
+      45.99580207548563
+    ],
+    [
+      -21.018193187942835,
+      45.994353806685815
+    ]
+  ],
+  "execution": "actual_waypoint_state_machine",
+  "stamp_s": 1761.2433306713478,
+  "homes_captured_from_feedback": true,
+  "flight_audit": {
+    "position_samples": 43656,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 39.964090205415864,
+    "max_height_m": 110.0252641523345
+  },
+  "phase_elapsed_s": {
+    "uav_1": {
+      "WAIT_RELEASE": 211.90000000000137,
+      "PAUSED_OR_GROUP_HOLD": 23.2,
+      "CLIMB": 37.70000000000001,
+      "INGRESS": 27.699999999999996,
+      "DESCEND_TO_WORK": 34.89999999999999,
+      "NAVIGATE": 219.6000000000013,
+      "STABILIZE": 45.69999999999997,
+      "SCAN": 396.10000000000264,
+      "CONFIRM_STATIC": 10.300000000000002,
+      "TRACK_MOVING": 120.19999999999973,
+      "WAIT_RETURN_SLOT": 0.3,
+      "RETURN_CLIMB": 22.700000000000006,
+      "EGRESS": 47.099999999999916,
+      "RETURN_DESCEND": 60.19999999999983,
+      "LAND": 7.800000000000001,
+      "COMPLETE": 819.6999999999875
+    },
+    "uav_2": {
+      "CLIMB": 48.80099999999994,
+      "INGRESS": 9.999000000000002,
+      "DESCEND_TO_WORK": 48.20099999999996,
+      "NAVIGATE": 190.49700000000078,
+      "STABILIZE": 41.00199999999997,
+      "SCAN": 340.80100000000067,
+      "PAUSED_OR_GROUP_HOLD": 21.299,
+      "CONFIRM_STATIC": 10.3,
+      "TRACK_MOVING": 120.2,
+      "WAIT_RETURN_SLOT": 0.4,
+      "RETURN_CLIMB": 30.400000000000002,
+      "EGRESS": 19.60000000000001,
+      "RETURN_DESCEND": 73.70099999999992,
+      "LAND": 7.299000000000002,
+      "COMPLETE": 1135.500999999991
+    },
+    "uav_3": {
+      "WAIT_RELEASE": 104.29999999999998,
+      "CLIMB": 41.898999999999994,
+      "PAUSED_OR_GROUP_HOLD": 21.701,
+      "INGRESS": 30.10000000000001,
+      "DESCEND_TO_WORK": 83.00000000000009,
+      "NAVIGATE": 231.00100000000106,
+      "STABILIZE": 51.79799999999995,
+      "SCAN": 435.19900000000064,
+      "CONFIRM_STATIC": 10.0,
+      "TRACK_MOVING": 120.30100000000002,
+      "WAIT_TRANSIT_SLOT": 26.6,
+      "REPOSITION_CLIMB": 26.499000000000006,
+      "REPOSITION": 43.00099999999997,
+      "WAIT_RETURN_SLOT": 252.30100000000135,
+      "RETURN_CLIMB": 26.598999999999997,
+      "EGRESS": 66.89999999999996,
+      "RETURN_DESCEND": 67.00099999999995,
+      "LAND": 7.299000000000001,
+      "COMPLETE": 468.4009999999994
+    },
+    "uav_4": {
+      "WAIT_RELEASE": 327.6990000000014,
+      "PAUSED_OR_GROUP_HOLD": 21.70100000000001,
+      "CLIMB": 33.500000000000014,
+      "INGRESS": 75.19999999999987,
+      "DESCEND_TO_WORK": 28.40000000000001,
+      "NAVIGATE": 173.50000000000045,
+      "STABILIZE": 39.099999999999966,
+      "SCAN": 322.4000000000019,
+      "CONFIRM_STATIC": 10.1,
+      "TRACK_MOVING": 120.00000000000009,
+      "WAIT_RETURN_SLOT": 136.20099999999988,
+      "RETURN_CLIMB": 18.499000000000006,
+      "EGRESS": 94.19999999999996,
+      "RETURN_DESCEND": 53.69999999999991,
+      "LAND": 7.899999999999999,
+      "COMPLETE": 629.5999999999957
+    },
+    "uav_5": {
+      "WAIT_RELEASE": 595.0009999999971,
+      "PAUSED_OR_GROUP_HOLD": 21.69899999999999,
+      "CLIMB": 25.70000000000001,
+      "INGRESS": 55.29999999999992,
+      "DESCEND_TO_WORK": 15.100000000000001,
+      "NAVIGATE": 323.69200000000086,
+      "STABILIZE": 70.30399999999999,
+      "SCAN": 566.4039999999966,
+      "CONFIRM_STATIC": 10.1,
+      "TRACK_MOVING": 120.19999999999996,
+      "WAIT_RETURN_SLOT": 0.3,
+      "RETURN_CLIMB": 10.3,
+      "EGRESS": 78.49900000000007,
+      "RETURN_DESCEND": 40.200999999999986,
+      "LAND": 7.799,
+      "COMPLETE": 165.80100000000039
+    },
+    "uav_6": {
+      "WAIT_RELEASE": 467.00000000000165,
+      "PAUSED_OR_GROUP_HOLD": 18.599999999999998,
+      "CLIMB": 29.399999999999974,
+      "INGRESS": 67.79999999999987,
+      "DESCEND_TO_WORK": 21.600000000000005,
+      "NAVIGATE": 347.19800000000066,
+      "STABILIZE": 74.50099999999995,
+      "SCAN": 625.0009999999968,
+      "CONFIRM_STATIC": 10.200000000000005,
+      "TRACK_MOVING": 120.20000000000002,
+      "WAIT_RETURN_SLOT": 107.50000000000013,
+      "RETURN_CLIMB": 14.500000000000005,
+      "EGRESS": 100.29999999999991,
+      "RETURN_DESCEND": 46.79999999999996,
+      "LAND": 7.399999999999999
+    }
+  },
+  "ekf_origins": [
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    }
+  ],
+  "fcu_mission_elapsed_s": 2068.0,
+  "completed_scans": 1278,
+  "faults": {},
+  "final_actual_positions": [
+    [
+      -37.95149428860687,
+      11.97812607661409,
+      0.07022873352829961
+    ],
+    [
+      -21.032420701837133,
+      12.022433427177553,
+      0.07048272947746792
+    ],
+    [
+      -38.05049229186428,
+      28.99102363384123,
+      0.07032958152777447
+    ],
+    [
+      -21.043302838485708,
+      29.00750447554877,
+      0.07069964752976965
+    ],
+    [
+      -37.94937370160337,
+      45.97961562594645,
+      0.06988498917213803
+    ],
+    [
+      -21.037693397884677,
+      46.01049303199501,
+      0.03862673908477987
+    ]
+  ],
+  "flight_version_labels": [
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255"
+  ],
+  "within_competition_time_budget_actual": false,
+  "elapsed_wall_s": 106.46
+}

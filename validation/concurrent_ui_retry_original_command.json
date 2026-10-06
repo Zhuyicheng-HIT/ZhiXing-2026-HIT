@@ -1,0 +1,95 @@
+﻿{
+    "vehicle_id":  "uav_6",
+    "observation_id":  "uav_6:0:1",
+    "station_id":  "uav_6:0",
+    "command_frame_id":  "mission_map",
+    "map_origin_id":  "22f3ef41d955f9f5",
+    "setpoint_type":  "GROUND_POINT",
+    "target_enu_m":  [
+                         409.3379426732674,
+                         44.61463569839897,
+                         0
+                     ],
+    "station_enu_m":  [
+                          409.3379426732674,
+                          71.28130236506564,
+                          40
+                      ],
+    "height_reference":  "SIMULATION_FLAT_GROUND",
+    "calibration_id":  "SIMULATION_UNCALIBRATED",
+    "scan_zoom":  1.0,
+    "geometry_revision":  "d4a0bcddfa9d870866287efea8efb068ba790d5967528b25f7b94fd9a9742247",
+    "observation_conditions":  {
+                                   "minimum_distinct_frames":  6,
+                                   "minimum_observation_s":  2.0,
+                                   "maximum_pointing_error_deg":  2.0,
+                                   "minimum_stable_s":  0.5,
+                                   "maximum_time_uncertainty_s":  0.5
+                               },
+    "point_revision":  "62245ba9aeaf4ad65145195f0b7a071d30818fb65fea2327a145acf04e867c1b",
+    "schema":  "zhixin/gimbal-command/v1",
+    "command_id":  "uav_6:0:1",
+    "mission_epoch":  "7eee1054-318e-4af6-a96e-7cbf060f3465",
+    "owner":  "fleet-coordinator",
+    "plan_revision":  "3a05cf05ded6db1b47abdd81d727e64f5fdb55cc0e5a621de53477179d1af6b8",
+    "command_type":  "OBSERVE_POINT",
+    "issued_at":  1791236677.2815814,
+    "accept_before":  1791236977.2815814,
+    "execution_timeout_s":  60.0,
+    "clock_domain":  "UNIX_UTC_SECONDS",
+    "actual_position_enu_m":  [
+                                  409.32788953715067,
+                                  71.29918686329763,
+                                  40.00067684809167
+                              ],
+    "hardware_authorized":  false,
+    "calibration_configured":  false,
+    "pointing_at_issue":  {
+                              "valid":  true,
+                              "reference_frame":  "gimbal_mount_flu",
+                              "azimuth_rad":  0.09381477912541802,
+                              "elevation_rad":  -0.9814943134552895,
+                              "azimuth_deg":  5.375190899838469,
+                              "elevation_deg":  -56.23548177707838,
+                              "look_direction":  [
+                                                     0.5533369222235777,
+                                                     0.05206401298881578,
+                                                     -0.8313288092299213
+                                                 ],
+                              "pivot_enu_m":  [
+                                                  409.32788953715067,
+                                                  71.29918686329763,
+                                                  40.00067684809167
+                                              ],
+                              "distance_m":  48.08450395130533,
+                              "nadir_azimuth_underdetermined":  false,
+                              "nominal_reachable":  true,
+                              "invalid_reason":  null,
+                              "calibration_id":  "SIMULATION_NOMINAL_IDENTITY",
+                              "mount_calibrated":  false,
+                              "sdk_axis_mapping_verified":  false,
+                              "sdk_command_available":  false,
+                              "executable":  {
+                                                 "azimuth_rad":  0.09381477912541801,
+                                                 "elevation_rad":  -0.9814943134552895,
+                                                 "azimuth_deg":  5.3751908998384685,
+                                                 "elevation_deg":  -56.23548177707838,
+                                                 "look_direction":  [
+                                                                        0.5533369222235777,
+                                                                        0.05206401298881578,
+                                                                        -0.8313288092299213
+                                                                    ],
+                                                 "pointing_error_deg":  0.0,
+                                                 "within_nominal_limits":  true,
+                                                 "maximum_error_deg":  2.0,
+                                                 "feasible":  true,
+                                                 "reference_frame":  "gimbal_mount_flu",
+                                                 "method":  "MAXIMUM_VIEW_DIRECTION_DOT_PRODUCT",
+                                                 "model":  "NOMINAL_TWO_AXIS_GEOMETRY",
+                                                 "sdk_command_available":  false,
+                                                 "hardware_authorized":  false
+                                             }
+                          },
+    "execution_attempt":  1,
+    "attempt_id":  "ca383764-7a00-4ac0-888d-72e7618142eb"
+}

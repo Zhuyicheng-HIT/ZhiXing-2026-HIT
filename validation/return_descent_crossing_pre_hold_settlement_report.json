@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "scenario": "return-descent",
+  "scope": "bounded custom crossing fixture using production native six-FCU executor",
+  "speedup": 20,
+  "conditional_forest_transit": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "checkpoint_disk_restore_verified": false,
+  "six_actual_observation_waits_before_fixture": true,
+  "original_positions": [
+    [
+      -55.68848784234536,
+      -206.75008966781897,
+      40.51539571182154
+    ],
+    [
+      -40.77484307981228,
+      -9.54694709112368,
+      40.51697744137327
+    ],
+    [
+      143.2246520494031,
+      -12.753218694517411,
+      40.51256431653768
+    ],
+    [
+      213.38189422886262,
+      364.06330310721364,
+      40.51197130620497
+    ],
+    [
+      380.4153595575027,
+      -38.70068448835657,
+      40.514237273182076
+    ],
+    [
+      383.90933676675866,
+      14.884526182228644,
+      40.516634028131776
+    ]
+  ],
+  "staged_positions": [
+    [
+      -55.69908882689834,
+      -206.7346477301685,
+      40.515681723457575
+    ],
+    [
+      -40.772237594080295,
+      -9.525807951678775,
+      40.51699266763174
+    ],
+    [
+      143.21241457029095,
+      -12.735712999274485,
+      40.51273201015932
+    ],
+    [
+      213.38433568951444,
+      364.0886937275218,
+      40.51226874397477
+    ],
+    [
+      -26.79913723620932,
+      30.16726187506707,
+      109.98916315192689
+    ],
+    [
+      -27.08345550627286,
+      14.244781262579586,
+      89.98593616703123
+    ]
+  ],
+  "pause_maximum_actual_drift_m": 0.09252805367865359,
+  "pause_actual_fcu_seconds": [
+    14.2,
+    14.4,
+    14.2,
+    14.4,
+    12.1,
+    15.1
+  ],
+  "wait_conflict": {
+    "vehicle_id": "uav_5",
+    "distance_m": 0.09501082797817735
+  },
+  "waiting_cursor_unchanged": true,
+  "pause_clears_authorizations": true,
+  "resume_rechecks_conflict": true,
+  "waiter_maximum_actual_drift_m": 0.08555038760639823,
+  "blocker_actual_vertical_progress_m": 32.20607225025681,
+  "waiter_actual_fcu_seconds": 21.401,
+  "remaining_path_distance_at_grant_m": 12.196976114059987,
+  "crossing_segments": {
+    "vertical_start": [
+      -26.70666828594534,
+      30.005976480361156,
+      110.0
+    ],
+    "vertical_end": [
+      -26.70666828594534,
+      30.005976480361156,
+      2.0
+    ],
+    "horizontal_start": [
+      -26.70666828594534,
+      14.005976480361156,
+      90.0
+    ],
+    "horizontal_end": [
+      -26.70666828594534,
+      46.005976480361156,
+      90.0
+    ]
+  },
+  "original_destinations_reached_by_actual_feedback": true,
+  "no_independent_rtl_observed": true,
+  "ending_armed_paused_hover": true,
+  "ending_positions": [
+    [
+      -55.70928925253832,
+      -206.71635240169707,
+      40.51554048375385
+    ],
+    [
+      -40.771423114917425,
+      -9.507054903203713,
+      40.516775197803284
+    ],
+    [
+      143.21281130789387,
+      -12.734251974560706,
+      40.51209495132237
+    ],
+    [
+      213.38453409938583,
+      364.10962879118523,
+      40.51306210461962
+    ],
+    [
+      -26.678621332599903,
+      30.002776422814648,
+      2.039471254129106
+    ],
+    [
+      -26.68567943296739,
+      45.98834502633585,
+      89.99922708639414
+    ]
+  ],
+  "observed_min_separation_m": 15.908940883784636,
+  "flight_audit": {
+    "position_samples": 6876,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 40.46050090466589,
+    "max_height_m": 110.02064017242041,
+    "min_perimeter_clearance_m": 1.96778617525438,
+    "min_work_region_clearance_m": 3.967016684325984
+  },
+  "reservation_audit": {
+    "grants": 64,
+    "blocked_checks": 65,
+    "minimum_granted_path_distance_m": 12.196976114059987,
+    "maximum_parallel_entries": 4,
+    "maximum_parallel_returns": 0,
+    "scope": "remaining straight command segments; not physical tracking or braking proof"
+  },
+  "wall_duration_s": 32.06155020799997
+}

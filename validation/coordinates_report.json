@@ -1,0 +1,23 @@
+{
+  "roundtrip_enu_max_error_m": 3.121035465429605e-09,
+  "roundtrip_ecef_max_error_m": 1.041251881730811e-09,
+  "independent_ekf_origins_shared_target_error_m": 6.252822124148069e-10,
+  "missing_origin_rejected": true,
+  "point_2_origin_distance_m": 0.0,
+  "map_frame": {
+    "frame_id": "mission_map",
+    "map_origin_id": "22f3ef41d955f9f5",
+    "axes": "ENU",
+    "units": "m",
+    "latitude_deg": 33.864219444444444,
+    "longitude_deg": 113.70589722222222,
+    "height_ellipsoid_m": 71.0,
+    "ellipsoid": "WGS84"
+  },
+  "height_hardware_verified": false,
+  "source_docx_coordinates_verified": true,
+  "source_coordinate_pairs": 33,
+  "independent_reference": "GeographicLib CartConvert",
+  "reference_max_error_m": 2.861727719563328e-09,
+  "reference_verified": true
+}

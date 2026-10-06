@@ -1,0 +1,139 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "six_unarmed_ready": true,
+  "attitude_feedback": [
+    {
+      "vehicle_id": "uav_1",
+      "raw": {
+        "roll_rad": -0.001062228693626821,
+        "pitch_rad": -0.0012602385831996799,
+        "yaw_rad": -0.02062540128827095,
+        "time_boot_ms": 417692,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.0008245801030199164,
+          6.012815447328933e-05,
+          0.714359823279112,
+          0.6997780786341442
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_1/base_link",
+        "time_boot_ms": 417692,
+        "received_monotonic_s": 5281.555763766
+      }
+    },
+    {
+      "vehicle_id": "uav_2",
+      "raw": {
+        "roll_rad": -0.0010655756341293454,
+        "pitch_rad": -0.0012634064769372344,
+        "yaw_rad": -0.02062060683965683,
+        "time_boot_ms": 417659,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.0008259316615495391,
+          6.097384050951251e-05,
+          0.7143587719241525,
+          0.6997791502281973
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_2/base_link",
+        "time_boot_ms": 417659,
+        "received_monotonic_s": 5281.555763766
+      }
+    },
+    {
+      "vehicle_id": "uav_3",
+      "raw": {
+        "roll_rad": -0.001068376237526536,
+        "pitch_rad": -0.0012693899916484952,
+        "yaw_rad": -0.020609989762306213,
+        "time_boot_ms": 417604,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.000830934817910698,
+          6.209574788816634e-05,
+          0.7143544306579939,
+          0.6997835758938187
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_3/base_link",
+        "time_boot_ms": 417604,
+        "received_monotonic_s": 5281.555763766
+      }
+    },
+    {
+      "vehicle_id": "uav_4",
+      "raw": {
+        "roll_rad": -0.0010616324143484235,
+        "pitch_rad": -0.0012647340772673488,
+        "yaw_rad": -0.02060176432132721,
+        "time_boot_ms": 417534,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.0008259611172578507,
+          6.380956473191013e-05,
+          0.714352178827991,
+          0.699785880337889
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_4/base_link",
+        "time_boot_ms": 417534,
+        "received_monotonic_s": 5281.555763766
+      }
+    },
+    {
+      "vehicle_id": "uav_5",
+      "raw": {
+        "roll_rad": -0.0010634836507961154,
+        "pitch_rad": -0.001283692312426865,
+        "yaw_rad": -0.019878657534718513,
+        "time_boot_ms": 412531,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.0008352423511029273,
+          7.010521799143439e-05,
+          0.7140984948854361,
+          0.7000447393258721
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_5/base_link",
+        "time_boot_ms": 412531,
+        "received_monotonic_s": 5281.555763766
+      }
+    },
+    {
+      "vehicle_id": "uav_6",
+      "raw": {
+        "roll_rad": -0.0010736000258475542,
+        "pitch_rad": -0.001284139696508646,
+        "yaw_rad": -0.019948918372392654,
+        "time_boot_ms": 412974,
+        "received_monotonic_s": 5281.555763766
+      },
+      "converted": {
+        "quaternion_mission_from_body_flu_xyzw": [
+          -0.0008379948154252589,
+          6.755169677490858e-05,
+          0.714123714066215,
+          0.7000190098916831
+        ],
+        "parent_frame_id": "mission_map",
+        "child_frame_id": "uav_6/base_link",
+        "time_boot_ms": 412974,
+        "received_monotonic_s": 5281.555763766
+      }
+    }
+  ],
+  "hardware_verified": false
+}

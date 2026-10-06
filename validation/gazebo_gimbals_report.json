@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "checked_at_unix_s": 1791248244.1633394,
+  "mode": "gazebo_set_pose_visualization",
+  "six_bodies_and_six_cameras_verified": true,
+  "orientation_projection_case_count": 6,
+  "source_mode": "ardupilot_internal_physics_sitl",
+  "task_epoch_and_cursors_unchanged": true,
+  "no_flight_control_requests": true,
+  "gimbal_joint_dynamics_verified": false,
+  "camera_image_generation_verified": false,
+  "physical_collision_verified": false,
+  "browser_visual_verified": false,
+  "hardware_verified": false,
+  "scope": "stationary native telemetry position replay and nominal world-frame gimbal display only",
+  "vehicles": [
+    {
+      "vehicle_id": "uav_1",
+      "body_error_m": 0.0012380332750643597,
+      "camera_error_m": 0.0012380332750643597,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    },
+    {
+      "vehicle_id": "uav_2",
+      "body_error_m": 0.0009040105532471128,
+      "camera_error_m": 0.0009040105532471128,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    },
+    {
+      "vehicle_id": "uav_3",
+      "body_error_m": 0.0008800858690640038,
+      "camera_error_m": 0.0008800858690640038,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    },
+    {
+      "vehicle_id": "uav_4",
+      "body_error_m": 0.0008800881758477744,
+      "camera_error_m": 0.0008800881758477744,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    },
+    {
+      "vehicle_id": "uav_5",
+      "body_error_m": 0.0009047748473096342,
+      "camera_error_m": 0.0009047748473096342,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    },
+    {
+      "vehicle_id": "uav_6",
+      "body_error_m": 0.0009237650188294189,
+      "camera_error_m": 0.0009237650188294189,
+      "optical_axis_error": 1.6081226496766364e-16,
+      "elevation_deg": -90.0,
+      "azimuth_enu_deg": 0.0
+    }
+  ]
+}

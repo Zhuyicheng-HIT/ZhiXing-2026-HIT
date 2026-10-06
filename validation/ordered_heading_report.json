@@ -1,0 +1,12 @@
+{
+  "observations": 415,
+  "greedy_heading_changes": 124,
+  "ordered_heading_changes": 98,
+  "ordered_heading_plans": 115,
+  "full_plan_unchanged": true,
+  "plan_sha256": "2683d60f700dd31e2ca6d655392a896a3b396af30861d1b108e4150479ff50a7",
+  "all_ordered_targets_nominally_reachable": true,
+  "hardware_verified": false,
+  "actual_flight_validated": false,
+  "policy": "LONGEST_CONTIGUOUS_PREFIX_MINIMUM_TURN"
+}

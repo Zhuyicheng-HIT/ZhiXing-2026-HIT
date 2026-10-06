@@ -1,0 +1,10 @@
+{
+  "schema": "zhixin/airspace-policy/v1",
+  "user_confirmed_date": "2026-10-06",
+  "transit_boundary": "25_POINT_COMPETITION_PERIMETER",
+  "forest_transit_authorized": true,
+  "isolation_scope": "WORK_ONLY",
+  "work_gap_m": 20,
+  "target_exit_action": "ABANDON_NO_HANDOFF",
+  "hardware_authorized": false
+}

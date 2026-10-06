@@ -1,0 +1,163 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "complete": true,
+  "samples": 286,
+  "min_actual_separation_m": 16.89200493732289,
+  "states_seen": [
+    "CLIMB",
+    "COMPLETE",
+    "CONFIRM_STATIC",
+    "DESCEND_TO_WORK",
+    "EGRESS",
+    "GUIDED_ARM_TAKEOFF",
+    "INGRESS",
+    "LAND",
+    "NAVIGATE",
+    "REPOSITION",
+    "REPOSITION_CLIMB",
+    "RETURN_CLIMB",
+    "RETURN_DESCEND",
+    "SCAN",
+    "STABILIZE",
+    "TRACK_MOVING",
+    "WAIT_RELEASE",
+    "WAIT_RETURN_SLOT"
+  ],
+  "six_armed_observed": true,
+  "recovery_verified": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "synthetic_gimbal": true,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "start_stamp_s": 0.0,
+  "full_run_observed": true,
+  "map_frame": {
+    "frame_id": "mission_map",
+    "map_origin_id": "22f3ef41d955f9f5",
+    "axes": "ENU",
+    "units": "m",
+    "latitude_deg": 33.864219444444444,
+    "longitude_deg": 113.70589722222222,
+    "height_ellipsoid_m": 71.0,
+    "ellipsoid": "WGS84"
+  },
+  "planned_homes_enu_m": [
+    [
+      -37.99251423228872,
+      11.97196215445538
+    ],
+    [
+      -20.993894982542166,
+      11.971740355495406
+    ],
+    [
+      -37.9920874335723,
+      28.96493117966041
+    ],
+    [
+      -20.994095459883766,
+      28.964897877918446
+    ],
+    [
+      -37.99197508185374,
+      45.96915532121512
+    ],
+    [
+      -20.99412051339646,
+      45.96913096000992
+    ]
+  ],
+  "execution": "actual_waypoint_state_machine",
+  "stamp_s": 2255.8492235436534,
+  "flight_audit": {
+    "position_samples": 60606,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 39.95976299879328,
+    "max_height_m": 110.03130011037598
+  },
+  "ekf_origins": [
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    }
+  ],
+  "fcu_mission_elapsed_s": 2884.601,
+  "completed_scans": 1368,
+  "faults": {},
+  "final_actual_positions": [
+    [
+      -37.95990109801626,
+      11.935193010821589,
+      0.07061116498050435
+    ],
+    [
+      -21.00570463628113,
+      11.977732011644896,
+      0.0725635921547525
+    ],
+    [
+      -37.92116899390756,
+      28.967237036546834,
+      0.07059639052041788
+    ],
+    [
+      -20.960697053569728,
+      28.962819704896035,
+      0.07018843116583184
+    ],
+    [
+      -37.930691595487964,
+      45.96858934498938,
+      0.07002129695657544
+    ],
+    [
+      -21.017600057665035,
+      45.97519917242784,
+      0.06989393310257341
+    ]
+  ],
+  "flight_version_labels": [
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255"
+  ],
+  "within_competition_time_budget_actual": false,
+  "elapsed_wall_s": 146.7
+}

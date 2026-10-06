@@ -1,0 +1,60 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "running": false,
+  "speedup": 5.0,
+  "faults": {},
+  "vehicles": [
+    {
+      "id": "uav_1",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.0
+    },
+    {
+      "id": "uav_2",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.0
+    },
+    {
+      "id": "uav_3",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.0
+    },
+    {
+      "id": "uav_4",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.0
+    },
+    {
+      "id": "uav_5",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.01
+    },
+    {
+      "id": "uav_6",
+      "state": "READY",
+      "armed": false,
+      "mode": "STABILIZE",
+      "telemetry_age_s": 0.01
+    }
+  ],
+  "flight_safety_audit": {
+    "checks": 0,
+    "rejections": 0,
+    "last_violation": null,
+    "exact_work_boundaries": true,
+    "expanded_audit_boundary_m": 0.0,
+    "estimated_horizontal_body_radius_m": 0.6,
+    "scope": "sampled feedback and requested straight setpoint path; not swept physical braking proof",
+    "hardware_authorized": false
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "ned_frd_to_enu_flu_basis_verified": true,
+  "distinct_ekf_origin_rotation_verified": true,
+  "quaternion_roundtrip_cases": 100,
+  "body_attitude_and_mount_offset_verified": true,
+  "nadir_handled_without_yaw_jump": true,
+  "unreachable_not_silently_clipped": true,
+  "invalid_inputs_rejected": true,
+  "assumption": "固定正北机头、名义零安装外参；不是实际逐帧姿态或实机机械验收",
+  "total_scan_points": 1278,
+  "nominal_unreachable_count": 142,
+  "unreachable_examples": [
+    {
+      "command_id": "uav_1:0:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.30993247402022
+    },
+    {
+      "command_id": "uav_1:1:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:2:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:3:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.30993247402022
+    },
+    {
+      "command_id": "uav_1:4:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:5:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:6:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:7:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:8:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:9:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:10:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    },
+    {
+      "command_id": "uav_1:11:1",
+      "azimuth_deg": -180.0,
+      "elevation_deg": -56.309932474020194
+    }
+  ],
+  "all_planned_observations_nominally_reachable": false,
+  "real_mount_calibrated": false,
+  "sdk_axis_mapping_verified": false,
+  "hardware_verified": false
+}

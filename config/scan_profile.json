@@ -1,0 +1,23 @@
+{
+  "schema": "zhixin/scan-profile/v1",
+  "calibration_id": "SIMULATION_UNCALIBRATED",
+  "calibrated": false,
+  "scan_zoom": 1.0,
+  "minimum_distinct_frames": 6,
+  "command_acceptance_window_s": 300.0,
+  "execution_timeout_s": 60.0,
+  "scan_mode": "CONTINUOUS_SWEEP",
+  "minimum_observation_s": 0.0,
+  "maximum_ground_scan_speed_m_s": 4.0,
+  "wide_horizontal_fov_deg": 61.5,
+  "image_aspect_ratio": 1.7777777777777777,
+  "region_scans": {
+    "takeoff": {"frame_height_m": 20.0, "minimum_overlap_ratio": 0.1, "station_footprint_scale": 1.0, "complexity": "standard"},
+    "house": {"frame_height_m": 20.0, "minimum_overlap_ratio": 0.25, "station_footprint_scale": 1.0, "complexity": "dense_overlap"},
+    "grass": {"frame_height_m": 38.0, "work_altitude_m": 60.0, "minimum_overlap_ratio": 0.05, "station_footprint_scale": 1.8, "complexity": "wide_simple"}
+  },
+  "maximum_pointing_error_deg": 2.0,
+  "minimum_stable_s": 0.0,
+  "maximum_time_uncertainty_s": 0.5,
+  "notes": "2026-10-06：全机ZR-10名义16:9矩形视场；出发/房区40.5m、35.56×20m，草区60m、67.56×38m。光轴地面连续扫速4m/s，无端点驻留。手册v1.9第15页水平FOV61.5度、视频2560×1440/1920×1080；焦距倍率估算，畸变、斜视投影、有效识别边缘和SDK倍率尚未实测标定。"
+}

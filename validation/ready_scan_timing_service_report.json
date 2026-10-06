@@ -1,0 +1,46 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "speedup": 5.0,
+  "running": false,
+  "schema": "zhixin/fleet/v5",
+  "observation_conditions": {
+    "minimum_distinct_frames": 6,
+    "minimum_observation_s": 2.0,
+    "maximum_pointing_error_deg": 2.0,
+    "minimum_stable_s": 0.5,
+    "maximum_time_uncertainty_s": 0.5
+  },
+  "vehicles": [
+    {
+      "id": "uav_1",
+      "state": "READY",
+      "armed": false
+    },
+    {
+      "id": "uav_2",
+      "state": "READY",
+      "armed": false
+    },
+    {
+      "id": "uav_3",
+      "state": "READY",
+      "armed": false
+    },
+    {
+      "id": "uav_4",
+      "state": "READY",
+      "armed": false
+    },
+    {
+      "id": "uav_5",
+      "state": "READY",
+      "armed": false
+    },
+    {
+      "id": "uav_6",
+      "state": "READY",
+      "armed": false
+    }
+  ],
+  "hardware_verified": false
+}

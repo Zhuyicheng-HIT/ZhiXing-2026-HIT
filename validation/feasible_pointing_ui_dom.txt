@@ -1,0 +1,152 @@
+- banner:
+  - text: ZHI XING 2026 / MISSION LAB
+  - heading "六机协同任务仿真" [level=1]
+  - text: 真实ArduPilot SITL位置反馈 · 原生内部物理 · 飞控任务 22.6分钟 · 当前最小间距 113.5m
+  - generic: 仿真运行中
+- main:
+  - complementary:
+    - heading "任务配置" [level=2]
+    - text: 比赛科目
+    - combobox "比赛科目" [disabled]:
+      - option "科目一 · 侦察（25分钟）"
+      - option "科目二 · 搜索前段（抛投待定）" [selected]
+    - text: 定点云台扫描矩形边长 / m
+    - spinbutton "定点云台扫描矩形边长 / m" [disabled]: "80"
+    - generic: 这是模拟假设，需要视觉组实测后替换；不是瞬时镜头视场。
+    - generic "六机起降坐标 ENU / m"
+    - button "按起降位置重新生成航线" [disabled]
+    - heading "动态任务" [level=2]
+    - checkbox "仅为仿真演示，允许进出场跨树林" [checked]
+    - text: 仅为仿真演示，允许进出场跨树林
+    - generic: 默认不授权。若科三是禁飞区，当前地图东西不连通，需向主办方确认过境走廊。
+    - checkbox "模拟云台自动回传完成事件" [checked]
+    - text: 模拟云台自动回传完成事件
+    - button "启动 / 继续仿真"
+    - button "暂停"
+    - button "复位" [disabled]
+    - text: 播放速度
+    - combobox "播放速度" [disabled]:
+      - option "1× 实时"
+      - option "10×"
+      - option "30×"
+      - option "100×"
+      - option "20× SITL物理" [selected]
+    - button "保存断点"
+    - button "恢复存档" [disabled]
+    - progressbar
+    - generic: 航点名义进度 57.2% · 飞控 22.6分钟 · 通道 空闲
+    - heading "故障恢复演练" [level=2]
+    - combobox:
+      - option "uav_1 · 出发搜索区" [selected]
+      - option "uav_2 · 出发搜索区"
+      - option "uav_3 · 房区（补全余区）"
+      - option "uav_4 · 房区（补全余区）"
+      - option "uav_5 · 草地区"
+      - option "uav_6 · 草地区"
+    - button "注入云台断链"
+    - button "链路恢复"
+    - generic: 当前没有外部扫描命令
+    - button "模拟回传当前扫描完成"
+    - generic: 外部云台接口见使用说明；本按钮没有真实观察证据。断链保持当前位置、保留命令ID和观察点；为防破坏预约，其他机组同步保持。此演练不等于真实断链安全能力。
+    - heading "验证结果" [level=2]
+    - generic: 连续轨迹分离
+    - strong: 通过（仅理想模型）
+    - generic: 最小三维间距
+    - strong: 17.0m
+    - generic: 定点扫描航点
+    - strong: 142个
+    - generic: 平面矩形覆盖
+    - strong: 100.00%
+    - generic: 预计完整时长
+    - strong: 29.4分钟
+    - generic: 过境阻塞：进出场路线穿树林。严格禁穿模式不可执行，需确认通行权限。
+    - generic: 扫描矩形为待标定模拟配置，不是附件给定或实机覆盖保证
+    - generic: 平地AGL；缺少真实地形和遮挡模型
+    - generic: 71m高程基准未确认；仿真单独假设MSL71m及大地水准面差0m，不能用于实机
+    - generic: 云台和目标事件为合成，科二抛投待确认
+    - generic: 严格禁止跨树林时东西区域不连通，本计划不可执行
+    - generic: 原生ArduPilot内部物理模型；不是Gazebo动力学或真实云台/YOLO
+  - generic: 统一 ENU · 工作高度40m AGL
+  - checkbox "卫星底图" [checked]
+  - text: 卫星底图
+  - checkbox "完整路线" [checked]
+  - text: 完整路线
+  - button "全景"
+  - generic: ■ 出发区
+  - generic: ■ 房区
+  - generic: ■ 草地区
+  - generic: ▨ 中央隔离带
+  - generic: ▧ 树林（不搜索）
+  - generic: × 红色为未覆盖
+  - strong: uav_1 · 出发搜索区
+  - generic: SCAN
+  - generic: 72.3 / -238.1 / 40.0 m
+  - generic: 航点 18 · 已完成观察 154
+  - generic: 云台 ENU方位 -90° / 仰角 -56°
+  - generic: 安装系 85.6° / -56.2° · 名义可达，SDK未核实
+  - generic: 可执行名义指向 85.6° / -56.2° · 视线误差 0.000° · 满足配置误差，未验证SDK
+  - generic: FCU GUIDED · 已解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 4.9分 · 观察 9.5分 · 排队 3.8分
+  - strong: uav_2 · 出发搜索区
+  - generic: COMPLETE
+  - generic: "-21.0 / 11.9 / 0.1 m"
+  - generic: 航点 — · 已完成观察 162
+  - generic: 云台 ENU方位 0° / 仰角 -90°
+  - generic: 指向不可用：NO_ACTIVE_GROUND_TARGET
+  - generic: FCU LAND · 未解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 7.3分 · 观察 9.8分 · 排队 0.0分
+  - strong: uav_3 · 房区（补全余区）
+  - generic: SCAN
+  - generic: 353.0 / 298.5 / 40.0 m
+  - generic: 航点 18 · 已完成观察 157
+  - generic: 云台 ENU方位 -16° / 仰角 -90°
+  - generic: 安装系 41.6° / -89.9° · 名义可达，SDK未核实
+  - generic: 可执行名义指向 41.6° / -89.9° · 视线误差 0.000° · 满足配置误差，未验证SDK
+  - generic: 机头目标 -51.0° ENU / 误差 0.5° / 稳定 1.5 s
+  - generic: FCU GUIDED · 已解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 6.8分 · 观察 9.5分 · 排队 1.8分
+  - strong: uav_4 · 房区（补全余区）
+  - generic: SCAN_ALIGN
+  - generic: 205.4 / 420.1 / 40.0 m
+  - generic: 航点 15 · 已完成观察 133
+  - generic: 云台 ENU方位 90° / 仰角 -56°
+  - generic: 安装系 -128.2° / -56.4° · 名义可达，SDK未核实
+  - generic: 可执行名义指向 -128.2° / -56.4° · 视线误差 0.000° · 满足配置误差，未验证SDK
+  - generic: 机头目标 -140.1° ENU / 误差 1.7° / 稳定 0.0 s
+  - generic: FCU GUIDED · 已解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 4.9分 · 观察 8.4分 · 排队 5.4分
+  - strong: uav_5 · 草地区
+  - generic: SCAN
+  - generic: 616.4 / -181.3 / 40.0 m
+  - generic: 航点 11 · 已完成观察 93
+  - generic: 云台 ENU方位 180° / 仰角 -56°
+  - generic: 安装系 -130.1° / -56.4° · 名义可达，SDK未核实
+  - generic: 可执行名义指向 -130.1° / -56.4° · 视线误差 0.000° · 满足配置误差，未验证SDK
+  - generic: 机头目标 -50.1° ENU / 误差 0.1° / 稳定 2.3 s
+  - generic: FCU GUIDED · 已解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 3.4分 · 观察 6.6分 · 排队 9.7分
+  - strong: uav_6 · 草地区
+  - generic: STABILIZE
+  - generic: 409.3 / 199.9 / 40.0 m
+  - generic: 航点 13 · 已完成观察 108
+  - generic: 云台 ENU方位 0° / 仰角 -90°
+  - generic: 指向不可用：NO_ACTIVE_GROUND_TARGET
+  - generic: FCU GUIDED · 已解锁 · 定位更新 0.01s
+  - generic: 阶段累计：飞行 4.3分 · 观察 7.3分 · 排队 7.8分
+  - heading "任务事件 / 云台观察" [level=2]
+  - paragraph: "[1006.9s] SCAN 航点事件推进"
+  - paragraph: "[1006.9s] SCAN_RESULT 合成云台完成；飞机到位由真实FCU确认"
+  - paragraph: "[1006.9s] SCAN_HEADING_TARGET 保持扫描站位，先按名义机械范围调整机头"
+  - paragraph: "[1004.8s] STABILIZE 航点事件推进"
+  - paragraph: "[1004.8s] SCAN 航点事件推进"
+  - paragraph: "[1004.8s] SCAN_RESULT 合成云台完成；飞机到位由真实FCU确认"
+  - paragraph: "[1004.8s] SCAN_HEADING_TARGET 保持扫描站位，先按名义机械范围调整机头"
+  - paragraph: "[1004.5s] SCAN 航点事件推进"
+  - paragraph: "[1004.5s] SCAN_RESULT 合成云台完成；飞机到位由真实FCU确认"
+  - paragraph: "[1004.5s] SCAN_HEADING_TARGET 保持扫描站位，先按名义机械范围调整机头"
+  - paragraph: "[1004.1s] SCAN_HEADING_TARGET 保持扫描站位，先按名义机械范围调整机头"
+  - paragraph: "[1004.1s] SCAN 航点事件推进"
+  - paragraph: "[1003.8s] SCAN 航点事件推进"
+  - paragraph: "[1003.8s] SCAN_RESULT 合成云台完成；飞机到位由真实FCU确认"
+  - paragraph: "[1003.8s] SCAN_HEADING_TARGET 保持扫描站位，先按名义机械范围调整机头"
+  - generic: 飞机位置来自六个独立SITL；实际到点且稳定才推进状态机，进出场通道独占。进度不是物理时间。云台/目标仍为合成；不是Gazebo动力学或实机验证。

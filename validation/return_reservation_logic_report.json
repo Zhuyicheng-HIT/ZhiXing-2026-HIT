@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "return_release_independent_of_fifo": true,
+  "all_entries_required": true,
+  "other_searches_can_continue": true,
+  "conflict_keeps_cursor_and_hover": true,
+  "pause_clears_authorizations": true,
+  "resume_rechecks_original_path": true,
+  "landed_release_does_not_release_other_transit_owner": true,
+  "maximum_parallel_returns": 2,
+  "exclusive_fallback_retained": true,
+  "policy_changes_plan_revision": true,
+  "old_checkpoint_rejected": true,
+  "scope": "executor logic with synthetic positions; not native flight or physical safety",
+  "hardware_verified": false
+}

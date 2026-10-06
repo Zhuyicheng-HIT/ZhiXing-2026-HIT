@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scope": "planning, nominal ground-look interpolation and target-exit decision logic; not physical camera speed or native flight",
+  "user_confirmed_airspace_policy": {
+    "schema": "zhixin/airspace-policy/v1",
+    "user_confirmed_date": "2026-10-06",
+    "transit_boundary": "25_POINT_COMPETITION_PERIMETER",
+    "forest_transit_authorized": true,
+    "isolation_scope": "WORK_ONLY",
+    "work_gap_m": 20,
+    "target_exit_action": "ABANDON_NO_HANDOFF",
+    "hardware_authorized": false
+  },
+  "all_nominal_flight_segments_checked": 617,
+  "work_regions_do_not_overlap": true,
+  "transit_within_perimeter": true,
+  "forest_transit_without_override": true,
+  "regional_serpentine_scan": true,
+  "ground_scan_speed_max_m_s": 4.000000000019099,
+  "station_scan_s": 52.389615209519114,
+  "subject1_nominal_duration_s": 1003.9058670329925,
+  "subject2_nominal_duration_s": 1003.9058670329925,
+  "subject1_deadline_met": true,
+  "subject2_deadline_met": true,
+  "target_exit_abandons_without_handoff": true,
+  "target_exit_never_authorizes_aircraft_crossing": true,
+  "hardware_verified": false
+}

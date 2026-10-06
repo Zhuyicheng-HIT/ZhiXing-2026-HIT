@@ -1,0 +1,9 @@
+{
+  "web_button_clicked": true,
+  "selected_vehicle_id": "uav_6",
+  "selected_vehicle_not_legacy_alias": true,
+  "original_command_and_point_preserved": true,
+  "new_attempt_id_verified": true,
+  "execution_status": "ISSUED",
+  "hardware_verified": false
+}

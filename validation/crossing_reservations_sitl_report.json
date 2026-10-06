@@ -1,0 +1,170 @@
+{
+  "passed": true,
+  "scope": "bounded custom transit fixture using production native six-FCU executor",
+  "speedup": 20,
+  "conditional_forest_transit": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "checkpoint_disk_restore_verified": false,
+  "six_actual_observation_waits_before_fixture": true,
+  "original_positions": [
+    [
+      -55.66206733953307,
+      -206.78353705331514,
+      40.50793438490693
+    ],
+    [
+      -42.56252828109416,
+      -32.78053421975063,
+      40.51918593856822
+    ],
+    [
+      143.24781475326932,
+      -12.787650243798286,
+      40.51261420178295
+    ],
+    [
+      205.38364663362677,
+      356.0831266686604,
+      40.51072252734639
+    ],
+    [
+      386.9674187993382,
+      -85.48357812008314,
+      40.51069707067887
+    ],
+    [
+      409.3141854874118,
+      71.31186683616974,
+      40.512467940766115
+    ]
+  ],
+  "staged_positions": [
+    [
+      -55.67342552057731,
+      -206.76359376893816,
+      40.50788850344075
+    ],
+    [
+      -42.56779251651936,
+      -32.76078170786001,
+      40.51838098256289
+    ],
+    [
+      143.23684371495185,
+      -12.778647509107355,
+      40.51377376370136
+    ],
+    [
+      205.38669845209245,
+      356.11062299881394,
+      40.510554566669924
+    ],
+    [
+      491.9760943631429,
+      -231.90939813066063,
+      109.99899198067176
+    ],
+    [
+      452.0397317124075,
+      -232.3301539697457,
+      89.98207918641906
+    ]
+  ],
+  "pause_maximum_actual_drift_m": 0.07862772057131544,
+  "pause_actual_fcu_seconds": [
+    15.601,
+    14.2,
+    14.1,
+    12.8,
+    14.2,
+    14.3
+  ],
+  "wait_conflict": {
+    "vehicle_id": "uav_5",
+    "distance_m": 0.20134329803028128
+  },
+  "waiting_cursor_unchanged": true,
+  "pause_clears_authorizations": true,
+  "resume_rechecks_conflict": true,
+  "waiter_maximum_actual_drift_m": 0.08084965344785976,
+  "blocker_actual_vertical_progress_m": 32.26508431765639,
+  "waiter_actual_fcu_seconds": 22.3,
+  "remaining_path_distance_at_grant_m": 12.25658544479424,
+  "crossing_segments": {
+    "vertical_start": [
+      491.9955708440899,
+      -231.91365427518247,
+      110.0
+    ],
+    "vertical_end": [
+      491.9955708440899,
+      -231.91365427518247,
+      40.5
+    ],
+    "horizontal_start": [
+      451.9955708440899,
+      -231.91365427518247,
+      90.0
+    ],
+    "horizontal_end": [
+      531.9955708440899,
+      -231.91365427518247,
+      90.0
+    ]
+  },
+  "original_destinations_reached_by_actual_feedback": true,
+  "no_independent_rtl_observed": true,
+  "ending_armed_paused_hover": true,
+  "ending_positions": [
+    [
+      -55.687761084809196,
+      -206.74645809268108,
+      40.50787694148062
+    ],
+    [
+      -42.57069353449873,
+      -32.73495620196345,
+      40.51788882908114
+    ],
+    [
+      143.22390433492117,
+      -12.75903991036597,
+      40.514479316566856
+    ],
+    [
+      205.38767506673787,
+      356.13525068623574,
+      40.51113047596456
+    ],
+    [
+      491.97424951748224,
+      -231.91789633782528,
+      40.533099236532465
+    ],
+    [
+      532.001524540159,
+      -231.93140463574463,
+      89.99613332927504
+    ]
+  ],
+  "observed_min_separation_m": 16.97792641310847,
+  "flight_audit": {
+    "position_samples": 6330,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 40.46134628626497,
+    "max_height_m": 110.01909363921636,
+    "min_perimeter_clearance_m": 1.9503857754278124,
+    "min_work_region_clearance_m": 3.990439045838827
+  },
+  "reservation_audit": {
+    "grants": 61,
+    "blocked_checks": 116,
+    "minimum_granted_path_distance_m": 12.25658544479424,
+    "maximum_parallel_entries": 4,
+    "scope": "remaining straight command segments; not physical tracking or braking proof"
+  },
+  "wall_duration_s": 27.535825314999784
+}

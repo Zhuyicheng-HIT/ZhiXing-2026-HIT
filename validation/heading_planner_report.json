@@ -1,0 +1,12 @@
+{
+  "planned_observations": 1278,
+  "nominally_reachable_after_heading_plan": 1278,
+  "mission_enu_to_ned_heading_cardinals_verified": true,
+  "invalid_headings_rejected": true,
+  "distinct_ekf_origin_heading_roundtrip_verified": true,
+  "mavlink_yaw_mask_and_field_verified": true,
+  "heading_changes": 580,
+  "maximum_heading_change_deg": 45.999999999999986,
+  "assumption": "LEVEL_HOVER_NOMINAL_MOUNT",
+  "hardware_verified": false
+}

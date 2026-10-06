@@ -1,0 +1,1072 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "complete": true,
+  "samples": 255,
+  "min_actual_separation_m": 16.91194056610074,
+  "states_seen": [
+    "CLIMB",
+    "COMPLETE",
+    "CONFIRM_STATIC",
+    "DESCEND_TO_WORK",
+    "EGRESS",
+    "GUIDED_ARM_TAKEOFF",
+    "INGRESS",
+    "LAND",
+    "NAVIGATE",
+    "REPOSITION",
+    "REPOSITION_CLIMB",
+    "RETURN_CLIMB",
+    "RETURN_DESCEND",
+    "SCAN",
+    "SCAN_ALIGN",
+    "STABILIZE",
+    "TRACK_MOVING",
+    "WAIT_RELEASE",
+    "WAIT_RETURN_SLOT"
+  ],
+  "six_armed_observed": true,
+  "recovery_verified": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "synthetic_gimbal": true,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "start_stamp_s": 0.0,
+  "full_run_observed": true,
+  "map_frame": {
+    "frame_id": "mission_map",
+    "map_origin_id": "22f3ef41d955f9f5",
+    "axes": "ENU",
+    "units": "m",
+    "latitude_deg": 33.864219444444444,
+    "longitude_deg": 113.70589722222222,
+    "height_ellipsoid_m": 71.0,
+    "ellipsoid": "WGS84"
+  },
+  "subject": 1,
+  "deadline_s": 1500,
+  "planned_observations": 1278,
+  "planned_homes_enu_m": [
+    [
+      -37.99193703338405,
+      11.971944480218111
+    ],
+    [
+      -20.993897583371723,
+      11.97215815671632
+    ],
+    [
+      -37.99204323526737,
+      28.96528246161897
+    ],
+    [
+      -20.993924855252533,
+      28.96527990896059
+    ],
+    [
+      -37.99214791349229,
+      45.969544150081674
+    ],
+    [
+      -20.993696765131222,
+      45.969376069533666
+    ]
+  ],
+  "execution": "actual_waypoint_state_machine",
+  "stamp_s": 1761.2084258300088,
+  "homes_captured_from_feedback": true,
+  "flight_audit": {
+    "position_samples": 42120,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 39.96065688026159,
+    "max_height_m": 110.02503729242586
+  },
+  "scan_alignment_audit": {
+    "heading_targets_planned": 1278,
+    "alignment_wait_fcu_s": 1304.4369999999883,
+    "observations_after_heading_alignment": 1278,
+    "actual_pointing_outside_nominal_limits": 43,
+    "outside_nominal_examples": [
+      {
+        "command_id": "uav_1:1:4",
+        "target": [
+          -55.66046267192223,
+          -238.08295014175496,
+          0
+        ],
+        "actual_position": [
+          -55.64639463058297,
+          -238.09852526228,
+          39.996972875340106
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.869847348005779,
+          "elevation_rad": -1.5682215512834368,
+          "azimuth_deg": -164.43014088754313,
+          "elevation_deg": -89.85247622999971,
+          "look_direction": [
+            -0.0024802885535511764,
+            -0.0006911027243447858,
+            -0.999996685267364
+          ],
+          "pivot_enu_m": [
+            -55.64639463058297,
+            -238.09852526228,
+            39.996972875340106
+          ],
+          "distance_m": 39.99697838193354,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_2:3:4",
+        "target": [
+          89.01956738399161,
+          4.308594693874472,
+          0
+        ],
+        "actual_position": [
+          89.00338550904539,
+          4.288662363481841,
+          39.998751166922744
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.746933032596345,
+          "elevation_rad": -1.5678224687260345,
+          "azimuth_deg": -157.38766937284277,
+          "elevation_deg": -89.82961048378327,
+          "look_direction": [
+            -0.002745246092829482,
+            -0.0011434288926083988,
+            -0.9999955780873522
+          ],
+          "pivot_enu_m": [
+            89.00338550904539,
+            4.288662363481841,
+            39.998751166922744
+          ],
+          "distance_m": 39.998759406565036,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_2:4:4",
+        "target": [
+          131.97675199765916,
+          -24.78124192694503,
+          0
+        ],
+        "actual_position": [
+          132.0007883607369,
+          -24.783709162927806,
+          39.9987986902182
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.6755111184498754,
+          "elevation_rad": -1.568175895937844,
+          "azimuth_deg": -153.29549512750435,
+          "elevation_deg": -89.84986037138503,
+          "look_direction": [
+            -0.002340922692847928,
+            -0.0011775920795083071,
+            -0.9999965666730264
+          ],
+          "pivot_enu_m": [
+            132.0007883607369,
+            -24.783709162927806,
+            39.9987986902182
+          ],
+          "distance_m": 39.99880598836176,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_4:0:4",
+        "target": [
+          205.38111121393595,
+          356.0405477938915,
+          0
+        ],
+        "actual_position": [
+          205.36573434767,
+          356.01714537687525,
+          40.00038494281921
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.586210396281397,
+          "elevation_rad": -1.5678122719186365,
+          "azimuth_deg": -148.17894063978017,
+          "elevation_deg": -89.82902624975486,
+          "look_direction": [
+            -0.0025355445328574576,
+            -0.0015733947362072751,
+            -0.9999955477115515
+          ],
+          "pivot_enu_m": [
+            205.36573434767,
+            356.01714537687525,
+            40.00038494281921
+          ],
+          "distance_m": 40.000394744237916,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_3:2:4",
+        "target": [
+          181.22567484815465,
+          73.49146483567694,
+          0
+        ],
+        "actual_position": [
+          181.244500284308,
+          73.47665715470669,
+          39.99876752345676
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.7408554089286046,
+          "elevation_rad": -1.5686581601890517,
+          "azimuth_deg": -157.0394471872124,
+          "elevation_deg": -89.87749207758928,
+          "look_direction": [
+            -0.0019687659636999874,
+            -0.0008340923495304499,
+            -0.9999977141226537
+          ],
+          "pivot_enu_m": [
+            181.244500284308,
+            73.47665715470669,
+            39.99876752345676
+          ],
+          "distance_m": 39.99877469448285,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_2:5:4",
+        "target": [
+          97.7983672432251,
+          -96.78124192694503,
+          0
+        ],
+        "actual_position": [
+          97.80374517711246,
+          -96.81108422217955,
+          39.99882201369137
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.671143318855614,
+          "elevation_rad": -1.5674707401052088,
+          "azimuth_deg": -153.0452386449942,
+          "elevation_deg": -89.80945791827601,
+          "look_direction": [
+            -0.00296430512019321,
+            -0.0015074419438374511,
+            -0.999994470241681
+          ],
+          "pivot_enu_m": [
+            97.80374517711246,
+            -96.81108422217955,
+            39.99882201369137
+          ],
+          "distance_m": 39.998833507587676,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_3:3:4",
+        "target": [
+          177.3742465303337,
+          25.99421626445036,
+          0
+        ],
+        "actual_position": [
+          177.3869344413486,
+          25.97538891834709,
+          39.99901837637802
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.7838145559593763,
+          "elevation_rad": -1.5685630762928546,
+          "azimuth_deg": -159.5008250035576,
+          "elevation_deg": -89.87204417163753,
+          "look_direction": [
+            -0.002091833159357424,
+            -0.0007820700396233269,
+            -0.9999975062971339
+          ],
+          "pivot_enu_m": [
+            177.3869344413486,
+            25.97538891834709,
+            39.99901837637802
+          ],
+          "distance_m": 39.99902481968621,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_4:1:4",
+        "target": [
+          269.3811112139359,
+          356.0405477938915,
+          0
+        ],
+        "actual_position": [
+          269.403042134676,
+          356.0390987163384,
+          40.00056501412615
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.487302735514128,
+          "elevation_rad": -1.5679103974523763,
+          "azimuth_deg": -142.51194911630398,
+          "elevation_deg": -89.83464842870062,
+          "look_direction": [
+            -0.002289924847292196,
+            -0.001756362503017499,
+            -0.9999958357088052
+          ],
+          "pivot_enu_m": [
+            269.403042134676,
+            356.0390987163384,
+            40.00056501412615
+          ],
+          "distance_m": 40.00057105235428,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_2:6:4",
+        "target": [
+          126.04371464658472,
+          -164.6785377893016,
+          0
+        ],
+        "actual_position": [
+          126.06293368774928,
+          -164.689366219871,
+          39.998837010737546
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.7236271828588903,
+          "elevation_rad": -1.5683737754025722,
+          "azimuth_deg": -156.05234254492052,
+          "elevation_deg": -89.86119802956627,
+          "look_direction": [
+            -0.002214007888650397,
+            -0.0009833172614642333,
+            -0.9999970656238107
+          ],
+          "pivot_enu_m": [
+            126.06293368774928,
+            -164.689366219871,
+            39.998837010737546
+          ],
+          "distance_m": 39.9988430937446,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_1:2:4",
+        "target": [
+          -119.66046267192223,
+          -230.08295014175496,
+          0
+        ],
+        "actual_position": [
+          -119.67808380185079,
+          -230.09961226062956,
+          39.998026234103435
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.8563794758247867,
+          "elevation_rad": -1.5681800683332063,
+          "azimuth_deg": -163.65848865255063,
+          "elevation_deg": -89.85009943202977,
+          "look_direction": [
+            -0.002510563188600031,
+            -0.0007361149348392526,
+            -0.999996577597783
+          ],
+          "pivot_enu_m": [
+            -119.67808380185079,
+            -230.09961226062956,
+            39.998026234103435
+          ],
+          "distance_m": 39.99803358609585,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_3:4:4",
+        "target": [
+          161.02266984610975,
+          -21.50303230677622,
+          0
+        ],
+        "actual_position": [
+          161.03385469660427,
+          -21.524818517554134,
+          39.997749076790164
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.8689989406970913,
+          "elevation_rad": -1.568539857400393,
+          "azimuth_deg": -164.3815307294473,
+          "elevation_deg": -89.8707138270945,
+          "look_direction": [
+            -0.00217314929210482,
+            -0.0006075093751658174,
+            -0.9999974541740162
+          ],
+          "pivot_enu_m": [
+            161.03385469660427,
+            -21.524818517554134,
+            39.997749076790164
+          ],
+          "distance_m": 39.997756573959606,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_2:7:4",
+        "target": [
+          85.43719138405257,
+          -160.78124192694503,
+          0
+        ],
+        "actual_position": [
+          85.41950202805104,
+          -160.80008580846166,
+          39.99898968535541
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.553989426416307,
+          "elevation_rad": -1.5682245661894105,
+          "azimuth_deg": -146.33281505469233,
+          "elevation_deg": -89.85264897138764,
+          "look_direction": [
+            -0.002140401371479662,
+            -0.001425699827963443,
+            -0.9999966930255169
+          ],
+          "pivot_enu_m": [
+            85.41950202805104,
+            -160.80008580846166,
+            39.99898968535541
+          ],
+          "distance_m": 39.99899803563028,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_6:0:4",
+        "target": [
+          409.3379426732674,
+          71.28130236506564,
+          0
+        ],
+        "actual_position": [
+          409.35950571381903,
+          71.2817822253153,
+          39.9988956143476
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.3701681445483147,
+          "elevation_rad": -1.5678948551550982,
+          "azimuth_deg": -135.80063141897168,
+          "elevation_deg": -89.83375792066265,
+          "look_direction": [
+            -0.0020801151696477234,
+            -0.0020227790125608527,
+            -0.9999957907341148
+          ],
+          "pivot_enu_m": [
+            409.35950571381903,
+            71.2817822253153,
+            39.9988956143476
+          ],
+          "distance_m": 39.99890142944503,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_3:5:4",
+        "target": [
+          161.02266984610975,
+          -85.50303230677622,
+          0
+        ],
+        "actual_position": [
+          161.03813092504674,
+          -85.52119075880235,
+          39.997674701108515
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.979297449059283,
+          "elevation_rad": -1.567871725338635,
+          "azimuth_deg": -170.70116974518928,
+          "elevation_deg": -89.8324326797984,
+          "look_direction": [
+            -0.002886165199451478,
+            -0.0004725671732081222,
+            -0.9999957233562092
+          ],
+          "pivot_enu_m": [
+            161.03813092504674,
+            -85.52119075880235,
+            39.997674701108515
+          ],
+          "distance_m": 39.997681811200486,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_1:4:4",
+        "target": [
+          -183.66046267192223,
+          -238.08295014175496,
+          0
+        ],
+        "actual_position": [
+          -183.64498893439782,
+          -238.1002875324341,
+          39.998492170904385
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.791225521841144,
+          "elevation_rad": -1.5685020992463754,
+          "azimuth_deg": -159.92544207069832,
+          "elevation_deg": -89.8685504442271,
+          "look_direction": [
+            -0.0021548439033200013,
+            -0.0007874760707374699,
+            -0.9999973682611321
+          ],
+          "pivot_enu_m": [
+            -183.64498893439782,
+            -238.1002875324341,
+            39.998492170904385
+          ],
+          "distance_m": 39.99849892142914,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_6:1:4",
+        "target": [
+          409.3379426732674,
+          7.281302365065642,
+          0
+        ],
+        "actual_position": [
+          409.348835819289,
+          7.268974397309492,
+          39.998347839607625
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.698064370239662,
+          "elevation_rad": -1.569099718279661,
+          "azimuth_deg": -154.587701269355,
+          "elevation_deg": -89.90279149259105,
+          "look_direction": [
+            -0.001532449368738821,
+            -0.0007280636128384876,
+            -0.9999985607601181
+          ],
+          "pivot_enu_m": [
+            409.348835819289,
+            7.268974397309492,
+            39.998347839607625
+          ],
+          "distance_m": 39.99835122273996,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_6:5:4",
+        "target": [
+          537.3379426732674,
+          7.281302365065642,
+          0
+        ],
+        "actual_position": [
+          537.3460282322494,
+          7.280059574606259,
+          39.99650295416231
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.556338036461366,
+          "elevation_rad": -1.569685797136098,
+          "azimuth_deg": -146.46738049799623,
+          "elevation_deg": -89.93637133752674,
+          "look_direction": [
+            -0.0009257056381640464,
+            -0.0006134693859945741,
+            -0.9999993833620019
+          ],
+          "pivot_enu_m": [
+            537.3460282322494,
+            7.280059574606259,
+            39.99650295416231
+          ],
+          "distance_m": 39.996503790745344,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_5:3:4",
+        "target": [
+          479.953365639731,
+          -38.71869763493436,
+          0
+        ],
+        "actual_position": [
+          479.94719231766584,
+          -38.73614286208644,
+          39.99934993837387
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.359326341319072,
+          "elevation_rad": -1.5688394278944702,
+          "azimuth_deg": -135.17944185162474,
+          "elevation_deg": -89.88787795207178,
+          "look_direction": [
+            -0.0013880624600670223,
+            -0.0013793951664435556,
+            -0.9999980852739577
+          ],
+          "pivot_enu_m": [
+            479.94719231766584,
+            -38.73614286208644,
+            39.99934993837387
+          ],
+          "distance_m": 39.9993542190164,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_1:11:4",
+        "target": [
+          8.339537328077768,
+          -366.08295014175496,
+          0
+        ],
+        "actual_position": [
+          8.360981042048294,
+          -366.0817368727359,
+          39.99565737516417
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.5852352376699557,
+          "elevation_rad": -1.5678068948291193,
+          "azimuth_deg": -148.12306816698876,
+          "elevation_deg": -89.82871816521947,
+          "look_direction": [
+            -0.0025385751381476864,
+            -0.0015787061551997999,
+            -0.999995531651589
+          ],
+          "pivot_enu_m": [
+            8.360981042048294,
+            -366.0817368727359,
+            39.99565737516417
+          ],
+          "distance_m": 39.99566314210097,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      },
+      {
+        "command_id": "uav_6:6:4",
+        "target": [
+          601.3379426732674,
+          7.281302365065642,
+          0
+        ],
+        "actual_position": [
+          601.3625077225338,
+          7.282271916066264,
+          39.998792571763246
+        ],
+        "actual_pointing": {
+          "valid": true,
+          "reference_frame": "gimbal_mount_flu",
+          "azimuth_rad": -2.47049406571876,
+          "elevation_rad": -1.5675289184088401,
+          "azimuth_deg": -141.5488832778004,
+          "elevation_deg": -89.81279128953331,
+          "look_direction": [
+            -0.002558830335178463,
+            -0.0020318235368931917,
+            -0.9999946620259684
+          ],
+          "pivot_enu_m": [
+            601.3625077225338,
+            7.282271916066264,
+            39.998792571763246
+          ],
+          "distance_m": 39.998800126761516,
+          "nadir_azimuth_underdetermined": false,
+          "nominal_reachable": false,
+          "invalid_reason": "OUTSIDE_NOMINAL_GIMBAL_LIMITS",
+          "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+          "mount_calibrated": false,
+          "sdk_axis_mapping_verified": false,
+          "sdk_command_available": false
+        }
+      }
+    ]
+  },
+  "phase_elapsed_s": {
+    "uav_1": {
+      "WAIT_RELEASE": 223.49900000000164,
+      "PAUSED_OR_GROUP_HOLD": 21.50100000000001,
+      "CLIMB": 37.79999999999998,
+      "INGRESS": 27.99900000000001,
+      "DESCEND_TO_WORK": 35.099999999999994,
+      "NAVIGATE": 222.70000000000127,
+      "STABILIZE": 48.196999999999974,
+      "SCAN": 482.09999999999826,
+      "SCAN_ALIGN": 266.1030000000013,
+      "CONFIRM_STATIC": 10.000000000000002,
+      "TRACK_MOVING": 120.00100000000016,
+      "WAIT_RETURN_SLOT": 129.99900000000028,
+      "RETURN_CLIMB": 22.799999999999997,
+      "EGRESS": 47.49999999999998,
+      "RETURN_DESCEND": 60.599999999999945,
+      "LAND": 7.301000000000001,
+      "COMPLETE": 861.0989999999784
+    },
+    "uav_2": {
+      "CLIMB": 48.59999999999993,
+      "INGRESS": 9.800000000000004,
+      "DESCEND_TO_WORK": 48.29999999999992,
+      "NAVIGATE": 198.70000000000107,
+      "STABILIZE": 42.09999999999995,
+      "SCAN": 413.7999999999987,
+      "SCAN_ALIGN": 228.30000000000146,
+      "PAUSED_OR_GROUP_HOLD": 19.200000000000014,
+      "CONFIRM_STATIC": 10.400000000000004,
+      "TRACK_MOVING": 120.20000000000013,
+      "WAIT_RETURN_SLOT": 0.4,
+      "RETURN_CLIMB": 30.899999999999988,
+      "EGRESS": 20.2,
+      "RETURN_DESCEND": 73.69999999999995,
+      "LAND": 8.0,
+      "COMPLETE": 1351.0999999999813
+    },
+    "uav_3": {
+      "WAIT_RELEASE": 107.10200000000009,
+      "CLIMB": 41.79799999999996,
+      "PAUSED_OR_GROUP_HOLD": 22.301999999999996,
+      "INGRESS": 30.197999999999993,
+      "DESCEND_TO_WORK": 83.80199999999994,
+      "NAVIGATE": 233.49800000000073,
+      "STABILIZE": 50.79599999999997,
+      "SCAN": 528.315999999999,
+      "SCAN_ALIGN": 282.69000000000057,
+      "CONFIRM_STATIC": 10.2,
+      "TRACK_MOVING": 120.10000000000016,
+      "REPOSITION_CLIMB": 26.79999999999999,
+      "REPOSITION": 42.99799999999999,
+      "WAIT_RETURN_SLOT": 168.20000000000053,
+      "RETURN_CLIMB": 26.699999999999996,
+      "EGRESS": 67.09999999999992,
+      "RETURN_DESCEND": 66.99999999999999,
+      "LAND": 7.9,
+      "COMPLETE": 699.5999999999922
+    },
+    "uav_4": {
+      "WAIT_RELEASE": 324.4010000000013,
+      "PAUSED_OR_GROUP_HOLD": 21.799000000000007,
+      "CLIMB": 33.499999999999986,
+      "INGRESS": 76.10000000000002,
+      "DESCEND_TO_WORK": 28.199000000000012,
+      "NAVIGATE": 177.39600000000067,
+      "STABILIZE": 38.09999999999999,
+      "SCAN": 385.61900000000037,
+      "SCAN_ALIGN": 231.5870000000013,
+      "CONFIRM_STATIC": 10.300000000000002,
+      "TRACK_MOVING": 120.19900000000014,
+      "WAIT_RETURN_SLOT": 0.4,
+      "RETURN_CLIMB": 18.700000000000003,
+      "EGRESS": 94.79900000000004,
+      "RETURN_DESCEND": 53.79999999999996,
+      "LAND": 7.401000000000001,
+      "COMPLETE": 1004.9989999999702
+    },
+    "uav_5": {
+      "WAIT_RELEASE": 585.1999999999989,
+      "PAUSED_OR_GROUP_HOLD": 22.002000000000006,
+      "CLIMB": 25.697999999999997,
+      "INGRESS": 58.00199999999993,
+      "DESCEND_TO_WORK": 15.097999999999999,
+      "NAVIGATE": 329.1000000000006,
+      "STABILIZE": 68.89799999999997,
+      "SCAN": 688.2259999999949,
+      "SCAN_ALIGN": 376.578,
+      "CONFIRM_STATIC": 10.200000000000003,
+      "TRACK_MOVING": 120.09800000000013,
+      "WAIT_RETURN_SLOT": 0.4,
+      "RETURN_CLIMB": 10.801999999999998,
+      "EGRESS": 79.79999999999994,
+      "RETURN_DESCEND": 40.29799999999998,
+      "LAND": 7.701999999999997,
+      "COMPLETE": 171.29800000000057
+    },
+    "uav_6": {
+      "WAIT_RELEASE": 465.4980000000002,
+      "PAUSED_OR_GROUP_HOLD": 22.200999999999997,
+      "CLIMB": 29.49999999999999,
+      "INGRESS": 68.59999999999997,
+      "DESCEND_TO_WORK": 21.801000000000005,
+      "NAVIGATE": 350.7990000000007,
+      "STABILIZE": 73.09899999999995,
+      "SCAN": 758.5859999999856,
+      "SCAN_ALIGN": 431.41499999999934,
+      "CONFIRM_STATIC": 10.300000000000002,
+      "TRACK_MOVING": 120.00000000000003,
+      "WAIT_RETURN_SLOT": 79.09999999999992,
+      "RETURN_CLIMB": 14.800000000000006,
+      "EGRESS": 100.80100000000004,
+      "RETURN_DESCEND": 47.098999999999954,
+      "LAND": 7.101
+    }
+  },
+  "ekf_origins": [
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8643275,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.8644807,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7054865,
+      "altitude_msl_m": 71.09
+    },
+    {
+      "latitude_deg": 33.864634,
+      "longitude_deg": 113.7056702,
+      "altitude_msl_m": 71.09
+    }
+  ],
+  "fcu_mission_elapsed_s": 2606.999,
+  "completed_scans": 1278,
+  "faults": {},
+  "final_actual_positions": [
+    [
+      -38.05060788146933,
+      12.003650583124015,
+      0.07025979777198277
+    ],
+    [
+      -21.00990909867648,
+      12.015597088601858,
+      0.07022030649023048
+    ],
+    [
+      -37.96849857629828,
+      28.965912725139333,
+      0.07011733625390981
+    ],
+    [
+      -21.044392137993164,
+      28.982372923265768,
+      0.07012608856344826
+    ],
+    [
+      -38.05153592221404,
+      45.974044839142216,
+      0.07011824066142935
+    ],
+    [
+      -20.969380148237192,
+      45.96799135460822,
+      0.07288483621124797
+    ]
+  ],
+  "flight_version_labels": [
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255"
+  ],
+  "within_competition_time_budget_actual": false,
+  "elapsed_wall_s": 132.48
+}

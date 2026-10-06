@@ -1,0 +1,482 @@
+{
+  "runs": [
+    {
+      "source": "validation\\sitl_scan_timing_report.json",
+      "source_sha256": "62ae7e8aaa5b92bdc1e07d8ddc5dab410cb75a8026eddc9d1c404a6cb30b9b0d",
+      "subject": 1,
+      "deadline_s": 1500,
+      "elapsed_fcu_s": 2572.0,
+      "deadline_passed": false,
+      "observations": 1278,
+      "critical_vehicle_by_sampled_active_time": "uav_6",
+      "critical_vehicle_phase_seconds": {
+        "flight": 671.5979999999996,
+        "observation": 865.7969999999926,
+        "heading_and_pointing": 281.30100000000084,
+        "target_events": 130.002,
+        "queue": 593.501999999999,
+        "fault_or_pause": 22.90000000000001,
+        "landed_wait": 0,
+        "unclassified": 0
+      },
+      "vehicles": [
+        {
+          "vehicle_id": "uav_1",
+          "phase_seconds": {
+            "flight": 484.8000000000006,
+            "observation": 573.1999999999983,
+            "heading_and_pointing": 176.30000000000007,
+            "target_events": 130.5,
+            "queue": 339.3000000000017,
+            "fault_or_pause": 23.000000000000007,
+            "landed_wait": 828.5999999999736,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1727.1000000000008,
+          "deadline_overrun_s": 1072.0
+        },
+        {
+          "vehicle_id": "uav_2",
+          "phase_seconds": {
+            "flight": 445.4000000000003,
+            "observation": 482.1989999999994,
+            "heading_and_pointing": 159.3010000000001,
+            "target_events": 130.1990000000002,
+            "queue": 0.3,
+            "fault_or_pause": 22.9,
+            "landed_wait": 1335.3009999999806,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1240.299,
+          "deadline_overrun_s": 1072.0
+        },
+        {
+          "vehicle_id": "uav_3",
+          "phase_seconds": {
+            "flight": 645.1010000000001,
+            "observation": 633.4959999999951,
+            "heading_and_pointing": 198.50300000000047,
+            "target_events": 130.29999999999995,
+            "queue": 272.00000000000114,
+            "fault_or_pause": 22.899999999999995,
+            "landed_wait": 670.2999999999839,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1902.2999999999968,
+          "deadline_overrun_s": 1072.0
+        },
+        {
+          "vehicle_id": "uav_4",
+          "phase_seconds": {
+            "flight": 501.3980000000003,
+            "observation": 464.60700000000014,
+            "heading_and_pointing": 145.19400000000007,
+            "target_events": 130.30000000000013,
+            "queue": 327.00100000000106,
+            "fault_or_pause": 18.000000000000004,
+            "landed_wait": 972.1009999999753,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1586.5000000000018,
+          "deadline_overrun_s": 1072.0
+        },
+        {
+          "vehicle_id": "uav_5",
+          "phase_seconds": {
+            "flight": 582.4000000000008,
+            "observation": 785.0999999999867,
+            "heading_and_pointing": 245.90000000000106,
+            "target_events": 130.59999999999997,
+            "queue": 596.7999999999937,
+            "fault_or_pause": 23.200000000000003,
+            "landed_wait": 144.20000000000013,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2363.9999999999823,
+          "deadline_overrun_s": 1072.0
+        },
+        {
+          "vehicle_id": "uav_6",
+          "phase_seconds": {
+            "flight": 671.5979999999996,
+            "observation": 865.7969999999926,
+            "heading_and_pointing": 281.30100000000084,
+            "target_events": 130.002,
+            "queue": 593.501999999999,
+            "fault_or_pause": 22.90000000000001,
+            "landed_wait": 0,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2565.099999999992,
+          "deadline_overrun_s": 1072.0
+        }
+      ],
+      "alignment_wait_fleet_total_s": 538.0539999999952,
+      "preparation_and_sampling_residual_s": 6.900000000007822
+    },
+    {
+      "source": "validation\\sitl_layered_entry_report.json",
+      "source_sha256": "e3372c46003a147f02d4f21c9dd4ec8c98247eb337c91fa9ac42439f75a9607a",
+      "subject": 1,
+      "deadline_s": 1500,
+      "elapsed_fcu_s": 2192.7,
+      "deadline_passed": false,
+      "observations": 1278,
+      "critical_vehicle_by_sampled_active_time": "uav_6",
+      "critical_vehicle_phase_seconds": {
+        "flight": 672.8969999999996,
+        "observation": 873.5859999999856,
+        "heading_and_pointing": 270.31600000000117,
+        "target_events": 130.30000000000015,
+        "queue": 214.80100000000027,
+        "fault_or_pause": 22.899999999999995,
+        "landed_wait": 0,
+        "unclassified": 0
+      },
+      "vehicles": [
+        {
+          "vehicle_id": "uav_1",
+          "phase_seconds": {
+            "flight": 485.4000000000002,
+            "observation": 572.4999999999975,
+            "heading_and_pointing": 181.3000000000003,
+            "target_events": 130.40000000000023,
+            "queue": 170.80000000000007,
+            "fault_or_pause": 21.00000000000001,
+            "landed_wait": 616.0999999999868,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1561.3999999999983,
+          "deadline_overrun_s": 692.6999999999998
+        },
+        {
+          "vehicle_id": "uav_2",
+          "phase_seconds": {
+            "flight": 443.80000000000007,
+            "observation": 489.29999999999865,
+            "heading_and_pointing": 153.60000000000016,
+            "target_events": 130.60000000000022,
+            "queue": 4.0,
+            "fault_or_pause": 19.500000000000007,
+            "landed_wait": 946.6999999999691,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1240.799999999999,
+          "deadline_overrun_s": 692.6999999999998
+        },
+        {
+          "vehicle_id": "uav_3",
+          "phase_seconds": {
+            "flight": 640.592,
+            "observation": 624.5259999999979,
+            "heading_and_pointing": 201.4840000000001,
+            "target_events": 130.50000000000014,
+            "queue": 127.50199999999994,
+            "fault_or_pause": 22.097999999999995,
+            "landed_wait": 458.9980000000007,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1746.701999999998,
+          "deadline_overrun_s": 692.6999999999998
+        },
+        {
+          "vehicle_id": "uav_4",
+          "phase_seconds": {
+            "flight": 503.9000000000003,
+            "observation": 463.70699999999977,
+            "heading_and_pointing": 151.79400000000004,
+            "target_events": 130.60000000000002,
+            "queue": 143.30000000000018,
+            "fault_or_pause": 21.998999999999995,
+            "landed_wait": 753.5989999999862,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1415.3000000000004,
+          "deadline_overrun_s": 692.6999999999998
+        },
+        {
+          "vehicle_id": "uav_5",
+          "phase_seconds": {
+            "flight": 593.6939999999994,
+            "observation": 806.9929999999894,
+            "heading_and_pointing": 248.11300000000088,
+            "target_events": 131.00000000000003,
+            "queue": 191.49900000000068,
+            "fault_or_pause": 22.1,
+            "landed_wait": 146.40000000000015,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1993.3989999999903,
+          "deadline_overrun_s": 692.6999999999998
+        },
+        {
+          "vehicle_id": "uav_6",
+          "phase_seconds": {
+            "flight": 672.8969999999996,
+            "observation": 873.5859999999856,
+            "heading_and_pointing": 270.31600000000117,
+            "target_events": 130.30000000000015,
+            "queue": 214.80100000000027,
+            "fault_or_pause": 22.899999999999995,
+            "landed_wait": 0,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2184.7999999999865,
+          "deadline_overrun_s": 692.6999999999998
+        }
+      ],
+      "alignment_wait_fleet_total_s": 531.8259999999963,
+      "preparation_and_sampling_residual_s": 7.900000000013279
+    },
+    {
+      "source": "validation\\sitl_subject2_approach_heading_report.json",
+      "source_sha256": "e016e976858e77b316c0f93bda439daf26d2fc816418840c3b7c884f08b2363d",
+      "subject": 2,
+      "deadline_s": 1800,
+      "elapsed_fcu_s": 2576.2,
+      "deadline_passed": false,
+      "observations": 1278,
+      "critical_vehicle_by_sampled_active_time": "uav_5",
+      "critical_vehicle_phase_seconds": {
+        "flight": 602.4009999999996,
+        "observation": 805.8089999999866,
+        "heading_and_pointing": 268.29300000000126,
+        "target_events": 130.49800000000022,
+        "queue": 734.699999999997,
+        "fault_or_pause": 22.200000000000003,
+        "landed_wait": 0,
+        "unclassified": 0
+      },
+      "vehicles": [
+        {
+          "vehicle_id": "uav_1",
+          "phase_seconds": {
+            "flight": 485.5980000000003,
+            "observation": 572.5119999999985,
+            "heading_and_pointing": 186.28800000000012,
+            "target_events": 130.1020000000001,
+            "queue": 342.5970000000011,
+            "fault_or_pause": 22.30300000000001,
+            "landed_wait": 850.3999999999829,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1739.4,
+          "deadline_overrun_s": 776.1999999999998
+        },
+        {
+          "vehicle_id": "uav_2",
+          "phase_seconds": {
+            "flight": 447.09700000000004,
+            "observation": 485.78399999999954,
+            "heading_and_pointing": 163.72200000000012,
+            "target_events": 130.49800000000016,
+            "queue": 0.499,
+            "fault_or_pause": 22.3,
+            "landed_wait": 1322.7019999999734,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1249.8999999999999,
+          "deadline_overrun_s": 776.1999999999998
+        },
+        {
+          "vehicle_id": "uav_3",
+          "phase_seconds": {
+            "flight": 647.6030000000005,
+            "observation": 636.0979999999975,
+            "heading_and_pointing": 200.5990000000004,
+            "target_events": 130.4000000000002,
+            "queue": 259.3000000000005,
+            "fault_or_pause": 22.5,
+            "landed_wait": 673.2999999999872,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1896.499999999999,
+          "deadline_overrun_s": 776.1999999999998
+        },
+        {
+          "vehicle_id": "uav_4",
+          "phase_seconds": {
+            "flight": 505.69900000000024,
+            "observation": 467.1829999999999,
+            "heading_and_pointing": 150.0150000000001,
+            "target_events": 131.1020000000001,
+            "queue": 318.29899999999964,
+            "fault_or_pause": 24.202,
+            "landed_wait": 978.0989999999847,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1596.5,
+          "deadline_overrun_s": 776.1999999999998
+        },
+        {
+          "vehicle_id": "uav_5",
+          "phase_seconds": {
+            "flight": 602.4009999999996,
+            "observation": 805.8089999999866,
+            "heading_and_pointing": 268.29300000000126,
+            "target_events": 130.49800000000022,
+            "queue": 734.699999999997,
+            "fault_or_pause": 22.200000000000003,
+            "landed_wait": 0,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2563.900999999985,
+          "deadline_overrun_s": 776.1999999999998
+        },
+        {
+          "vehicle_id": "uav_6",
+          "phase_seconds": {
+            "flight": 670.8039999999996,
+            "observation": 861.6019999999869,
+            "heading_and_pointing": 285.39500000000123,
+            "target_events": 130.30100000000002,
+            "queue": 461.9999999999995,
+            "fault_or_pause": 19.599000000000004,
+            "landed_wait": 146.39900000000037,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2429.7009999999873,
+          "deadline_overrun_s": 776.1999999999998
+        }
+      ],
+      "alignment_wait_fleet_total_s": 580.6069999999954,
+      "preparation_and_sampling_residual_s": 12.299000000014985
+    },
+    {
+      "source": "validation\\sitl_subject2_layered_entry_report.json",
+      "source_sha256": "e324a14a2d3a4e3e8aca442fb476a59d838568a4c26f15bc19f60108b99539e2",
+      "subject": 2,
+      "deadline_s": 1800,
+      "elapsed_fcu_s": 2191.501,
+      "deadline_passed": false,
+      "observations": 1278,
+      "critical_vehicle_by_sampled_active_time": "uav_6",
+      "critical_vehicle_phase_seconds": {
+        "flight": 678.0009999999991,
+        "observation": 875.3019999999883,
+        "heading_and_pointing": 282.6960000000009,
+        "target_events": 130.40100000000004,
+        "queue": 194.60100000000054,
+        "fault_or_pause": 22.499999999999996,
+        "landed_wait": 0,
+        "unclassified": 0
+      },
+      "vehicles": [
+        {
+          "vehicle_id": "uav_1",
+          "phase_seconds": {
+            "flight": 483.89999999999975,
+            "observation": 583.0999999999981,
+            "heading_and_pointing": 178.0000000000002,
+            "target_events": 130.70000000000007,
+            "queue": 184.80000000000013,
+            "fault_or_pause": 20.200000000000014,
+            "landed_wait": 595.0999999999914,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1580.6999999999982,
+          "deadline_overrun_s": 391.5010000000002
+        },
+        {
+          "vehicle_id": "uav_2",
+          "phase_seconds": {
+            "flight": 443.5040000000001,
+            "observation": 501.0909999999997,
+            "heading_and_pointing": 155.9060000000001,
+            "target_events": 130.29900000000004,
+            "queue": 3.7990000000000004,
+            "fault_or_pause": 22.500000000000007,
+            "landed_wait": 906.8009999999766,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1257.099,
+          "deadline_overrun_s": 391.5010000000002
+        },
+        {
+          "vehicle_id": "uav_3",
+          "phase_seconds": {
+            "flight": 653.6000000000004,
+            "observation": 635.9069999999965,
+            "heading_and_pointing": 204.99400000000043,
+            "target_events": 130.5000000000001,
+            "queue": 112.79999999999993,
+            "fault_or_pause": 22.500000000000007,
+            "landed_wait": 427.4989999999994,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1760.3009999999974,
+          "deadline_overrun_s": 391.5010000000002
+        },
+        {
+          "vehicle_id": "uav_4",
+          "phase_seconds": {
+            "flight": 504.3000000000003,
+            "observation": 473.90000000000026,
+            "heading_and_pointing": 143.70000000000013,
+            "target_events": 130.20000000000016,
+            "queue": 165.10000000000016,
+            "fault_or_pause": 22.400000000000002,
+            "landed_wait": 739.5999999999797,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 1439.600000000001,
+          "deadline_overrun_s": 391.5010000000002
+        },
+        {
+          "vehicle_id": "uav_5",
+          "phase_seconds": {
+            "flight": 595.5019999999997,
+            "observation": 815.0149999999917,
+            "heading_and_pointing": 252.78300000000058,
+            "target_events": 130.80000000000004,
+            "queue": 184.80000000000064,
+            "fault_or_pause": 22.3,
+            "landed_wait": 173.50000000000068,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2001.1999999999928,
+          "deadline_overrun_s": 391.5010000000002
+        },
+        {
+          "vehicle_id": "uav_6",
+          "phase_seconds": {
+            "flight": 678.0009999999991,
+            "observation": 875.3019999999883,
+            "heading_and_pointing": 282.6960000000009,
+            "target_events": 130.40100000000004,
+            "queue": 194.60100000000054,
+            "fault_or_pause": 22.499999999999996,
+            "landed_wait": 0,
+            "unclassified": 0
+          },
+          "active_sampled_seconds": 2183.500999999989,
+          "deadline_overrun_s": 391.5010000000002
+        }
+      ],
+      "alignment_wait_fleet_total_s": 508.7149999999978,
+      "preparation_and_sampling_residual_s": 8.000000000011369
+    }
+  ],
+  "comparisons": [
+    {
+      "subject": 1,
+      "baseline": "validation\\sitl_scan_timing_report.json",
+      "candidate": "validation\\sitl_layered_entry_report.json",
+      "elapsed_difference_s": -379.3000000000002,
+      "summed_heading_wait_difference_s": -6.227999999998929,
+      "repeated_controlled_experiment": false,
+      "scope": "single run difference; summed fleet waits are not wall-clock savings"
+    },
+    {
+      "subject": 2,
+      "baseline": "validation\\sitl_subject2_approach_heading_report.json",
+      "candidate": "validation\\sitl_subject2_layered_entry_report.json",
+      "elapsed_difference_s": -384.6989999999996,
+      "summed_heading_wait_difference_s": -71.89199999999761,
+      "repeated_controlled_experiment": false,
+      "scope": "single run difference; summed fleet waits are not wall-clock savings"
+    }
+  ],
+  "scope": "sampled phase attribution; concurrent phases cannot be added across aircraft to predict total time",
+  "hardware_verified": false
+}

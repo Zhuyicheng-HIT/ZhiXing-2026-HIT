@@ -1,0 +1,12 @@
+{
+  "scope": "相同80m模拟扫描范围；路径与去冗余优化，非实机性能",
+  "footprint_m": 80,
+  "before_stations": 152,
+  "after_stations": 142,
+  "before_actual_elapsed_s": 2884.601,
+  "after_actual_elapsed_s": 2715.2,
+  "actual_saved_s": 169.4010000000003,
+  "after_actual_within_competition_budget": false,
+  "before_repositions": 3,
+  "after_repositions": 1
+}

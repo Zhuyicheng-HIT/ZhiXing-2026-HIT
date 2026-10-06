@@ -1,0 +1,38 @@
+{
+  "scope": "nominal_flat_ground_geometry_only",
+  "hardware_verified": false,
+  "independent_vehicle_coverage_complete": false,
+  "limitation": "House-region thin remnants depend on neighboring scan footprints; not independent per-vehicle complete coverage",
+  "edge_metric": "Whole NAVIGATE segment length when any point is within 10m of perimeter, not clipped in-band length",
+  "baseline": {
+    "stations": 89,
+    "coverage_ratio": 0.9999999999999999,
+    "duration_s": 2846.283760036135,
+    "own_search_uncovered_m2": {
+      "uav_1": 1.2875519875822742e-12,
+      "uav_2": 0.0,
+      "uav_3": 307.8278557235823,
+      "uav_4": 0.0,
+      "uav_5": 0.0,
+      "uav_6": 2.6111868511180907e-11
+    },
+    "stations_within_10m_of_perimeter": 14,
+    "total_length_of_navigate_segments_touching_10m_edge_band_m": 1451.7930929911931
+  },
+  "current": {
+    "stations": 90,
+    "coverage_ratio": 1.0,
+    "duration_s": 1356.0313968838636,
+    "own_search_uncovered_m2": {
+      "uav_1": 0.0,
+      "uav_2": 0.0,
+      "uav_3": 196.91009378400182,
+      "uav_4": 117.26147364574827,
+      "uav_5": 0.0,
+      "uav_6": 7.841439981886399e-14
+    },
+    "stations_within_10m_of_perimeter": 1,
+    "total_length_of_navigate_segments_touching_10m_edge_band_m": 186.6531280389505
+  },
+  "edge_segment_length_reduction_ratio": 0.8714326931709112
+}

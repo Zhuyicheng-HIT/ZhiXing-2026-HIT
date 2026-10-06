@@ -1,0 +1,16 @@
+{
+  "segment_distance_analytical_cases": true,
+  "random_reversal_and_sample_bounds": true,
+  "hover_required": true,
+  "two_second_release_without_waiting_for_higher_ingress": true,
+  "parallel_entry_before_work_arrival": true,
+  "crossing_descent_blocks_lower_route": true,
+  "cleared_reservation_resumes_same_cursor": true,
+  "pause_clears_grants_without_losing_release_state": true,
+  "reposition_waits_for_all_entries": true,
+  "released_ingress_is_not_misclassified_as_queue": true,
+  "coordination_policy_change_rejects_old_checkpoint": true,
+  "minimum_reserved_path_distance_m": 12.0,
+  "scope": "command scheduler logic; not physical collision validation",
+  "hardware_verified": false
+}

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "requires_user_approval": true,
+  "active_default_changed": false,
+  "end_corridor_width_m": 10,
+  "original_work_regions_preserved": true,
+  "original_scan_order_preserved": true,
+  "command_segments_avoid_all_altitude_isolation": true,
+  "estimated_body_envelope_checked": true,
+  "no_isolation_override_used_in_path_check": true,
+  "unapproved_candidate_start_rejected": true,
+  "forest_permission_still_required": true,
+  "station_counts": {
+    "uav_1": 15,
+    "uav_2": 15,
+    "uav_3": 23,
+    "uav_4": 12,
+    "uav_5": 24,
+    "uav_6": 23
+  },
+  "nominal_duration_s": 1640.2050099602632,
+  "native_flight_verified": false,
+  "hardware_verified": false,
+  "scope": "candidate geometry and nominal command paths only; not approved, native flown or braking proof"
+}

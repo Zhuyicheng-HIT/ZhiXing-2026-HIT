@@ -1,0 +1,119 @@
+{
+  "passed": false,
+  "scope": "bounded custom transit fixture using production native six-FCU executor",
+  "speedup": 20,
+  "conditional_forest_transit": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "checkpoint_disk_restore_verified": false,
+  "six_actual_observation_waits_before_fixture": true,
+  "original_positions": [
+    [
+      -55.67255961117092,
+      -206.76086243844418,
+      40.514136976242014
+    ],
+    [
+      -42.564796079192504,
+      -32.777284110811536,
+      40.509862803699896
+    ],
+    [
+      143.245724240975,
+      -12.790213674136538,
+      40.52077002322432
+    ],
+    [
+      205.38706460990028,
+      356.0835538968443,
+      40.50847568037304
+    ],
+    [
+      386.9631768614119,
+      -85.48382225043315,
+      40.50969378215946
+    ],
+    [
+      409.31177461596616,
+      71.31257062037811,
+      40.50793225273429
+    ]
+  ],
+  "staged_positions": [
+    [
+      -55.68571453918371,
+      -206.74598506630971,
+      40.514735779130774
+    ],
+    [
+      -42.56992489345435,
+      -32.756185008590634,
+      40.509866562632716
+    ],
+    [
+      143.23647747788002,
+      -12.775340136336295,
+      40.520045108801824
+    ],
+    [
+      205.38538619911427,
+      356.10909711335876,
+      40.50838400678225
+    ],
+    [
+      491.9761554228142,
+      -231.90594965900988,
+      109.99690150268945
+    ],
+    [
+      452.0519692125215,
+      -232.37178006773928,
+      89.96898748594933
+    ]
+  ],
+  "pause_maximum_actual_drift_m": 0.11652143804031458,
+  "pause_actual_fcu_seconds": [
+    12.101,
+    14.2,
+    12.6,
+    11.501,
+    15.2,
+    14.001
+  ],
+  "wait_conflict": {
+    "vehicle_id": "uav_5",
+    "distance_m": 0.23480706170187404
+  },
+  "waiting_cursor_unchanged": true,
+  "pause_clears_authorizations": true,
+  "resume_rechecks_conflict": true,
+  "waiter_maximum_actual_drift_m": 0.06870470106899586,
+  "blocker_actual_vertical_progress_m": 32.023705550262235,
+  "waiter_actual_fcu_seconds": 22.7,
+  "remaining_path_distance_at_grant_m": 12.008231917035438,
+  "crossing_segments": {
+    "vertical_start": [
+      491.9955708440899,
+      -231.91365427518247,
+      110.0
+    ],
+    "vertical_end": [
+      491.9955708440899,
+      -231.91365427518247,
+      40.5
+    ],
+    "horizontal_start": [
+      451.9955708440899,
+      -231.91365427518247,
+      90.0
+    ],
+    "horizontal_end": [
+      531.9955708440899,
+      -231.91365427518247,
+      90.0
+    ]
+  },
+  "error": "",
+  "wall_duration_s": 27.539047269999173
+}

@@ -1,0 +1,10 @@
+{
+  "first_arming_time_preserved": true,
+  "rearm_clears_old_disarm_time": true,
+  "armed_uses_current_boot_time": true,
+  "disarmed_final_time_frozen": true,
+  "zero_timestamps_not_missing": true,
+  "fleet_maximum_duration_checked": true,
+  "scope": "FCU telemetry accounting; not wall-clock synchronization",
+  "hardware_verified": false
+}

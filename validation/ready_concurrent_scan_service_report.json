@@ -1,0 +1,48 @@
+{
+  "url": "http://127.0.0.1:8766",
+  "speed": 5.0,
+  "vehicles": [
+    {
+      "id": "uav_1",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_2",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_3",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_4",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_5",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_6",
+      "state": "READY",
+      "received": true,
+      "armed": false,
+      "age_s": 0.01
+    }
+  ]
+}

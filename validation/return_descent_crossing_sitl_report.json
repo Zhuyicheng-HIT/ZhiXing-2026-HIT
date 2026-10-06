@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "scenario": "return-descent",
+  "scope": "bounded custom crossing fixture using production native six-FCU executor",
+  "speedup": 20,
+  "conditional_forest_transit": true,
+  "full_mission_verified": false,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "checkpoint_disk_restore_verified": false,
+  "six_actual_observation_waits_before_fixture": true,
+  "original_positions": [
+    [
+      -55.685525710975824,
+      -206.74630550148754,
+      40.514503083597575
+    ],
+    [
+      -40.7711867067887,
+      -9.556241613439216,
+      40.515157860775275
+    ],
+    [
+      143.2363096965935,
+      -12.77371130503546,
+      40.510241328421394
+    ],
+    [
+      213.38273346735033,
+      364.06290636824895,
+      40.510037259020834
+    ],
+    [
+      380.4055024891735,
+      -38.68167966876439,
+      40.50849977031903
+    ],
+    [
+      383.9108321574367,
+      14.886137831271455,
+      40.508699451694866
+    ]
+  ],
+  "staged_positions": [
+    [
+      -55.69823238350697,
+      -206.72732351883525,
+      40.51324412331479
+    ],
+    [
+      -40.77107793467049,
+      -9.531875234217352,
+      40.51508152028595
+    ],
+    [
+      143.2229430697954,
+      -12.755908059944092,
+      40.51016487447916
+    ],
+    [
+      213.38380161950016,
+      364.0813084700486,
+      40.51107477655867
+    ],
+    [
+      -27.013009199863433,
+      30.399100933630905,
+      109.98600926061671
+    ],
+    [
+      -26.691462987763156,
+      14.021508147409136,
+      89.99614720219901
+    ]
+  ],
+  "pause_maximum_actual_drift_m": 1.1155168849885007,
+  "pause_actual_fcu_seconds": [
+    0.8,
+    0.8,
+    0.901,
+    0.9,
+    0.8,
+    0.902
+  ],
+  "native_unsettled_hold_blocks_resume": true,
+  "wait_conflict": {
+    "vehicle_id": "uav_5",
+    "distance_m": 0.2570497722649931
+  },
+  "waiting_cursor_unchanged": true,
+  "pause_clears_authorizations": true,
+  "resume_rechecks_conflict": true,
+  "waiter_maximum_actual_drift_m": 0.08255247240359996,
+  "blocker_actual_vertical_progress_m": 32.09096682146034,
+  "waiter_actual_fcu_seconds": 21.1,
+  "remaining_path_distance_at_grant_m": 12.086105346208976,
+  "crossing_segments": {
+    "vertical_start": [
+      -26.70666828594534,
+      30.005976480361156,
+      110.0
+    ],
+    "vertical_end": [
+      -26.70666828594534,
+      30.005976480361156,
+      2.0
+    ],
+    "horizontal_start": [
+      -26.70666828594534,
+      14.005976480361156,
+      90.0
+    ],
+    "horizontal_end": [
+      -26.70666828594534,
+      46.005976480361156,
+      90.0
+    ]
+  },
+  "original_destinations_reached_by_actual_feedback": true,
+  "no_independent_rtl_observed": true,
+  "ending_armed_paused_hover": true,
+  "ending_positions": [
+    [
+      -55.71140447201844,
+      -206.7112101839394,
+      40.51380858758051
+    ],
+    [
+      -40.77111794437785,
+      -9.5110927631936,
+      40.51545532111435
+    ],
+    [
+      143.2108886965789,
+      -12.737547870874685,
+      40.51069877750539
+    ],
+    [
+      213.3831302843878,
+      364.1049290767904,
+      40.5111814773486
+    ],
+    [
+      -26.681357190471214,
+      30.00240993622124,
+      2.0000045042100023
+    ],
+    [
+      -26.68398618078435,
+      45.9917095931811,
+      90.00069191247151
+    ]
+  ],
+  "observed_min_separation_m": 16.011745812900642,
+  "flight_audit": {
+    "position_samples": 6792,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 40.46587833728919,
+    "max_height_m": 110.02357766567135,
+    "min_perimeter_clearance_m": 1.9747858175640107,
+    "min_work_region_clearance_m": 3.9597229939228957
+  },
+  "hold_recovery_audit": {
+    "wait_checks": 8,
+    "resumed_after_actual_settlement": 1,
+    "maximum_observed_hold_drift_m": 1.379654336894916,
+    "scope": "sampled position and speed; not braking envelope proof"
+  },
+  "reservation_audit": {
+    "grants": 64,
+    "blocked_checks": 86,
+    "minimum_granted_path_distance_m": 12.086105346208976,
+    "maximum_parallel_entries": 3,
+    "maximum_parallel_returns": 0,
+    "scope": "remaining straight command segments; not physical tracking or braking proof"
+  },
+  "wall_duration_s": 31.134383681999907
+}

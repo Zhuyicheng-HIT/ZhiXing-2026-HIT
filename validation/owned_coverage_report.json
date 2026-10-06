@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "scope": "flat-ground nominal rectangular coverage and total search timing; not real camera or native flight",
+  "baseline": {
+    "stations": 89,
+    "sweep_segments": 2136,
+    "duration_s": 2846.283760036135,
+    "uncovered_m2": 0.0,
+    "station_scan_area_equivalent_ratio": 1.4334604312357684,
+    "repeated_station_scan_area_equivalent_m2": 189270.70721629425,
+    "stations_within_10m_perimeter": 14,
+    "stations_within_10m_work_boundary": 22,
+    "navigate_segment_length_touching_10m_perimeter_m": 1451.7930929911931,
+    "vehicles": [
+      {
+        "id": "uav_1",
+        "zone": "takeoff",
+        "stations": 15,
+        "scan_s": 1350.0
+      },
+      {
+        "id": "uav_2",
+        "zone": "takeoff",
+        "stations": 15,
+        "scan_s": 1350.0
+      },
+      {
+        "id": "uav_3",
+        "zone": "house",
+        "stations": 23,
+        "scan_s": 2070.0
+      },
+      {
+        "id": "uav_4",
+        "zone": "house",
+        "stations": 12,
+        "scan_s": 1080.0
+      },
+      {
+        "id": "uav_5",
+        "zone": "grass",
+        "stations": 12,
+        "scan_s": 1682.9999999999998
+      },
+      {
+        "id": "uav_6",
+        "zone": "grass",
+        "stations": 12,
+        "scan_s": 1683.0000000000002
+      }
+    ]
+  },
+  "current": {
+    "stations": 74,
+    "sweep_segments": 316,
+    "duration_s": 1015.444766572024,
+    "uncovered_m2": 0.0,
+    "station_scan_area_equivalent_ratio": 1.0175314338459667,
+    "repeated_station_scan_area_equivalent_m2": 7543.246193803323,
+    "stations_within_10m_perimeter": 3,
+    "stations_within_10m_work_boundary": 6,
+    "navigate_segment_length_touching_10m_perimeter_m": 162.79385976875926,
+    "vehicles": [
+      {
+        "id": "uav_1",
+        "zone": "takeoff",
+        "stations": 16,
+        "scan_s": 572.0075871583
+      },
+      {
+        "id": "uav_2",
+        "zone": "takeoff",
+        "stations": 18,
+        "scan_s": 433.8208545403397
+      },
+      {
+        "id": "uav_3",
+        "zone": "house",
+        "stations": 13,
+        "scan_s": 365.0622084664444
+      },
+      {
+        "id": "uav_4",
+        "zone": "house",
+        "stations": 9,
+        "scan_s": 382.793955855578
+      },
+      {
+        "id": "uav_5",
+        "zone": "grass",
+        "stations": 12,
+        "scan_s": 174.49502098376297
+      },
+      {
+        "id": "uav_6",
+        "zone": "grass",
+        "stations": 6,
+        "scan_s": 170.975241433967
+      }
+    ]
+  },
+  "owned_target_overlap_m2": -2.3283064365386963e-10,
+  "duplicate_area_metric": "Sum of per-station swept unions clipped to search minus global union; excludes intentional within-station row overlap",
+  "same_scan_speed_m_s": 4,
+  "straight_pair_boundaries": true,
+  "horizontal_work_gap_m": 20,
+  "pair_search_completion_ratio_limit": 1.4,
+  "pure_scan_time_is_not_total_workload": true,
+  "nominal_return_model": "layered_reserved; nominal continuous-separation check, native arrival-driven reservations",
+  "native_flight_verified": false
+}

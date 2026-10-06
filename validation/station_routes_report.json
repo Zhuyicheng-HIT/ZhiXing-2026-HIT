@@ -1,0 +1,69 @@
+{
+  "scope": "规划几何与连通性，非飞控或相机验收",
+  "configurations": [
+    {
+      "footprint_m": 80,
+      "duration_s": 1015.444766572024,
+      "global_coverage_ratio": 1.0,
+      "vehicles": [
+        {
+          "id": "uav_1",
+          "stations": 16,
+          "visited_components": [
+            0
+          ],
+          "repositions": 0,
+          "uncovered_m2": 2.6433874734965333e-12
+        },
+        {
+          "id": "uav_2",
+          "stations": 18,
+          "visited_components": [
+            0,
+            1,
+            3,
+            2
+          ],
+          "repositions": 3,
+          "uncovered_m2": 2.5151807409947305e-12
+        },
+        {
+          "id": "uav_3",
+          "stations": 13,
+          "visited_components": [
+            0
+          ],
+          "repositions": 0,
+          "uncovered_m2": 249.16558640699841
+        },
+        {
+          "id": "uav_4",
+          "stations": 9,
+          "visited_components": [
+            0
+          ],
+          "repositions": 0,
+          "uncovered_m2": 0.0
+        },
+        {
+          "id": "uav_5",
+          "stations": 12,
+          "visited_components": [
+            0
+          ],
+          "repositions": 0,
+          "uncovered_m2": 1.50929252185992e-12
+        },
+        {
+          "id": "uav_6",
+          "stations": 6,
+          "visited_components": [
+            0
+          ],
+          "repositions": 0,
+          "uncovered_m2": 0.0
+        }
+      ]
+    }
+  ]
+}

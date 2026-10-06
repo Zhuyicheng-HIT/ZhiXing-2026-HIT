@@ -1,0 +1,13 @@
+{
+  "schema": "zhixin/flight-safety/v1",
+  "nominal_work_altitude_m": 40.0,
+  "commanded_altitude_margin_m": 0.5,
+  "navigation_boundary_margin_m": 4.0,
+  "transit_boundary_margin_m": 2.0,
+  "estimated_horizontal_body_radius_m": 0.6,
+  "maximum_altitude_m": 120.0,
+  "minimum_operating_altitude_m": 40.0,
+  "altitude_reference": "SIMULATION_FLAT_GROUND",
+  "terrain_verified": false,
+  "hardware_authorized": false
+}

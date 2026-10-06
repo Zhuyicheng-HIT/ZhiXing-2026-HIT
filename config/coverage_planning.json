@@ -1,0 +1,8 @@
+{
+  "schema": "zhixin/coverage-planning/v1",
+  "strategy": "owned_scan_cells",
+  "hardware_authorized": false,
+  "preferred_station_clearance_m": 28,
+  "station_center_rule": "cover_owned_cells_from_interior_stations",
+  "notes": "Straight workload-balanced pair splits, 20m work gap, interior stations, disjoint target ownership and clipped continuous sweep. Retain complete nominal coverage; short boundary remnants may be scanned from neighboring legal stations. Not physical camera calibration."
+}

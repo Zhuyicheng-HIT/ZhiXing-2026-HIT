@@ -1,0 +1,92 @@
+{
+  "mode": "gazebo_set_pose_visualization",
+  "stamp_s": 561.1938497499999,
+  "all_six_pose_updates_verified": true,
+  "vehicles": [
+    {
+      "vehicle_id": "uav_1",
+      "gazebo_position": [
+        68.27021765888468,
+        -221.6032045838416,
+        40.25
+      ],
+      "expected": [
+        68.27021765888468,
+        -221.6032045838416,
+        40.25
+      ],
+      "error_m": 0.0
+    },
+    {
+      "vehicle_id": "uav_2",
+      "gazebo_position": [
+        97.84502886546062,
+        -96.11651469212114,
+        40.25
+      ],
+      "expected": [
+        97.84502886546062,
+        -96.11651469212114,
+        40.25
+      ],
+      "error_m": 0.0
+    },
+    {
+      "vehicle_id": "uav_3",
+      "gazebo_position": [
+        178.7605742292157,
+        299.7356243479889,
+        40.25
+      ],
+      "expected": [
+        178.7605742292157,
+        299.7356243479889,
+        40.25
+      ],
+      "error_m": 0.0
+    },
+    {
+      "vehicle_id": "uav_4",
+      "gazebo_position": [
+        205.43345744819752,
+        540.4006243479889,
+        40.25
+      ],
+      "expected": [
+        205.43345744819752,
+        540.4006243479889,
+        40.25
+      ],
+      "error_m": 0.0
+    },
+    {
+      "vehicle_id": "uav_5",
+      "gazebo_position": [
+        450.59,
+        -340.02,
+        40.25
+      ],
+      "expected": [
+        450.59,
+        -340.02,
+        40.25
+      ],
+      "error_m": 0.0
+    },
+    {
+      "vehicle_id": "uav_6",
+      "gazebo_position": [
+        536.9546243356764,
+        199.3724994564387,
+        40.25
+      ],
+      "expected": [
+        536.9546243356764,
+        199.3724994564387,
+        40.25
+      ],
+      "error_m": 0.0
+    }
+  ],
+  "sitl_flight_or_dynamics_verified": false
+}

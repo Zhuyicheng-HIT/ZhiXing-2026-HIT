@@ -1,0 +1,206 @@
+{
+  "scope": "planar all-altitude isolation and reachability; not terrain, braking or physical flight proof",
+  "all_altitude_isolation_respected_by_plan": false,
+  "crossings": [
+    {
+      "vehicle_id": "uav_1",
+      "cursor": 4,
+      "state": "INGRESS"
+    },
+    {
+      "vehicle_id": "uav_1",
+      "cursor": 175,
+      "state": "EGRESS"
+    },
+    {
+      "vehicle_id": "uav_4",
+      "cursor": 7,
+      "state": "INGRESS"
+    },
+    {
+      "vehicle_id": "uav_4",
+      "cursor": 145,
+      "state": "EGRESS"
+    },
+    {
+      "vehicle_id": "uav_5",
+      "cursor": 275,
+      "state": "EGRESS"
+    }
+  ],
+  "alternatives": [
+    {
+      "forest_transit_authorized": false,
+      "connected_components": 4,
+      "all_stations_reachable": false,
+      "unreachable": [
+        {
+          "vehicle_id": "uav_1",
+          "station_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "vehicle_id": "uav_3",
+          "station_indices": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "vehicle_id": "uav_4",
+          "station_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "vehicle_id": "uav_5",
+          "station_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "vehicle_id": "uav_6",
+          "station_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "forest_transit_authorized": true,
+      "connected_components": 2,
+      "all_stations_reachable": false,
+      "unreachable": [
+        {
+          "vehicle_id": "uav_1",
+          "station_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        }
+      ]
+    }
+  ],
+  "corridor_candidates": [
+    {
+      "end_corridor_width_m": 10,
+      "requires_user_approval": true,
+      "forest_transit_authorized": true,
+      "connected_components": 1,
+      "all_stations_reachable": true,
+      "unreachable": []
+    },
+    {
+      "end_corridor_width_m": 20,
+      "requires_user_approval": true,
+      "forest_transit_authorized": true,
+      "connected_components": 1,
+      "all_stations_reachable": true,
+      "unreachable": []
+    },
+    {
+      "end_corridor_width_m": 30,
+      "requires_user_approval": true,
+      "forest_transit_authorized": true,
+      "connected_components": 1,
+      "all_stations_reachable": true,
+      "unreachable": []
+    }
+  ],
+  "hardware_verified": false
+}

@@ -1,0 +1,182 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "command": {
+    "vehicle_id": "uav_2",
+    "observation_id": "uav_2:0:0",
+    "station_id": "uav_2:0",
+    "command_frame_id": "mission_map",
+    "map_origin_id": "22f3ef41d955f9f5",
+    "setpoint_type": "GROUND_POINT",
+    "target_enu_m": [
+      -69.2294752826141,
+      -59.4479085936117,
+      0
+    ],
+    "station_enu_m": [
+      -42.56280861594743,
+      -32.78124192694503,
+      40
+    ],
+    "height_reference": "SIMULATION_FLAT_GROUND",
+    "calibration_id": "SIMULATION_UNCALIBRATED",
+    "scan_zoom": 1.0,
+    "geometry_revision": "d4a0bcddfa9d870866287efea8efb068ba790d5967528b25f7b94fd9a9742247",
+    "observation_conditions": {
+      "minimum_distinct_frames": 6,
+      "minimum_observation_s": 2.0,
+      "maximum_pointing_error_deg": 2.0,
+      "minimum_stable_s": 0.5,
+      "maximum_time_uncertainty_s": 0.5
+    },
+    "point_revision": "8aafac807107d48ffc5cb321c6dfa6e9a368756c714076c1336013b4db3d5bcc",
+    "schema": "zhixin/gimbal-command/v1",
+    "command_id": "uav_2:0:0",
+    "mission_epoch": "8e5d5422-3ffb-483c-9c94-fe3aee740594",
+    "owner": "fleet-coordinator",
+    "plan_revision": "20f114f6dc0e91d6f233affa59081b3f21cfcb647c4683ffd2bf23a497b915f5",
+    "command_type": "OBSERVE_POINT",
+    "issued_at": 1791234335.1600125,
+    "accept_before": 1791234635.1600125,
+    "execution_timeout_s": 60.0,
+    "clock_domain": "UNIX_UTC_SECONDS",
+    "actual_position_enu_m": [
+      -42.56017303324073,
+      -32.8024162621047,
+      40.02451511871859
+    ],
+    "hardware_authorized": false,
+    "calibration_configured": false,
+    "pointing_at_issue": {
+      "valid": true,
+      "reference_frame": "gimbal_mount_flu",
+      "azimuth_rad": -0.3393360644492103,
+      "elevation_rad": -0.81662786733272,
+      "azimuth_deg": -19.442524329519046,
+      "elevation_deg": -46.78933023093417,
+      "look_direction": [
+        0.6456394020954956,
+        -0.2279042781590183,
+        -0.7288411366399318
+      ],
+      "pivot_enu_m": [
+        -42.56017303324073,
+        -32.8024162621047,
+        40.02451511871859
+      ],
+      "distance_m": 54.98359532210824,
+      "nadir_azimuth_underdetermined": false,
+      "nominal_reachable": true,
+      "invalid_reason": null,
+      "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+      "mount_calibrated": false,
+      "sdk_axis_mapping_verified": false,
+      "sdk_command_available": false,
+      "executable": {
+        "azimuth_rad": -0.3393360644492101,
+        "elevation_rad": -0.8166278673327201,
+        "azimuth_deg": -19.442524329519035,
+        "elevation_deg": -46.78933023093417,
+        "look_direction": [
+          0.6456394020954956,
+          -0.22790427815901826,
+          -0.7288411366399318
+        ],
+        "pointing_error_deg": 2.2489917831974725e-15,
+        "within_nominal_limits": true,
+        "maximum_error_deg": 2.0,
+        "feasible": true,
+        "reference_frame": "gimbal_mount_flu",
+        "method": "MAXIMUM_VIEW_DIRECTION_DOT_PRODUCT",
+        "model": "NOMINAL_TWO_AXIS_GEOMETRY",
+        "sdk_command_available": false,
+        "hardware_authorized": false
+      }
+    }
+  },
+  "external_result_ack": {
+    "accepted": true,
+    "duplicate": false,
+    "completed": true,
+    "evidence_kind": "SIMULATED_OBSERVATION"
+  },
+  "repeat_result_ack": {
+    "accepted": true,
+    "duplicate": true,
+    "completed": true
+  },
+  "actual_position_before": [
+    [
+      -38.05555382859086,
+      12.035339405286527,
+      2.001689764760589
+    ],
+    [
+      -42.553300898304144,
+      -32.82616658727496,
+      40.02188686156959
+    ],
+    [
+      -38.04636314279244,
+      29.017295570535286,
+      6.903342738226449
+    ],
+    [
+      -21.056533353986122,
+      29.025659808074156,
+      2.001498156141132
+    ],
+    [
+      -38.05486794162564,
+      46.025385989888804,
+      1.999859971071654
+    ],
+    [
+      -21.055426659374987,
+      46.02605998491733,
+      2.000633286874976
+    ]
+  ],
+  "actual_position_held": [
+    [
+      -38.053472350411795,
+      12.029344626263342,
+      2.0017445046572533
+    ],
+    [
+      -42.5556812569187,
+      -32.82446523248879,
+      40.01889994189775
+    ],
+    [
+      -38.059754817288386,
+      29.028238255858295,
+      5.174719219192138
+    ],
+    [
+      -21.056595185722554,
+      29.02396821488192,
+      1.999579133760939
+    ],
+    [
+      -38.05431263370597,
+      46.0239800077491,
+      1.9983773787314298
+    ],
+    [
+      -21.049511389995708,
+      46.02575693002366,
+      1.9983564141690877
+    ]
+  ],
+  "pending_blocks_automatic_completion": true,
+  "fault_preserves_command": true,
+  "unobservable_keeps_pending": true,
+  "stale_result_rejected": true,
+  "after_paused": true,
+  "completed_before": 0,
+  "completed_after": 1,
+  "scope": "原生飞控悬停与模拟外部观察证据的接口冒烟；非完整任务或实机验收",
+  "full_mission_run": false,
+  "real_vision_verified": false,
+  "real_gimbal_verified": false
+}

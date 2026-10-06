@@ -1,0 +1,65 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "speedup": 5.0,
+  "running": false,
+  "coordination": {
+    "schema": "zhixin/coordination/v1",
+    "entry_policy": "layered_reserved",
+    "minimum_command_path_distance_m": 12.0,
+    "hardware_authorized": false
+  },
+  "vehicles": [
+    {
+      "id": "uav_1",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_2",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_3",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    },
+    {
+      "id": "uav_4",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_5",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.02
+    },
+    {
+      "id": "uav_6",
+      "state": "READY",
+      "armed": false,
+      "age_s": 0.01
+    }
+  ],
+  "routes": {
+    "/": {
+      "status": 200,
+      "bytes": 3870
+    },
+    "/app.js": {
+      "status": 200,
+      "bytes": 21154
+    },
+    "/assets/satellite.jpg": {
+      "status": 200,
+      "bytes": 207660
+    }
+  },
+  "browser_visual_verified": false,
+  "hardware_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "zhixin/coordination/v1",
+  "entry_policy": "layered_reserved",
+  "entry_release_interval_s": 2.0,
+  "entry_altitudes_m": {
+    "uav_1": 45.0,
+    "uav_2": 40.5,
+    "uav_3": 50.0,
+    "uav_4": 55.0,
+    "uav_5": 60.0,
+    "uav_6": 65.0
+  },
+  "entry_order": ["uav_6", "uav_4", "uav_2", "uav_5", "uav_3", "uav_1"],
+  "return_policy": "layered_reserved",
+  "hold_recovery_policy": "arrived_and_slow_before_releasing_paths",
+  "minimum_command_path_distance_m": 12.0,
+  "hardware_authorized": false
+}

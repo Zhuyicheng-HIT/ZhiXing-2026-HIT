@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "scope": "nominal field tiling, timing and command identity; not optical calibration or native flight",
+  "manual_source": "ZR10 user manual v1.9 page 15: horizontal FOV 61.5 degrees, 16:9 video, 10x optical / 30x hybrid",
+  "zoom_at_40_5m_for_20m_frame_height": 1.3553419501307915,
+  "raw_frame_at_40_5m_m": [
+    48.18993600465036,
+    27.106839002615832
+  ],
+  "common_ground_scan_speed_m_s": 4,
+  "release_times_s": [
+    5.0,
+    7.0,
+    9.0,
+    11.0,
+    13.0,
+    15.0
+  ],
+  "six_simultaneous_takeoffs": true,
+  "regional_field_tiling_complete": true,
+  "nominal_collision_check": {
+    "passed": true,
+    "min_3d_distance_m": 13.8915189408653,
+    "closest": {
+      "first": "uav_3",
+      "second": "uav_5",
+      "time_s": 38.6735120369718
+    },
+    "horizontal_limit_m": 8,
+    "vertical_limit_m": 8,
+    "violations": []
+  },
+  "station_count": 74,
+  "nominal_duration_s": 1015.444766572024,
+  "deadline_met": true,
+  "regions": [
+    {
+      "vehicle_id": "uav_1",
+      "zone": "takeoff",
+      "stations": 16,
+      "observations_per_station": null,
+      "sweep_segments": 72,
+      "instantaneous_frame_m": [
+        35.55555555555556,
+        20.0
+      ],
+      "work_altitude_m": 40.5,
+      "station_footprint_m": 80.0,
+      "scan_zoom": 1.3553419501307915,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 15.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 43.714825493769744,
+      "scan_s": 572.0075871583,
+      "search_complete_s": 941.1953966985179
+    },
+    {
+      "vehicle_id": "uav_2",
+      "zone": "takeoff",
+      "stations": 18,
+      "observations_per_station": null,
+      "sweep_segments": 69,
+      "instantaneous_frame_m": [
+        35.55555555555556,
+        20.0
+      ],
+      "work_altitude_m": 40.5,
+      "station_footprint_m": 80.0,
+      "scan_zoom": 1.3553419501307915,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 9.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 40.192872767219534,
+      "scan_s": 433.8208545403397,
+      "search_complete_s": 858.0796234152713
+    },
+    {
+      "vehicle_id": "uav_3",
+      "zone": "house",
+      "stations": 13,
+      "observations_per_station": null,
+      "sweep_segments": 61,
+      "instantaneous_frame_m": [
+        35.55555555555556,
+        20.0
+      ],
+      "work_altitude_m": 40.5,
+      "station_footprint_m": 80.0,
+      "scan_zoom": 1.3553419501307915,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 13.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 112.00798363295632,
+      "scan_s": 365.0622084664444,
+      "search_complete_s": 740.784155502344
+    },
+    {
+      "vehicle_id": "uav_4",
+      "zone": "house",
+      "stations": 9,
+      "observations_per_station": null,
+      "sweep_segments": 42,
+      "instantaneous_frame_m": [
+        35.55555555555556,
+        20.0
+      ],
+      "work_altitude_m": 40.5,
+      "station_footprint_m": 80.0,
+      "scan_zoom": 1.3553419501307915,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 7.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 141.96063758559364,
+      "scan_s": 382.793955855578,
+      "search_complete_s": 756.4877199066673
+    },
+    {
+      "vehicle_id": "uav_5",
+      "zone": "grass",
+      "stations": 12,
+      "observations_per_station": null,
+      "sweep_segments": 48,
+      "instantaneous_frame_m": [
+        67.55555555555556,
+        38.0
+      ],
+      "work_altitude_m": 60.0,
+      "station_footprint_m": 144.0,
+      "scan_zoom": 1.056796842207245,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 11.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 147.69597179184728,
+      "scan_s": 174.49502098376297,
+      "search_complete_s": 686.3475032563213
+    },
+    {
+      "vehicle_id": "uav_6",
+      "zone": "grass",
+      "stations": 6,
+      "observations_per_station": null,
+      "sweep_segments": 24,
+      "instantaneous_frame_m": [
+        67.55555555555556,
+        38.0
+      ],
+      "work_altitude_m": 60.0,
+      "station_footprint_m": 144.0,
+      "scan_zoom": 1.056796842207245,
+      "ground_scan_speed_m_s": 4.0,
+      "entry_release_s": 5.0,
+      "nominal_entry_path_wait_s": 0,
+      "entry_complete_s": 167.9741852530277,
+      "scan_s": 170.975241433967,
+      "search_complete_s": 662.0650022338367
+    }
+  ],
+  "hardware_verified": false
+}

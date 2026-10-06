@@ -1,0 +1,19 @@
+{
+  "schema": "zhixin/gimbal-geometry/v1",
+  "software_policy_revision": "ordered-prefix-approach-heading-v2",
+  "calibration_id": "SIMULATION_NOMINAL_IDENTITY",
+  "calibrated": false,
+  "mount_translation_body_flu_m": [0, 0, 0],
+  "mount_quaternion_body_from_gimbal_xyzw": [0, 0, 0, 1],
+  "nominal_azimuth_limits_deg": [-135, 135],
+  "nominal_elevation_limits_deg": [-90, 25],
+  "sdk_axis_mapping_verified": false,
+  "simulation_heading_alignment": {
+    "prepare_heading_during_approach": true,
+    "nominal_yaw_margin_deg": 5,
+    "arrival_tolerance_deg": 3,
+    "maximum_angular_speed_deg_s": 5,
+    "stable_duration_s": 0.5
+  },
+  "notes": "安装外参及规范角到SIYI SDK符号的映射均未实测。限位来自用户扫描接口草案中的SDK保守范围，只做名义几何检查，不授权实机。"
+}

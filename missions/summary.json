@@ -1,0 +1,42 @@
+{
+  "schema": "zhixin-2026/mission-summary/v1",
+  "altitude_agl_m": 40.0,
+  "missions": [
+    {
+      "vehicle_id": "uav_1",
+      "zone": "takeoff",
+      "waypoint_count": 73,
+      "file": "uav_1_takeoff.json"
+    },
+    {
+      "vehicle_id": "uav_2",
+      "zone": "takeoff",
+      "waypoint_count": 73,
+      "file": "uav_2_takeoff.json"
+    },
+    {
+      "vehicle_id": "uav_3",
+      "zone": "house",
+      "waypoint_count": 52,
+      "file": "uav_3_house.json"
+    },
+    {
+      "vehicle_id": "uav_4",
+      "zone": "house",
+      "waypoint_count": 51,
+      "file": "uav_4_house.json"
+    },
+    {
+      "vehicle_id": "uav_5",
+      "zone": "grass",
+      "waypoint_count": 116,
+      "file": "uav_5_grass.json"
+    },
+    {
+      "vehicle_id": "uav_6",
+      "zone": "grass",
+      "waypoint_count": 116,
+      "file": "uav_6_grass.json"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "six_independent_commands": true,
+  "one_completion_preserves_other_five": true,
+  "duplicate_completion_isolated": true,
+  "cross_vehicle_result_rejected": true,
+  "same_vehicle_overwrite_rejected": true,
+  "failure_retry_timeout_isolated": true,
+  "stale_attempt_rejected": true,
+  "hardware_verified": false,
+  "scope": "command registry logic only"
+}

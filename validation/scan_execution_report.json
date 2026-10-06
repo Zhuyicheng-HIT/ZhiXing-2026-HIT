@@ -1,0 +1,17 @@
+{
+  "accepted_before_running": true,
+  "session_ownership_verified": true,
+  "monotonic_acceptance_and_execution_timeout": true,
+  "timeout_preserves_point": true,
+  "fault_blocks_retry": true,
+  "retry_same_point_new_attempt": true,
+  "stale_attempt_rejected": true,
+  "evidence_required_for_success": true,
+  "result_idempotent": true,
+  "no_automatic_skip_or_rtl": true,
+  "previous_point_duplicate_preserves_current_attempt": true,
+  "paused_task_blocks_retry": true,
+  "paused_observation_requires_retry": true,
+  "rejection_keeps_original_point": true,
+  "real_hardware_verified": false
+}

@@ -1,0 +1,95 @@
+{
+  "mode": "ardupilot_internal_physics_sitl",
+  "complete": true,
+  "samples": 287,
+  "min_actual_separation_m": 16.883976738077976,
+  "states_seen": [
+    "CLIMB",
+    "COMPLETE",
+    "CONFIRM_STATIC",
+    "DESCEND_TO_WORK",
+    "EGRESS",
+    "GUIDED_ARM_TAKEOFF",
+    "INGRESS",
+    "LAND",
+    "NAVIGATE",
+    "REPOSITION",
+    "REPOSITION_CLIMB",
+    "RETURN_CLIMB",
+    "RETURN_DESCEND",
+    "SCAN",
+    "STABILIZE",
+    "TRACK_MOVING",
+    "WAIT_RELEASE",
+    "WAIT_RETURN_SLOT"
+  ],
+  "six_armed_observed": true,
+  "recovery_verified": true,
+  "flight_versions": [
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127,
+    67568127
+  ],
+  "synthetic_gimbal": true,
+  "hardware_verified": false,
+  "gazebo_physics_verified": false,
+  "start_stamp_s": 0.0,
+  "full_run_observed": true,
+  "execution": "actual_waypoint_state_machine",
+  "stamp_s": 2225.8333409837414,
+  "flight_audit": {
+    "position_samples": 67860,
+    "max_outside_perimeter_m": 0.0,
+    "max_outside_work_region_m": 0.0,
+    "min_height_outside_launch_m": 39.95526123046875,
+    "max_height_m": 110.03202819824219
+  },
+  "fcu_mission_elapsed_s": 2936.901,
+  "completed_scans": 1377,
+  "faults": {},
+  "final_actual_positions": [
+    [
+      -37.96384757012129,
+      11.951383136212826,
+      -0.019461700692772865
+    ],
+    [
+      -21.008217240683734,
+      12.01727152429521,
+      -0.019497588276863098
+    ],
+    [
+      -37.934808023273945,
+      29.001051664934494,
+      -0.019792689010500908
+    ],
+    [
+      -21.028587808832526,
+      29.007369816768914,
+      -0.019367316737771034
+    ],
+    [
+      -37.937796514481306,
+      45.986627496778965,
+      -0.019626036286354065
+    ],
+    [
+      -21.00257053365931,
+      45.99336413387209,
+      -0.019536131992936134
+    ]
+  ],
+  "flight_version_labels": [
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255",
+    "4.7.1 type255"
+  ],
+  "within_competition_time_budget_actual": false,
+  "elapsed_wall_s": 147.0
+}

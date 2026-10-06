@@ -1,0 +1,21 @@
+{
+  "routes": {
+    "/": {
+      "status": 200,
+      "bytes": 3870,
+      "content_type": "text/html"
+    },
+    "/app.js": {
+      "status": 200,
+      "bytes": 20295,
+      "content_type": "text/javascript"
+    },
+    "/assets/satellite.jpg": {
+      "status": 200,
+      "bytes": 207660,
+      "content_type": "image/jpeg"
+    }
+  },
+  "browser_visual_verified": false,
+  "scope": "HTTP delivery only; actual UI interaction not verified in this pass"
+}
