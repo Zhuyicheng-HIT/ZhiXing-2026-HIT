@@ -453,6 +453,14 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
                 add_segment(vehicle,vehicle['position'],'CONFIRM_STATIC',duration=10,station=station_index,evidence='synthetic_detection')
             if station_index==1:
                 add_segment(vehicle,vehicle['position'],'TRACK_MOVING',duration=120,station=station_index,evidence='synthetic_tracking')
+    recognition_target_s = max(vehicle['clock'] for vehicle in vehicles)
+    for vehicle in vehicles:
+        vehicle['recognition_complete_s'] = vehicle['clock']
+        sync_duration = recognition_target_s-vehicle['clock']
+        if sync_duration > 1e-6:
+            add_segment(vehicle,vehicle['position'],'SEARCH_SYNC',duration=sync_duration,
+                reason='等待最晚作业机完成搜索，统一进入返场阶段')
+        vehicle['synchronized_search_complete_s'] = vehicle['clock']
     release = max(segment['end'] for vehicle in vehicles for segment in vehicle['segments']
         if segment['state'] in ('INGRESS','REPOSITION','DESCEND_TO_WORK'))+2
     for vehicle in sorted(vehicles,key=lambda item:item['clock']):
@@ -522,7 +530,9 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
         entry_release_s=vehicle['entry_release_s'],nominal_entry_path_wait_s=vehicle['nominal_entry_path_wait_s'],
         entry_complete_s=next(segment['end'] for segment in vehicle['segments'] if segment['state']=='DESCEND_TO_WORK'),
         scan_s=sum(segment['end']-segment['start'] for segment in vehicle['segments'] if segment['state']=='SCAN'),
-        search_complete_s=next(segment['start'] for segment in vehicle['segments'] if segment['state']=='WAIT_RETURN_SLOT'))
+        search_complete_s=vehicle['recognition_complete_s'],
+        synchronized_search_complete_s=vehicle['synchronized_search_complete_s'],
+        return_ready_s=next(segment['start'] for segment in vehicle['segments'] if segment['state']=='WAIT_RETURN_SLOT'))
         for vehicle in vehicles]
     plan['limitations'].append('有效方形视场由手册水平FOV和16:9估算；斜视投影、真实SDK变焦倍率、识别能力及房区遮挡未标定')
     independent_uncovered = {vehicle['id']:vehicle['coverage_uncovered_m2'] for vehicle in vehicles}

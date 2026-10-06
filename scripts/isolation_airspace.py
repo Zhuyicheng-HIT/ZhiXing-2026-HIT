@@ -46,7 +46,7 @@ def audit_isolation(plan):
         allowed = perimeter.difference(shortened.buffer(margin,join_style=2))
         corridor_candidates.append(dict(end_corridor_width_m=width,requires_user_approval=True,
             forest_transit_authorized=True,**reachable_stations(plan,allowed)))
-    work_states = {'NAVIGATE','STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING','WAIT_RETURN_SLOT','DESCEND_TO_WORK','REPOSITION_CLIMB','RETURN_CLIMB'}
+    work_states = {'NAVIGATE','STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING','SEARCH_SYNC','WAIT_RETURN_SLOT','DESCEND_TO_WORK','REPOSITION_CLIMB','RETURN_CLIMB'}
     work_crossings = [item for item in crossings if item['state'] in work_states]
     isolation_scope = plan.get('airspace_policy',{}).get('isolation_scope','ALL_ALTITUDES')
     return dict(scope='planar isolation diagnostics; work-only transit is authorized by confirmed user policy; not physical flight proof',

@@ -5,7 +5,7 @@ from shapely.ops import unary_union
 
 
 class FlightSafety:
-    work_states = {'NAVIGATE','STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING',
+    work_states = {'NAVIGATE','STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING','SEARCH_SYNC',
         'WAIT_RETURN_SLOT','DESCEND_TO_WORK','REPOSITION_CLIMB','RETURN_CLIMB'}
     launch_states = {'CLIMB','TAKEOFF','WAIT_RELEASE','WAIT_ENTRY_PATH','RETURN_DESCEND','LAND','COMPLETE'}
 

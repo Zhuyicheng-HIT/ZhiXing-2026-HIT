@@ -278,7 +278,7 @@ function renderFlightMode(){
                 const total=(names)=>names.reduce((sum,name)=>sum+(phases[name]||0),0)/60;
                 const phaseRow=document.createElement('div');
                 phaseRow.className='phase-feedback';
-                phaseRow.textContent='阶段累计：飞行 '+total(['CLIMB','INGRESS','DESCEND_TO_WORK','NAVIGATE','REPOSITION_CLIMB','REPOSITION','RETURN_CLIMB','EGRESS','RETURN_DESCEND','LAND']).toFixed(1)+'分 · 观察 '+total(['STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING','WAIT_RESULT']).toFixed(1)+'分 · 航向/视线等待 '+total(['SCAN_ALIGN','SCAN_WAIT_POINTING','SCAN_WAIT_ATTITUDE']).toFixed(1)+'分 · 排队 '+total(['WAIT_RELEASE','WAIT_RETURN_SLOT','WAIT_TRANSIT_SLOT','WAIT_PATH_RESERVATION']).toFixed(1)+'分 · 恢复刹停 '+total(['WAIT_HOLD_STABLE']).toFixed(1)+'分';
+  phaseRow.textContent='阶段累计：飞行 '+total(['CLIMB','INGRESS','DESCEND_TO_WORK','NAVIGATE','REPOSITION_CLIMB','REPOSITION','RETURN_CLIMB','EGRESS','RETURN_DESCEND','LAND']).toFixed(1)+'分 · 观察 '+total(['STABILIZE','SCAN','CONFIRM_STATIC','TRACK_MOVING','WAIT_RESULT']).toFixed(1)+'分 · 搜索同步 '+total(['SEARCH_SYNC']).toFixed(1)+'分 · 航向/视线等待 '+total(['SCAN_ALIGN','SCAN_WAIT_POINTING','SCAN_WAIT_ATTITUDE']).toFixed(1)+'分 · 排队 '+total(['WAIT_RELEASE','WAIT_RETURN_SLOT','WAIT_TRANSIT_SLOT','WAIT_PATH_RESERVATION']).toFixed(1)+'分 · 恢复刹停 '+total(['WAIT_HOLD_STABLE']).toFixed(1)+'分';
                 cards[index].append(phaseRow);
             }
         });
