@@ -9,7 +9,7 @@ function drawCameraWindows(){
     panel=document.createElement('section');
     panel.id='cameraWindows';
     panel.style.cssText='margin:18px 0;padding:14px;border:1px solid #263957;border-radius:12px;background:#0b1424';
-    panel.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><strong>六机云台画面</strong><span style="font-size:12px;color:#9db0ca">合成预览：未接入真实 RTSP / YOLO</span></div><div id="cameraGrid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px"></div>';
+    panel.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><strong>六机云台画面</strong><span style="font-size:12px;color:#9db0ca">Gazebo RGB 实时帧；YOLO / 实机 RTSP 可选</span></div><div id="cameraGrid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px"></div>';
     const fleet=byId('fleet');
     if(fleet&&fleet.parentElement)fleet.parentElement.insertBefore(panel,fleet.nextSibling);else document.body.append(panel);
   }
