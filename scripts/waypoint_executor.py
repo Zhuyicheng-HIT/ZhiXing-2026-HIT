@@ -616,13 +616,14 @@ class WaypointExecutor:
         separation = min(math.dist(first['position'],second['position'])
             for index,first in enumerate(fleet.telemetry) for second in fleet.telemetry[index+1:])
         elapsed = mission_elapsed_seconds(fleet.telemetry)
-        return dict(stamp=fleet.stamp,running=fleet.running,paused=not fleet.running,speed=fleet.speed,epoch=fleet.epoch,
+        snapshot = dict(stamp=fleet.stamp,running=fleet.running,paused=not fleet.running,speed=fleet.speed,epoch=fleet.epoch,
             pending=fleet.pending,pending_commands=list(fleet.pending_by_vehicle.values()),concurrent_observations=fleet.concurrent_observations,
             faults=fleet.faults,synthetic=fleet.synthetic,forest_permission=fleet.forest_permission,
             isolation_transit_simulation=getattr(fleet,'isolation_transit_simulation',False),
             competition_airspace_compliant=fleet.plan['isolation_airspace']['authorized_policy_respected'] and not fleet.plan['requires_forest_transit_permission'],target_updates=fleet.target_updates,
             vehicles=vehicles,log=fleet.log[-25:],progress=self.progress() if self.begun else 0,
             mode=fleet.plan['mode'],execution='actual_waypoint_state_machine',preparing=fleet.preparing,
+            perception=fleet.perception,
             map_frame=fleet.plan.get('map_frame'),homes_captured_from_feedback=getattr(fleet,'homes_captured',False),
             actual_min_separation_m=separation,observed_min_separation_m=self.minimum_separation if self.samples else separation,
             remaining_waypoint_distance_m=max(math.dist(vehicle['position'],vehicle['planned_position']) for vehicle in vehicles),
@@ -645,3 +646,5 @@ class WaypointExecutor:
             scan_alignment_audit=dict(self.scan_audit),
             phase_elapsed_s={vehicle['id']:dict(self.phase_elapsed_s[index]) for index,vehicle in enumerate(fleet.plan['vehicles'])},
             all_landed_disarmed=all(item['received'] and not item['armed'] and abs(item['position'][2])<.5 for item in fleet.telemetry))
+        snapshot['camera'] = fleet.camera_status()
+        return snapshot

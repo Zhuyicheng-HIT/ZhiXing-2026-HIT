@@ -25,7 +25,11 @@ function drawCameraWindows(){
     const live=card.querySelector('.cameraLive');
     live.onload=()=>{live.style.display='block';card.querySelector('canvas').style.display='none';};
     live.onerror=()=>{live.style.display='none';card.querySelector('canvas').style.display='block';};
-    live.src='/api/camera/frame?vehicle_id=uav_'+(index+1)+'&t='+Date.now();
+    const vehicleId='uav_'+(index+1),cameraState=state.camera?.[vehicleId];
+    live.removeAttribute('src');
+    live.style.display='none';
+    card.querySelector('canvas').style.display='block';
+    if(cameraState?.fresh) live.src='/api/camera/frame?vehicle_id='+vehicleId+'&t='+Date.now();
     const vehicle=vehicles[index]||{};
     const canvas=card.querySelector('canvas'),ctx=canvas.getContext('2d'),width=canvas.width,height=canvas.height;
     const gradient=ctx.createLinearGradient(0,0,0,height);gradient.addColorStop(0,'#17243a');gradient.addColorStop(1,'#304d45');ctx.fillStyle=gradient;ctx.fillRect(0,0,width,height);
@@ -33,7 +37,9 @@ function drawCameraWindows(){
     const yaw=Number(vehicle.gimbal?.azimuth_enu_deg??vehicle.gimbal_yaw_deg??0),pitch=Number(vehicle.gimbal?.elevation_deg??vehicle.gimbal_pitch_deg??-90),completed=Number(vehicle.completed_scans??vehicle.completed_segments??0);
     const cx=width/2+Math.max(-width*.32,Math.min(width*.32,yaw/60*width*.32)),cy=height/2+Math.max(-height*.25,Math.min(height*.25,(pitch+90)/35*height*.25));
     ctx.strokeStyle='#ffba66';ctx.lineWidth=2;ctx.strokeRect(cx-28,cy-20,56,40);ctx.beginPath();ctx.moveTo(cx-8,cy);ctx.lineTo(cx+8,cy);ctx.moveTo(cx,cy-8);ctx.lineTo(cx,cy+8);ctx.stroke();
-    const caption=card.querySelector('.cameraCaption');caption.textContent='UAV'+(index+1)+' · 云台 '+yaw.toFixed(1)+'° / '+pitch.toFixed(1)+'° · 已完成扫描 '+completed;
+    const caption=card.querySelector('.cameraCaption');
+    const cameraLabel=cameraState?.fresh?'实时帧 '+(cameraState.frame_counter??0):'无实时帧'+(cameraState?.age_s!=null?'（已过期 '+cameraState.age_s.toFixed(1)+'s）':'');
+    caption.textContent='UAV'+(index+1)+' · '+cameraLabel+' · 云台 '+yaw.toFixed(1)+'° / '+pitch.toFixed(1)+'° · 已完成扫描 '+completed;
   }
 }
 setInterval(drawCameraWindows,500);

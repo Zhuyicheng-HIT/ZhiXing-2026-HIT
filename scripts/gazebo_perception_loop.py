@@ -24,6 +24,13 @@ def write_atomic(target: Path, value: dict) -> None:
     temporary.replace(target)
 
 
+def post_json(url: str, value: dict) -> None:
+    payload = json.dumps(value, ensure_ascii=False).encode('utf-8')
+    request = Request(url, data=payload, method='POST', headers={'Content-Type': 'application/json'})
+    with urlopen(request, timeout=3):
+        return
+
+
 async def run(args: argparse.Namespace) -> None:
     detector = None
     if args.weights:
@@ -68,6 +75,11 @@ async def run(args: argparse.Namespace) -> None:
                                         zoom=command_state.zoom),
                         ))
                 write_atomic(args.output_dir / f'{vehicle_id}.json', record)
+                if args.result_url:
+                    try:
+                        post_json(args.result_url, record)
+                    except OSError as error:
+                        record['publish_error'] = str(error)
             if args.once:
                 return
             await asyncio.sleep(args.period_s)
@@ -78,7 +90,8 @@ async def run(args: argparse.Namespace) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description='Gazebo image -> YOLO -> ZR-10 tracking loop')
-    parser.add_argument('--state-url', default='http://127.0.0.1:8765/api/state')
+    parser.add_argument('--state-url', default='http://127.0.0.1:8770/api/state')
+    parser.add_argument('--result-url', default='http://127.0.0.1:8770/api/perception/result')
     parser.add_argument('--camera-dir', type=Path, default=Path('runtime/camera'))
     parser.add_argument('--output-dir', type=Path, default=Path('runtime/perception'))
     parser.add_argument('--weights')

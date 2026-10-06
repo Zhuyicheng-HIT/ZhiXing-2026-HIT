@@ -43,6 +43,7 @@ class FleetSimulation:
         self.forest_permission = False
         self.isolation_transit_simulation = False
         self.target_updates = {}
+        self.perception = {}
         self.abandoned_tracking = set()
         self.log = []
         self.emit('READY','任务规划完成；当前为运动学仿真，不连接飞控')
@@ -179,11 +180,35 @@ class FleetSimulation:
                                          pointing=self.pointing_display(target,position,[0,0,0,1]),attitude_source='SYNTHETIC_EAST_HEADING'),
                                      completed_scans=sum(command.startswith(vehicle['id']+':') for command in self.completed),
                                      fault=self.faults.get(vehicle['id'])))
-            return dict(stamp=self.stamp,running=self.running,paused=not self.running,speed=self.speed,
+            data = dict(stamp=self.stamp,running=self.running,paused=not self.running,speed=self.speed,
                         epoch=self.epoch,pending=self.pending,pending_commands=list(self.pending_by_vehicle.values()),faults=self.faults,synthetic=self.synthetic,
                         forest_permission=self.forest_permission,isolation_transit_simulation=self.isolation_transit_simulation,
                         competition_airspace_compliant=self.plan['isolation_airspace']['authorized_policy_respected'] and not self.plan['requires_forest_transit_permission'],target_updates=self.target_updates,vehicles=vehicles,log=self.log[-25:],
-                        progress=self.stamp/self.plan['duration_s'],mode=self.plan['mode'])
+                    progress=self.stamp/self.plan['duration_s'],mode=self.plan['mode'],perception=self.perception)
+            data['camera'] = self.camera_status()
+            return data
+
+    def camera_status(self, freshness_s=2.0):
+        now = time.time()
+        result = {}
+        for index in range(1, 7):
+            vehicle_id = f'uav_{index}'
+            metadata_path = ROOT/'runtime'/'camera'/f'{vehicle_id}.json'
+            image_path = ROOT/'runtime'/'camera'/f'{vehicle_id}.jpg'
+            item = dict(vehicle_id=vehicle_id, available=image_path.is_file(), fresh=False)
+            try:
+                metadata = json.loads(metadata_path.read_text(encoding='utf-8'))
+                captured = float(metadata['captured_at_unix_s'])
+                item.update(frame_counter=int(metadata.get('frame_counter', 0)),
+                            captured_at_unix_s=captured, age_s=max(0.0, now-captured),
+                            width=int(metadata.get('width', 0)), height=int(metadata.get('height', 0)))
+                item['fresh'] = item['available'] and item['age_s'] <= freshness_s
+            except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError):
+                if item['available']:
+                    item['age_s'] = max(0.0, now-image_path.stat().st_mtime)
+                    item['fresh'] = item['age_s'] <= freshness_s
+            result[vehicle_id] = item
+        return result
 
     def control(self, data):
         with self.lock:
@@ -321,6 +346,11 @@ class FleetSimulation:
                 self.remove_pending(owner)
                 self.emit('SIMULATED_COMPLETION','人工模拟完成；没有真实观察证据',command_id=command_id)
                 self.checkpoint()
+            elif action=='perception_result':
+                vehicle_id = data.get('vehicle_id')
+                if vehicle_id not in {vehicle['id'] for vehicle in self.plan['vehicles']}:
+                    raise ValueError('Unknown vehicle_id')
+                self.perception[vehicle_id] = dict(data, received_at_unix_s=time.time())
             elif action=='checkpoint':
                 self.checkpoint()
             elif action=='restore':
@@ -430,7 +460,7 @@ def serve(host='127.0.0.1',port=8765,simulation=None):
             if origin and urlparse(origin).netloc != self.headers.get('Host'):
                 self.send_json(dict(error='拒绝跨源控制'),403)
                 return
-            if self.path not in ('/api/control','/api/gimbal/result','/api/gimbal/status','/api/gimbal/retry'):
+            if self.path not in ('/api/control','/api/gimbal/result','/api/gimbal/status','/api/gimbal/retry','/api/perception/result'):
                 self.send_json(dict(error='未知接口'),404)
                 return
             try:
@@ -446,6 +476,8 @@ def serve(host='127.0.0.1',port=8765,simulation=None):
                     data['action'] = 'scan_execution_status'
                 elif self.path=='/api/gimbal/retry':
                     data['action'] = 'retry_observation'
+                elif self.path=='/api/perception/result':
+                    data['action'] = 'perception_result'
                 self.send_json(simulation.control(data))
             except (ValueError,TypeError,KeyError,OSError) as error:
                 self.send_json(dict(error=str(error)),400)

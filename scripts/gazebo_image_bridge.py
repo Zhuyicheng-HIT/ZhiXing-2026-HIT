@@ -5,6 +5,8 @@ import base64
 import json
 import subprocess
 import time
+import uuid
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from PIL import Image
@@ -26,7 +28,7 @@ def read_frame(topic: str, timeout_s: float = 8.0) -> tuple[bytes, dict]:
     return output.getvalue(), dict(width=width, height=height, step=step, stamp=payload.get('header', {}).get('stamp'))
 
 
-def capture_once(vehicle_id: str, output_dir: Path) -> None:
+def capture_once(vehicle_id: str, output_dir: Path, frame_counter: int) -> None:
     topic = f'/uav/{vehicle_id}/gimbal/image_raw'
     jpeg, metadata = read_frame(topic)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -34,7 +36,15 @@ def capture_once(vehicle_id: str, output_dir: Path) -> None:
     target = output_dir / f'{vehicle_id}.jpg'
     temporary.write_bytes(jpeg)
     temporary.replace(target)
-    (output_dir / f'{vehicle_id}.json').write_text(json.dumps(metadata), encoding='utf-8')
+    metadata.update(
+        vehicle_id=vehicle_id,
+        frame_counter=frame_counter,
+        captured_at_unix_s=time.time(),
+        capture_id=uuid.uuid4().hex,
+    )
+    (output_dir / f'{vehicle_id}.json').write_text(
+        json.dumps(metadata, ensure_ascii=False), encoding='utf-8'
+    )
 
 
 def main() -> None:
@@ -44,13 +54,23 @@ def main() -> None:
     parser.add_argument('--period-s', type=float, default=0.25)
     parser.add_argument('--once', action='store_true')
     args = parser.parse_args()
+    frame_counter = 0
+    workers = max(1, len(args.vehicles))
     while True:
         started = time.monotonic()
-        for vehicle_id in args.vehicles:
-            try:
-                capture_once(vehicle_id, args.output_dir)
-            except (OSError, ValueError, subprocess.SubprocessError, json.JSONDecodeError) as error:
-                print(f'{vehicle_id}: {error}', flush=True)
+        batch_start = frame_counter
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = {
+                pool.submit(capture_once, vehicle_id, args.output_dir, batch_start + index + 1): vehicle_id
+                for index, vehicle_id in enumerate(args.vehicles)
+            }
+            for future in as_completed(futures):
+                vehicle_id = futures[future]
+                try:
+                    future.result()
+                except (OSError, ValueError, subprocess.SubprocessError, json.JSONDecodeError) as error:
+                    print(f'{vehicle_id}: {error}', flush=True)
+        frame_counter += len(args.vehicles)
         if args.once:
             return
         time.sleep(max(0.0, args.period_s - (time.monotonic() - started)))
