@@ -157,7 +157,8 @@ def balanced_partition(region, configuration, homes, margin, clearance):
     candidates = []
     for horizontal in (True,False):
         low,high = (min_x,max_x) if horizontal else (min_y,max_y)
-        for fraction in (.25,.3,.35,.4,.45,.5,.55,.6,.65,.7,.75,.8,.85):
+        for fraction_index in range(8,93):
+            fraction = fraction_index/100
             split = low+(high-low)*fraction
             band = box(split-10,-2000,split+10,2000) if horizontal else box(-2000,split-10,2000,split+10)
             pair = []
@@ -179,7 +180,7 @@ def balanced_partition(region, configuration, homes, margin, clearance):
             if len(pair)==2:
                 predicted_times = [item['predicted_s'] for item in pair]
                 balance_penalty = abs(predicted_times[0]-predicted_times[1])
-                score = (max(predicted_times)+.8*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair),
+                score = (max(predicted_times)+8.0*balance_penalty+.1*sum(item['edge_penalty'] for item in pair)+.02*sum(item['missing'] for item in pair),
                     sum(len(item['cells']) for item in pair))
                 candidates.append((score,horizontal,split,band,pair))
     if not candidates:
