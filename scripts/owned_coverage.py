@@ -62,6 +62,10 @@ def sweep_legs(target, frame, overlap):
 def route_order(cells, home):
     if len(cells)<3:
         return cells
+    def route_length(order):
+        points = [home]+[item['center'] for item in order]
+        return sum(math.dist(first,second) for first,second in zip(points,points[1:]))
+
     remaining = list(cells)
     ordered = []
     current = home
@@ -73,20 +77,27 @@ def route_order(cells, home):
     improved = True
     while improved:
         improved = False
-        for first_index in range(1,len(ordered)-1):
+        best_length = route_length(ordered)
+        best_order = ordered
+        for first_index in range(len(ordered)-1):
             for second_index in range(first_index+1,len(ordered)):
-                previous = home if first_index==0 else ordered[first_index-1]['center']
-                first = ordered[first_index]['center']
-                second = ordered[second_index]['center']
-                following = ordered[second_index+1]['center'] if second_index+1<len(ordered) else None
-                old_length = math.dist(previous,first)
-                new_length = math.dist(previous,second)
-                if following is not None:
-                    old_length += math.dist(second,following)
-                    new_length += math.dist(first,following)
-                if new_length+1e-6<old_length:
-                    ordered[first_index:second_index+1] = reversed(ordered[first_index:second_index+1])
-                    improved = True
+                candidate = ordered[:]
+                candidate[first_index:second_index+1] = reversed(candidate[first_index:second_index+1])
+                candidate_length = route_length(candidate)
+                if candidate_length+1e-6<best_length:
+                    best_length = candidate_length
+                    best_order = candidate
+        for first_index in range(len(ordered)):
+            candidate = ordered[:first_index]+ordered[first_index+1:]
+            for insert_index in range(len(candidate)+1):
+                trial = candidate[:insert_index]+[ordered[first_index]]+candidate[insert_index:]
+                trial_length = route_length(trial)
+                if trial_length+1e-6<best_length:
+                    best_length = trial_length
+                    best_order = trial
+        if best_order is not ordered:
+            ordered = best_order
+            improved = True
     return ordered
 
 
@@ -181,7 +192,7 @@ def balanced_partition(region, configuration, homes, margin, clearance):
                 long_jump_excess = sum(max(0,distance-120) for distance in route_distances)
                 edge = sum(max(0,clearance-safe.boundary.distance(Point(cell['center']))) for cell in cells)
                 pair.append(dict(part=part,flight=flight,safe=safe,cells=cells,missing=missing,
-                    predicted_s=scan_s+route_s+len(cells)*2,edge_penalty=edge,
+                predicted_s=scan_s+route_s+len(cells)*2+(10 if cells else 0)+(120 if len(cells)>1 else 0),edge_penalty=edge,
                     maximum_jump=maximum_jump,long_jump_excess=long_jump_excess))
             if len(pair)==2:
                 predicted_times = [item['predicted_s'] for item in pair]

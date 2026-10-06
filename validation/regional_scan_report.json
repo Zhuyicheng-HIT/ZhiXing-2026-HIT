@@ -20,26 +20,26 @@
   "regional_field_tiling_complete": true,
   "nominal_collision_check": {
     "passed": true,
-    "min_3d_distance_m": 13.8915189408653,
+    "min_3d_distance_m": 9.897383120335393,
     "closest": {
-      "first": "uav_3",
-      "second": "uav_5",
-      "time_s": 38.6735120369718
+      "first": "uav_1",
+      "second": "uav_2",
+      "time_s": 44.58162308181877
     },
     "horizontal_limit_m": 8,
     "vertical_limit_m": 8,
     "violations": []
   },
-  "station_count": 74,
-  "nominal_duration_s": 1015.444766572024,
+  "station_count": 72,
+  "nominal_duration_s": 965.5171428087857,
   "deadline_met": true,
   "regions": [
     {
       "vehicle_id": "uav_1",
       "zone": "takeoff",
-      "stations": 16,
+      "stations": 17,
       "observations_per_station": null,
-      "sweep_segments": 72,
+      "sweep_segments": 62,
       "instantaneous_frame_m": [
         35.55555555555556,
         20.0
@@ -50,16 +50,16 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 15.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 43.714825493769744,
-      "scan_s": 572.0075871583,
-      "search_complete_s": 941.1953966985179
+      "entry_complete_s": 77.9361845526065,
+      "scan_s": 461.179167634748,
+      "search_complete_s": 875.4112086529121
     },
     {
       "vehicle_id": "uav_2",
       "zone": "takeoff",
-      "stations": 18,
+      "stations": 19,
       "observations_per_station": null,
-      "sweep_segments": 69,
+      "sweep_segments": 71,
       "instantaneous_frame_m": [
         35.55555555555556,
         20.0
@@ -70,16 +70,16 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 9.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 40.192872767219534,
-      "scan_s": 433.8208545403397,
-      "search_complete_s": 858.0796234152713
+      "entry_complete_s": 36.442853690329954,
+      "scan_s": 487.35326208171443,
+      "search_complete_s": 876.6481617662071
     },
     {
       "vehicle_id": "uav_3",
       "zone": "house",
-      "stations": 13,
+      "stations": 12,
       "observations_per_station": null,
-      "sweep_segments": 61,
+      "sweep_segments": 55,
       "instantaneous_frame_m": [
         35.55555555555556,
         20.0
@@ -90,16 +90,16 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 13.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 112.00798363295632,
-      "scan_s": 365.0622084664444,
-      "search_complete_s": 740.784155502344
+      "entry_complete_s": 111.85255419519152,
+      "scan_s": 303.89157764304593,
+      "search_complete_s": 663.0400120669796
     },
     {
       "vehicle_id": "uav_4",
       "zone": "house",
-      "stations": 9,
+      "stations": 12,
       "observations_per_station": null,
-      "sweep_segments": 42,
+      "sweep_segments": 57,
       "instantaneous_frame_m": [
         35.55555555555556,
         20.0
@@ -110,16 +110,16 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 7.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 141.96063758559364,
-      "scan_s": 382.793955855578,
-      "search_complete_s": 756.4877199066673
+      "entry_complete_s": 113.24410123775556,
+      "scan_s": 274.1656691062639,
+      "search_complete_s": 644.0804251511236
     },
     {
       "vehicle_id": "uav_5",
       "zone": "grass",
-      "stations": 12,
+      "stations": 6,
       "observations_per_station": null,
-      "sweep_segments": 48,
+      "sweep_segments": 24,
       "instantaneous_frame_m": [
         67.55555555555556,
         38.0
@@ -130,9 +130,9 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 11.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 147.69597179184728,
-      "scan_s": 174.49502098376297,
-      "search_complete_s": 686.3475032563213
+      "entry_complete_s": 139.28015639777698,
+      "scan_s": 359.28654200453036,
+      "search_complete_s": 749.9242731042691
     },
     {
       "vehicle_id": "uav_6",
@@ -150,9 +150,9 @@
       "ground_scan_speed_m_s": 4.0,
       "entry_release_s": 5.0,
       "nominal_entry_path_wait_s": 0,
-      "entry_complete_s": 167.9741852530277,
-      "scan_s": 170.975241433967,
-      "search_complete_s": 662.0650022338367
+      "entry_complete_s": 151.29034116724114,
+      "scan_s": 368.7010461469432,
+      "search_complete_s": 768.8832749793796
     }
   ],
   "hardware_verified": false

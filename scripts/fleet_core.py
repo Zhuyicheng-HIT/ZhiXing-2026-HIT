@@ -14,7 +14,7 @@ from coverage_candidates import sparse_stations
 from isolation_airspace import audit_isolation
 from scan_motion import scan_motion
 from regional_scan import regional_scan
-from owned_coverage import balanced_partition, rescue_coverage
+from owned_coverage import balanced_partition, rescue_coverage, route_order
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -354,9 +354,10 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
     if coverage_planning['strategy']=='owned_scan_cells':
         rescue_coverage(vehicles,legal.difference(launch))
         for vehicle in vehicles:
-            tasks = {tuple(station):task for station,task in zip(vehicle['stations'],vehicle['station_tasks'])}
-            vehicle['stations'] = order_stations(vehicle['stations'],vehicle['_safe'],vehicle['home'])
-            vehicle['station_tasks'] = [tasks[tuple(station)] for station in vehicle['stations']]
+            cells = [dict(center=station,task=task) for station,task in zip(vehicle['stations'],vehicle['station_tasks'])]
+            ordered = route_order(cells,vehicle['home'])
+            vehicle['stations'] = [item['center'] for item in ordered]
+            vehicle['station_tasks'] = [item['task'] for item in ordered]
     if proposed_isolation_end_corridor_m is not None:
         for partition in partitions:
             original = shape(partition['buffer'])
