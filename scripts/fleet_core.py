@@ -45,6 +45,28 @@ def polygons(geometry):
     return [geometry] if geometry.geom_type == 'Polygon' else [part for part in geometry.geoms if part.geom_type == 'Polygon']
 
 
+def side_half_plane(road, side, extent=5000.0):
+    rectangle = road.minimum_rotated_rectangle
+    vertices = list(rectangle.exterior.coords)[:-1]
+    edges = [(vertices[index], vertices[(index + 1) % len(vertices)]) for index in range(len(vertices))]
+    start, end = max(edges, key=lambda edge: math.dist(edge[0], edge[1]))
+    if end[1] < start[1]:
+        start, end = end, start
+    length = math.dist(start, end)
+    if length <= 1e-6:
+        raise ValueError('Road side separator is degenerate')
+    direction = ((end[0] - start[0]) / length, (end[1] - start[1]) / length)
+    normal = (-direction[1], direction[0])
+    if side.lower() in ('east', 'right'):
+        normal = (-normal[0], -normal[1])
+    center = road.centroid.coords[0]
+    base = (center[0] - direction[0] * extent, center[1] - direction[1] * extent)
+    tip = (center[0] + direction[0] * extent, center[1] + direction[1] * extent)
+    offset = (normal[0] * extent * 2, normal[1] * extent * 2)
+    return Polygon([base, tip, (tip[0] + offset[0], tip[1] + offset[1]),
+                    (base[0] + offset[0], base[1] + offset[1])])
+
+
 def route_inside(start, end, region):
     allowed = region.buffer(0.001)
     if not allowed.covers(Point(start)) or not allowed.covers(Point(end)):
@@ -97,6 +119,12 @@ def navigate(vehicle, destination, region, state):
     if region.buffer(0.001).covers(LineString([start,end])):
         add_segment(vehicle, destination, state)
         return
+    corners = [(end[0], start[1]), (start[0], end[1])]
+    for corner in corners:
+        if region.buffer(0.001).covers(LineString([start, corner])) and region.buffer(0.001).covers(LineString([corner, end])):
+            add_segment(vehicle, [*corner, destination[2]], state)
+            add_segment(vehicle, destination, state)
+            return
     for point in route_inside(start, end, region):
         add_segment(vehicle, [*point, destination[2]], state)
 
@@ -108,7 +136,7 @@ def pose_at(vehicle, stamp):
     return [origin+(end-origin)*fraction for origin,end in zip(segment['origin'],segment['destination'])],segment,index
 
 
-def validate_separation(vehicles, horizontal=8, vertical=8):
+def validate_separation(vehicles, horizontal=5, vertical=8):
     minimum, closest, violations = math.inf, None, []
     for first_index, first in enumerate(vehicles):
         for second in vehicles[first_index+1:]:
@@ -223,7 +251,21 @@ def stations_for(part, safe, footprint, home):
         preferred_clearance=config['preferred_station_clearance_m'])
 
 
-def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corridor_m=None):
+def order_cells_with_block(cells, home, block):
+    if block.is_empty:
+        return route_order(cells, home)
+    owned, remainder = [], []
+    for cell in cells:
+        if cell['target'].intersection(block).area > 0.01:
+            owned.append(cell)
+        else:
+            remainder.append(cell)
+    first = route_order(owned, home)
+    next_home = first[-1]['center'] if first else home
+    return first + route_order(remainder, next_home)
+
+
+def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corridor_m=None,manual_draft=None):
     if proposed_isolation_end_corridor_m is not None and (
             isinstance(proposed_isolation_end_corridor_m,bool) or proposed_isolation_end_corridor_m not in (10,20,30)):
         raise ValueError('候选端部通道宽度仅支持10/20/30m，尚待用户确认')
@@ -232,6 +274,7 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
     if not 40 <= footprint <= 120:
         raise ValueError('模拟扫描边长必须在40~120m；不是实机标定值')
     datum,points,forest_points,subject3_points,subject3_reinclude_points = site_geometry()
+    frame = simulation_frame(datum)
     scan_profile = json.loads((ROOT/'config/scan_profile.json').read_text(encoding='utf-8'))
     airspace_policy = json.loads((ROOT/'config/airspace_policy.json').read_text(encoding='utf-8'))
     if airspace_policy.get('isolation_scope') not in ('WORK_ONLY','ALL_ALTITUDES') or not isinstance(airspace_policy.get('forest_transit_authorized'),bool):
@@ -291,6 +334,68 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
     subject3_reinclude = Polygon(subject3_reinclude_points) if subject3_reinclude_points else Polygon()
     legal = perimeter.difference(unary_union([forest,subject3_exclusion])).union(subject3_reinclude)
     legal = legal.difference(forest).intersection(perimeter)
+    area_adjustment_config = json.loads((ROOT/'config/area_adjustments.json').read_text(encoding='utf-8'))
+    configured_polygon_by_id = {}
+    def configured_polygons(items):
+        result = []
+        for item in items:
+            coordinates = item.get('points_wgs84_lon_lat', [])
+            if len(coordinates) < 3:
+                raise ValueError(f"正式区域配置顶点不足: {item.get('id', '')}")
+            projected = [frame.forward(latitude,longitude,frame.origin[2])[:2]
+                for longitude,latitude in coordinates]
+            polygon = Polygon(projected)
+            if not polygon.is_valid or polygon.is_empty or polygon.area < 1:
+                raise ValueError(f"正式区域配置无效: {item.get('id', '')}")
+            clipped = polygon.intersection(perimeter)
+            if not clipped.is_empty:
+                result.append(clipped)
+                configured_polygon_by_id[item.get('id', '')] = clipped
+        return result
+    configured_search = configured_polygons(area_adjustment_config.get('search_inclusions', []))
+    configured_exclusions = configured_polygons(area_adjustment_config.get('search_exclusions', []))
+    if configured_search:
+        legal = legal.union(unary_union(configured_search))
+    if configured_exclusions:
+        legal = legal.difference(unary_union(configured_exclusions))
+    legal = legal.difference(forest).intersection(perimeter).buffer(0)
+    area_adjustment_summary = dict(search_inclusions=len(configured_search),
+        search_exclusions=len(configured_exclusions),search_inclusion_area_m2=round(unary_union(configured_search).area,2) if configured_search else 0.0,
+        search_exclusion_area_m2=round(unary_union(configured_exclusions).area,2) if configured_exclusions else 0.0,
+        transferred_takeoff_to_house_area_m2=0.0,takeoff_side_reassigned_area_m2=0.0,
+        merged_house_linked_block_area_m2=0.0,warnings=[])
+    manual_summary = dict(applied=False,search_features=0,exclude_features=0,warnings=[])
+    if manual_draft:
+        manual_search, manual_exclude = [], []
+        for feature in manual_draft.get('features', []):
+            feature_points = feature.get('points_enu_m', [])
+            if feature.get('kind') not in ('search_area', 'exclude_area') or len(feature_points) < 3:
+                continue
+            geometry = Polygon(feature_points)
+            if not geometry.is_valid or geometry.is_empty:
+                manual_summary['warnings'].append(f"忽略无效手绘对象 {feature.get('id', '')}")
+                continue
+            clipped = geometry.intersection(perimeter)
+            if clipped.is_empty:
+                manual_summary['warnings'].append(f"手绘对象 {feature.get('id', '')} 完全在周界外")
+                continue
+            if feature['kind'] == 'search_area':
+                manual_search.append(clipped)
+                manual_summary['search_features'] += 1
+            else:
+                manual_exclude.append(clipped)
+                manual_summary['exclude_features'] += 1
+        if manual_search:
+            legal = legal.union(unary_union(manual_search))
+        if manual_exclude:
+            legal = legal.difference(unary_union(manual_exclude))
+        legal = legal.difference(forest).intersection(perimeter).buffer(0)
+        if legal.geom_type == 'MultiPolygon':
+            meaningful = [part for part in legal.geoms if part.area >= 100.0]
+            if meaningful:
+                legal = unary_union(meaningful)
+                manual_summary['warnings'].append('已移除小于100m²的碎片区域，避免生成不可执行的孤立扫描块')
+        manual_summary['applied'] = bool(manual_search or manual_exclude)
     transit = perimeter.buffer(-safety['transit_boundary_margin_m'],join_style=2)
     departure = Polygon([points[index] for index in [6,8,9,1]]).intersection(legal).difference(launch)
     grass = Polygon([points[index] for index in [20,15,16,19]]).intersection(legal).difference(launch)
@@ -300,7 +405,58 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
     transferred = house.intersection(west_forest_corridor)
     departure = departure.union(transferred)
     house = house.difference(transferred)
+    takeoff_side = area_adjustment_config.get('takeoff_search_side', {})
+    road_id = takeoff_side.get('road_exclusion_id')
+    road_side_geometry = None
+    if road_id:
+        road_geometry = configured_polygon_by_id.get(road_id)
+        if road_geometry is None:
+            raise ValueError('Configured takeoff side road is missing: '+str(road_id))
+        road_side_geometry = side_half_plane(road_geometry, takeoff_side.get('side', 'west'))
+        departure_before_side_clip = departure
+        departure = departure.intersection(road_side_geometry).buffer(0)
+        reassigned = departure_before_side_clip.difference(departure).intersection(legal)
+        reassigned = reassigned.difference(grass).difference(launch).difference(forest).buffer(0)
+        if not reassigned.is_empty:
+            house = house.union(reassigned).buffer(0)
+            area_adjustment_summary['takeoff_side_reassigned_area_m2'] = round(reassigned.area, 2)
+    handoff = area_adjustment_config.get('takeoff_to_house_transfer', {})
+    handoff_buffer = float(handoff.get('buffer_m', 0.0)) if handoff.get('reference') == 'subject3_exclusion' else 0.0
+    small_takeoff_handoff = departure.intersection(subject3_exclusion.buffer(handoff_buffer, join_style=2)) if handoff_buffer > 0 else Polygon()
+    small_takeoff_handoff = small_takeoff_handoff.difference(subject3_exclusion).difference(forest).difference(launch).buffer(0)
+    if not small_takeoff_handoff.is_empty:
+        departure = departure.difference(small_takeoff_handoff)
+        house = house.union(small_takeoff_handoff)
+        area_adjustment_summary['transferred_takeoff_to_house_area_m2'] = round(small_takeoff_handoff.area,2)
+    merged_house_config = area_adjustment_config.get('merged_task_blocks', {}).get('house_lower_linked_block', {})
+    house_linked_block = Polygon()
+    house_linked_limit_m = None
+    if merged_house_config.get('enabled', False):
+        house_components = polygons(house)
+        if house_components:
+            main_house = max(house_components, key=lambda item: item.area)
+            house_linked_limit_m = main_house.bounds[1] + float(merged_house_config.get('north_extension_m', 20.0))
+            lower_window = box(-5000, -5000, 5000, house_linked_limit_m)
+            house_linked_block = house.intersection(west_forest_corridor).intersection(lower_window)
+            if road_side_geometry is not None and merged_house_config.get('keep_takeoff_side_boundary', True):
+                house_linked_block = house_linked_block.intersection(
+                    side_half_plane(configured_polygon_by_id[road_id], 'east')).buffer(0)
+            minimum_area = float(merged_house_config.get('minimum_area_m2', 100.0))
+            if house_linked_block.area < minimum_area:
+                house_linked_block = Polygon()
+                area_adjustment_summary['warnings'].append('Merged house linked block is below the configured minimum area')
+            else:
+                area_adjustment_summary['merged_house_linked_block_area_m2'] = round(house_linked_block.area, 2)
+    task_blocks = []
+    if not house_linked_block.is_empty:
+        task_blocks.append(dict(id='house_lower_linked_block',zone='house',assigned_vehicle='uav_3',
+            assignment_rule='single_house_vehicle_lower_partition',geometry=mapping(house_linked_block),
+            area_m2=round(house_linked_block.area,2)))
     regions = dict(takeoff=departure,house=house,grass=grass)
+    support_margin = float(merged_house_config.get('flight_support_margin_m', 12.0))
+    house_flight_support = house_linked_block.buffer(support_margin,join_style=2).intersection(transit).difference(grass).difference(launch)
+    if road_side_geometry is not None:
+        house_flight_support = house_flight_support.intersection(side_half_plane(configured_polygon_by_id[road_id], 'east'))
     names = dict(takeoff='出发搜索区',house='房区（补全余区）',grass='草地区')
     homes = [[-38,12],[-21,12],[-38,29],[-21,29],[-38,46],[-21,46]] if homes is None else homes
     if len(homes)!=6 or any(len(point)!=2 or not all(math.isfinite(float(value)) for value in point) for point in homes):
@@ -330,11 +486,15 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
         band = box(split-10,-2000,split+10,2000) if horizontal else box(-2000,split-10,2000,split+10)
         if coverage_planning['strategy']=='owned_scan_cells':
             horizontal,split,band,optimized_pair = balanced_partition(region,scan_configuration,
-                homes[sector_index*2:sector_index*2+2],safety['navigation_boundary_margin_m'],clearance)
+                homes[sector_index*2:sector_index*2+2],safety['navigation_boundary_margin_m'],clearance,
+                required_lower_block=house_linked_block if zone == 'house' else None,
+                lower_flight_support=house_flight_support if zone == 'house' else None)
         for part_index in range(2):
             clipping = (box(-2000,-2000,split,2000) if part_index==0 else box(split,-2000,2000,2000)) if horizontal else (box(-2000,-2000,2000,split) if part_index==0 else box(-2000,split,2000,2000))
             part = region.intersection(clipping)
             flight_region = part.difference(band)
+            if zone == 'house' and part_index == 0:
+                flight_region = flight_region.union(house_flight_support).difference(band)
             safe = flight_region.buffer(-safety['navigation_boundary_margin_m'],join_style=2)
             if safe.is_empty:
                 raise ValueError('隔离带留下的飞行区域过小')
@@ -344,18 +504,55 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
                 stations,uncovered = station_solver(part,safe,scan_configuration['station_footprint_m'],homes[vehicle_index])
             else:
                 cells = optimized_pair[part_index]['cells']
+                if zone == 'house' and vehicle_index == 2 and not house_linked_block.is_empty:
+                    cells = order_cells_with_block(cells,homes[vehicle_index],house_linked_block)
                 stations,uncovered = [cell['center'] for cell in cells],optimized_pair[part_index]['missing']
             vehicles.append(dict(id=f'uav_{vehicle_index+1}',zone=zone,label=names[zone],home=list(homes[vehicle_index]),position=[*homes[vehicle_index],0],clock=0,segments=[],stations=stations,work_altitude_m=zone_altitude,nominal_work_altitude_m=zone_altitude-safety['commanded_altitude_margin_m'],entry_altitude_m=0,coverage_uncovered_m2=uncovered,flight_region=mapping(flight_region),navigation_region=mapping(safe),search_region=mapping(part),_safe=safe))
             vehicles[-1]['scan_configuration'] = scan_configuration
             if optimized_pair is not None:
-                vehicles[-1]['station_tasks'] = [dict(geometry=mapping(cell['target']),legs=cell['legs']) for cell in cells]
+                vehicles[-1]['station_tasks'] = [dict(geometry=mapping(cell['target']),legs=cell['legs'],
+                    task_block_id='house_lower_linked_block' if zone == 'house' and not house_linked_block.is_empty and cell['target'].intersection(house_linked_block).area > 0.01 else None)
+                    for cell in cells]
                 vehicles[-1]['partition_predicted_s'] = optimized_pair[part_index]['predicted_s']
-        partitions.append(dict(zone=zone,label=names[zone],geometry=mapping(region),buffer=mapping(region.intersection(band)),split_axis='east' if horizontal else 'north',split_m=split))
+        partition = dict(zone=zone,label=names[zone],geometry=mapping(region),buffer=mapping(region.intersection(band)),split_axis='east' if horizontal else 'north',split_m=split)
+        if zone == 'house' and task_blocks:
+            partition['task_blocks'] = task_blocks
+        partitions.append(partition)
     if coverage_planning['strategy']=='owned_scan_cells':
-        rescue_coverage(vehicles,legal.difference(launch))
+        coverage_legal = legal.difference(launch).buffer(0)
+        if coverage_legal.geom_type == 'MultiPolygon':
+            fragments = [part for part in coverage_legal.geoms if part.area < 100.0]
+            if fragments:
+                legal = legal.difference(unary_union(fragments))
+                coverage_legal = legal.difference(launch)
+                area_adjustment_summary['warnings'].append(f'已忽略{len(fragments)}个小于100m²的边界碎片')
+        try:
+            rescue_coverage(vehicles,coverage_legal,task_blocks)
+        except ValueError:
+            if not manual_summary['applied'] and not (configured_search or configured_exclusions):
+                raise
+            cleaned = legal.buffer(-1.0, join_style=2).buffer(0)
+            if cleaned.is_empty:
+                raise
+            legal = cleaned
+            coverage_legal = legal.difference(launch)
+            area_adjustment_summary['warnings'].append('保留区域边界产生不可执行的细碎区域，已按1m安全裕量清理后重算')
+            rescue_coverage(vehicles,coverage_legal,task_blocks)
+        for block in task_blocks:
+            block_geometry = shape(block['geometry']).intersection(coverage_legal)
+            block.update(geometry=mapping(block_geometry),area_m2=round(block_geometry.area,2))
         for vehicle in vehicles:
             cells = [dict(center=station,task=task) for station,task in zip(vehicle['stations'],vehicle['station_tasks'])]
-            ordered = route_order(cells,vehicle['home'])
+            linked,other = [],[]
+            for cell in cells:
+                target = shape(cell['task']['geometry'])
+                matches = [block for block in task_blocks if target.intersection(shape(block['geometry'])).area > .01]
+                if any(block['assigned_vehicle'] != vehicle['id'] for block in matches):
+                    raise ValueError('Merged task block ownership violated: '+vehicle['id'])
+                cell['task']['task_block_id'] = matches[0]['id'] if matches else None
+                (linked if matches else other).append(cell)
+            ordered = route_order(linked,vehicle['home'])
+            ordered += route_order(other,ordered[-1]['center'] if ordered else vehicle['home'])
             vehicle['stations'] = [item['center'] for item in ordered]
             vehicle['station_tasks'] = [item['task'] for item in ordered]
     if proposed_isolation_end_corridor_m is not None:
@@ -504,8 +701,9 @@ def build_plan(homes=None, subject=1, footprint=80,proposed_isolation_end_corrid
     forest_crossings = [dict(vehicle=vehicle['id'],state=segment['state'],start_s=segment['start']) for vehicle in vehicles for segment in vehicle['segments'] if segment['state'] in ('INGRESS','EGRESS','REPOSITION') and forest.intersects(LineString([segment['origin'][:2],segment['destination'][:2]]))]
     satellite_file = ROOT/'config/satellite.json'
     satellite = json.loads(satellite_file.read_text(encoding='utf-8')) if satellite_file.exists() else None
-    plan = dict(schema='zhixin/fleet/v5',mode='deterministic_kinematic_simulation',subject=subject,datum=datum,flight_safety=safety,map_frame=simulation_frame(datum).descriptor(),perimeter=mapping(perimeter),forest=mapping(forest),subject3_exclusion=mapping(subject3_exclusion),subject3_reinclude=mapping(subject3_reinclude),launch=mapping(launch),legal=mapping(legal),partitions=partitions,vehicles=vehicles,duration_s=duration,deadline_s=deadline,within_time_budget=duration<=deadline,validation=validation,coverage=coverage,footprint_m=footprint,satellite=satellite,forest_crossings=forest_crossings,requires_forest_transit_permission=bool(forest_crossings),limitations=['扫描矩形为待标定模拟配置，不是附件给定或实机覆盖保证','平地AGL；缺少真实地形和遮挡模型','71m高程基准未确认；仿真单独假设MSL71m及大地水准面差0m，不能用于实机','云台和目标事件为合成，科二抛投待确认','不控制飞控；不是六机SITL物理闭环','四点区域按科三不搜索区处理，但三角形区域已重新加入搜索'])
+    plan = dict(schema='zhixin/fleet/v5',mode='deterministic_kinematic_simulation',subject=subject,datum=datum,flight_safety=safety,map_frame=simulation_frame(datum).descriptor(),perimeter=mapping(perimeter),forest=mapping(forest),subject3_exclusion=mapping(subject3_exclusion),subject3_reinclude=mapping(subject3_reinclude),launch=mapping(launch),legal=mapping(legal),partitions=partitions,vehicles=vehicles,duration_s=duration,deadline_s=deadline,within_time_budget=duration<=deadline,validation=validation,coverage=coverage,footprint_m=footprint,satellite=satellite,forest_crossings=forest_crossings,requires_forest_transit_permission=bool(forest_crossings),area_adjustments_summary=area_adjustment_summary,manual_draft_summary=manual_summary,limitations=['扫描矩形为待标定模拟配置，不是附件给定或实机覆盖保证','平地AGL；缺少真实地形和遮挡模型','71m高程基准未确认；仿真单独假设MSL71m及大地水准面差0m，不能用于实机','云台和目标事件为合成，科二抛投待确认','不控制飞控；不是六机SITL物理闭环','四点区域按科三区域处理；保留搜索调整均来自正式场地区域配置'])
     plan['observation_conditions'] = observation_conditions
+    plan['task_blocks'] = task_blocks
     plan['airspace_policy'] = airspace_policy
     plan['requires_forest_transit_permission'] = bool(forest_crossings) and not airspace_policy['forest_transit_authorized']
     plan['limitations'] = [item for item in plan['limitations'] if not item.startswith('严格禁止跨树林')]

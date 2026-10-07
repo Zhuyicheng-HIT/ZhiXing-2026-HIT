@@ -1,4 +1,14 @@
 const byId = (name) => document.getElementById(name);
+window.addEventListener('DOMContentLoaded', () => {
+  const script = document.createElement('script');
+  script.src = 'manual_editor.js';
+  script.onload = () => {
+    const missionScript = document.createElement('script');
+    missionScript.src = 'mission_editor.js';
+    document.body.append(missionScript);
+  };
+  document.body.append(script);
+});
 const colors = ['#55b3ff','#a2d6ff','#ffa45d','#ffe080','#6ddd87','#b6ed65'];
 let plan = null, state = null, view = {scale: .5, east: 0, north: 0}, drag = null;
 let isolationCandidate = null;
@@ -121,6 +131,14 @@ function draw() {
     vehicle.stations.forEach(point=>{const position=screen(point);context.fillStyle=colors[index];context.beginPath();context.arc(...position,2.2,0,Math.PI*2);context.fill();});
     const home=screen(vehicle.home);context.strokeStyle=colors[index];context.strokeRect(home[0]-4,home[1]-4,8,8);
   });
+  (plan.task_blocks||[]).forEach(block=>{
+    context.save();context.setLineDash([8,3]);context.lineWidth=2;
+    paint(block.geometry,'#ffd16618','#ffd166');
+    const owner=plan.vehicles.find(vehicle=>vehicle.id===block.assigned_vehicle);
+    const station=owner?.stations.find((point,index)=>owner.station_tasks?.[index]?.task_block_id===block.id);
+    if(station){const position=screen(station);context.font='bold 12px system-ui';context.fillStyle='#ffd166';context.fillText('下方合并任务块 · '+block.assigned_vehicle,position[0]+8,position[1]+18);}
+    context.restore();
+  });
   if(state)state.vehicles.forEach((vehicle,index)=>{
     const position=screen(vehicle.position),configuration=plan.vehicles[index].scan_configuration;
     if(vehicle.target){
@@ -157,9 +175,9 @@ byId('startButton').onclick=()=>control('start',{forest_permission:byId('forestP
 byId('fitButton').onclick=fit;byId('satellite').onchange=draw;byId('routes').onchange=draw;window.addEventListener('resize',size);
 canvas.onpointerdown=event=>{if(event.button!==0)return;drag={x:event.clientX,y:event.clientY,east:view.east,north:view.north,moved:false};canvas.setPointerCapture(event.pointerId);};
 canvas.onpointermove=event=>{if(drag){if(Math.hypot(event.clientX-drag.x,event.clientY-drag.y)>4)drag.moved=true;if(drag.moved){view.east=drag.east+event.clientX-drag.x;view.north=drag.north+event.clientY-drag.y;draw();}}};
-canvas.onpointerup=event=>{const clicked=drag&&!drag.moved;drag=null;if(clicked)selectMapCoordinate(event);};
+canvas.onpointerup=event=>{const clicked=drag&&!drag.moved;drag=null;if(clicked&&!window.missionEditor?.click(event)&&!window.manualEditor?.click(event))selectMapCoordinate(event);};
 canvas.onpointercancel=()=>{drag=null;};
-canvas.oncontextmenu=event=>{event.preventDefault();drag=null;selectMapCoordinate(event,true);};
+canvas.oncontextmenu=event=>{event.preventDefault();drag=null;if(!window.manualEditor?.rightClick())selectMapCoordinate(event,true);};
 canvas.addEventListener('wheel',event=>{event.preventDefault();const rect=canvas.getBoundingClientRect(),east=event.clientX-rect.left,north=event.clientY-rect.top;const factor=event.deltaY<0?1.1:1/1.1;view.east=east+(view.east-east)*factor;view.north=north+(view.north-north)*factor;view.scale*=factor;draw();},{passive:false});
 async function init(){try{plan=await api('/api/plan');renderPlan();size();state=await api('/api/state');renderState();}catch(error){toast('后端未启动：请运行 python scripts/sim_server.py。'+error.message);byId('connection').textContent='后端未连接';}}
 init();setInterval(async()=>{if(!plan)return;try{state=await api('/api/state');renderState();}catch(error){byId('connection').textContent='连接中断（不表示实机状态）';}},250);

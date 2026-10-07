@@ -3,16 +3,18 @@
   "entry_policy": "layered_reserved",
   "entry_release_interval_s": 2.0,
   "entry_altitudes_m": {
-    "uav_1": 45.0,
+    "uav_1": 48.5,
     "uav_2": 40.5,
-    "uav_3": 50.0,
-    "uav_4": 55.0,
-    "uav_5": 60.0,
-    "uav_6": 65.0
+    "uav_3": 64.5,
+    "uav_4": 56.5,
+    "uav_5": 80.5,
+    "uav_6": 72.5
   },
   "entry_order": ["uav_6", "uav_4", "uav_2", "uav_5", "uav_3", "uav_1"],
   "return_policy": "layered_reserved",
   "hold_recovery_policy": "arrived_and_slow_before_releasing_paths",
   "minimum_command_path_distance_m": 12.0,
+  "minimum_vertical_separation_m": 8.0,
+  "minimum_same_zone_horizontal_separation_m": 5.0,
   "hardware_authorized": false
 }

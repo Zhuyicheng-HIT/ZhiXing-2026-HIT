@@ -15,6 +15,8 @@ from gimbal_geometry import solve_pointing, feasible_pointing
 from isolation_airspace import require_isolation_permission
 from scan_motion import scan_look_target, target_in_sector
 from geodesy import simulation_frame
+from manual_drafts import ManualDraftStore
+from mission_editor import MissionWaypointStore, mission_waypoints
 
 
 class FleetSimulation:
@@ -239,7 +241,8 @@ class FleetSimulation:
             elif action=='replan':
                 if self.running:
                     raise ValueError('先暂停；重新规划会清空旧任务进度')
-                self.plan = build_plan(homes=data.get('homes'),subject=int(data.get('subject',1)),footprint=float(data.get('footprint',80)))
+                draft = self.manual_drafts_store.load(self.plan) if data.get('use_manual_draft', False) else None
+                self.plan = build_plan(homes=data.get('homes'),subject=int(data.get('subject',1)),footprint=float(data.get('footprint',80)),manual_draft=draft)
                 (ROOT/'missions/fleet_plan.json').write_text(json.dumps(self.plan,ensure_ascii=False,indent=2),encoding='utf-8')
                 self.reset()
             elif action=='target_update':
@@ -387,6 +390,10 @@ class FleetSimulation:
 
 def serve(host='127.0.0.1',port=8765,simulation=None):
     simulation = simulation or FleetSimulation()
+    manual_drafts = ManualDraftStore(ROOT)
+    mission_waypoints_store = MissionWaypointStore(ROOT)
+    simulation.mission_waypoints_store = mission_waypoints_store
+    simulation.manual_drafts_store = manual_drafts
     class Handler(SimpleHTTPRequestHandler):
         def __init__(self,*args,**kwargs):
             super().__init__(*args,directory=str(ROOT/'web'),**kwargs)
@@ -417,6 +424,18 @@ def serve(host='127.0.0.1',port=8765,simulation=None):
             self.wfile.write(payload)
 
         def do_GET(self):
+            if urlparse(self.path).path=='/api/mission-waypoints':
+                with simulation.lock:
+                    reset = parse_qs(urlparse(self.path).query).get('reset', ['0'])[0] == '1'
+                    self.send_json(mission_waypoints_store.load(simulation.plan, reset=reset))
+                return
+            if urlparse(self.path).path=='/api/manual-draft':
+                try:
+                    with simulation.lock:
+                        self.send_json(manual_drafts.load(simulation.plan))
+                except (ValueError,OSError) as error:
+                    self.send_json(dict(error=str(error)),400)
+                return
             if urlparse(self.path).path=='/api/map/coordinates':
                 try:
                     query = parse_qs(urlparse(self.path).query)
@@ -460,16 +479,24 @@ def serve(host='127.0.0.1',port=8765,simulation=None):
             if origin and urlparse(origin).netloc != self.headers.get('Host'):
                 self.send_json(dict(error='拒绝跨源控制'),403)
                 return
-            if self.path not in ('/api/control','/api/gimbal/result','/api/gimbal/status','/api/gimbal/retry','/api/perception/result'):
+            if self.path not in ('/api/control','/api/gimbal/result','/api/gimbal/status','/api/gimbal/retry','/api/perception/result','/api/manual-draft','/api/mission-waypoints'):
                 self.send_json(dict(error='未知接口'),404)
                 return
             try:
                 size = int(self.headers.get('Content-Length','0'))
-                if not 0 < size <= 65536:
+                if not 0 < size <= (1048576 if self.path=='/api/manual-draft' else 65536):
                     raise ValueError('请求长度非法')
                 data = json.loads(self.rfile.read(size))
                 if not isinstance(data,dict):
                     raise ValueError('请求必须为JSON对象')
+                if self.path=='/api/manual-draft':
+                    with simulation.lock:
+                        self.send_json(manual_drafts.save(data,simulation.plan))
+                    return
+                if self.path=='/api/mission-waypoints':
+                    with simulation.lock:
+                        self.send_json(mission_waypoints_store.save(data,simulation.plan))
+                    return
                 if self.path=='/api/gimbal/result':
                     data['action'] = 'observation_result'
                 elif self.path=='/api/gimbal/status':

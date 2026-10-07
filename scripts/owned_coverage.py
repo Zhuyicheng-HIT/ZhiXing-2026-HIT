@@ -163,7 +163,7 @@ def owned_layout(part, safe, configuration, home, clearance):
     return route_order(cells,home),remaining.area
 
 
-def balanced_partition(region, configuration, homes, margin, clearance):
+def balanced_partition(region, configuration, homes, margin, clearance, required_lower_block=None, lower_flight_support=None):
     min_x,min_y,max_x,max_y = region.bounds
     candidates = []
     for horizontal in (True,False):
@@ -176,7 +176,14 @@ def balanced_partition(region, configuration, homes, margin, clearance):
             for index in range(2):
                 clipping = (box(-2000,-2000,split,2000) if index==0 else box(split,-2000,2000,2000)) if horizontal else (box(-2000,-2000,2000,split) if index==0 else box(-2000,split,2000,2000))
                 part = region.intersection(clipping)
+                if required_lower_block is not None and not required_lower_block.is_empty:
+                    if index == 0 and required_lower_block.difference(part).area > .01:
+                        break
+                    if index == 1 and required_lower_block.intersection(part).area > .01:
+                        break
                 flight = part.difference(band)
+                if index == 0 and lower_flight_support is not None:
+                    flight = flight.union(lower_flight_support).difference(band)
                 safe = flight.buffer(-margin,join_style=2)
                 if safe.is_empty or part.is_empty:
                     break
@@ -206,15 +213,17 @@ def balanced_partition(region, configuration, homes, margin, clearance):
     return min(candidates,key=lambda item:item[0])[1:]
 
 
-def rescue_coverage(vehicles, search):
+def rescue_coverage(vehicles, search, task_blocks=None):
     assigned = unary_union([shape(task['geometry']) for vehicle in vehicles for task in vehicle['station_tasks']])
     remaining = search.difference(assigned)
+    protected = {vehicle['id']:unary_union([shape(block['geometry']) for block in task_blocks or []
+        if block['assigned_vehicle'] != vehicle['id']]) for vehicle in vehicles}
     for vehicle in vehicles:
         config = vehicle['scan_configuration']
         radius = config['station_footprint_m']/2
         for station,task in zip(vehicle['stations'],vehicle['station_tasks']):
             east,north = station
-            extra = remaining.intersection(box(east-radius,north-radius,east+radius,north+radius))
+            extra = remaining.difference(protected[vehicle['id']]).intersection(box(east-radius,north-radius,east+radius,north+radius))
             if extra.area>.000001:
                 target = shape(task['geometry']).union(extra)
                 task.update(geometry=mapping(target),legs=sweep_legs(target,config['instantaneous_frame_m'],config['minimum_overlap_ratio']))
@@ -228,9 +237,16 @@ def rescue_coverage(vehicles, search):
             config = vehicle['scan_configuration']
             radius = config['station_footprint_m']/2
             for component in components:
-                point = nearest_points(vehicle['_safe'],component.representative_point())[0]
-                target = remaining.intersection(box(point.x-radius,point.y-radius,point.x+radius,point.y+radius))
-                candidates.append((target.area,vehicle,[point.x,point.y],target))
+                eligible = component.difference(protected[vehicle['id']])
+                if eligible.is_empty:
+                    continue
+                references = [eligible.representative_point(), nearest_points(vehicle['_safe'],eligible)[1]]
+                for reference in references:
+                    point = nearest_points(vehicle['_safe'],reference)[0]
+                    target = remaining.difference(protected[vehicle['id']]).intersection(box(point.x-radius,point.y-radius,point.x+radius,point.y+radius))
+                    candidates.append((target.area,vehicle,[point.x,point.y],target))
+        if not candidates:
+            break
         area,vehicle,station,target = max(candidates,key=lambda item:item[0])
         if area<.01:
             break

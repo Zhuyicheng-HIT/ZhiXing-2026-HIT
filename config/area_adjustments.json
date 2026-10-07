@@ -1,0 +1,92 @@
+{
+  "schema": "zhixin/area-adjustments/v1",
+  "coordinate_reference": "WGS84 longitude,latitude",
+  "search_inclusions": [
+    {
+      "id": "retained_search_link",
+      "label": "Retained continuous search area",
+      "points_wgs84_lon_lat": [
+        [113.70763387849749, 33.86430184206891],
+        [113.70760922566811, 33.86362354524264],
+        [113.70759866429579, 33.86353251841853],
+        [113.70794008933369, 33.863503149901675],
+        [113.70802106549385, 33.86429889956514]
+      ]
+    }
+  ],
+  "search_exclusions": [
+    {
+      "id": "retained_subject3_exclusion_extension",
+      "label": "Subject 3 no-search extension",
+      "points_wgs84_lon_lat": [
+        [113.70743923662913, 33.86276883423261],
+        [113.70784809857633, 33.86275106362207],
+        [113.70820585277255, 33.86274039848504],
+        [113.70820158383005, 33.86237444097201],
+        [113.70740089974224, 33.862424195352474]
+      ]
+    },
+    {
+      "id": "retained_east_outer_road",
+      "label": "No-search outer public road",
+      "points_wgs84_lon_lat": [
+        [113.71243241478426, 33.86764389950936],
+        [113.7129911663097, 33.86764386861583],
+        [113.71246126100573, 33.86030890975419],
+        [113.71191726044779, 33.860308937522916]
+      ]
+    },
+    {
+      "id": "retained_west_outer_road",
+      "label": "No-search outer public road",
+      "points_wgs84_lon_lat": [
+        [113.70384689117238, 33.864026677872396],
+        [113.70423350257738, 33.86404749131587],
+        [113.70402779338617, 33.86093153472568],
+        [113.70357260541977, 33.86094713276305]
+      ]
+    },
+    {
+      "id": "retained_north_outer_road",
+      "label": "No-search outer public road",
+      "points_wgs84_lon_lat": [
+        [113.7078503096654, 33.86927541884233],
+        [113.7079438504121, 33.8692754173245],
+        [113.70778163525095, 33.86574851697816],
+        [113.70766939086288, 33.86574331656132]
+      ]
+    },
+    {
+      "id": "retained_west_boundary_road",
+      "label": "No-search outer public road",
+      "points_wgs84_lon_lat": [
+        [113.7076569195739, 33.865748518702766],
+        [113.70753841243615, 33.86434400071212],
+        [113.7076257123896, 33.86433879791203],
+        [113.70778787226656, 33.86579533407095],
+        [113.70766315662856, 33.865800537764564]
+      ]
+    }
+  ],
+  "takeoff_to_house_transfer": {
+    "reference": "subject3_exclusion",
+    "buffer_m": 0.0,
+    "label": "Transfer the takeoff-zone strip beside the Subject 3 boundary to house search"
+  },
+  "takeoff_search_side": {
+    "road_exclusion_id": "retained_west_boundary_road",
+    "side": "west",
+    "label": "Departure search stays west of the boundary road; the road-east remainder belongs to the house task"
+  },
+  "merged_task_blocks": {
+    "house_lower_linked_block": {
+      "enabled": true,
+      "north_extension_m": 20.0,
+      "minimum_area_m2": 100.0,
+      "flight_support_margin_m": 12.0,
+      "keep_takeoff_side_boundary": true,
+      "label": "One house-owned block covering the road-east, Subject-3-west, and lower-house remainder"
+    }
+  },
+  "notes": "These are committed area edits recovered from the saved map sketch. They are planner inputs, not UI drawing overlays. Search inclusions remain clipped to the legal perimeter and forest/explicit exclusions; search exclusions are clipped to the competition perimeter."
+}
